@@ -155,7 +155,9 @@ CREATE TABLE `import` (
   `status` int NOT NULL,
   `created_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `import_product_fk` (`product_id`),
+  CONSTRAINT `import_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -178,7 +180,6 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
   `catalog_id` int NOT NULL,
-  `stock_id` int NOT NULL,
   `product_code` int NOT NULL,
   `product_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `size` float NOT NULL,
@@ -189,9 +190,7 @@ CREATE TABLE `product` (
   `update_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `product_catalog_fk` (`catalog_id`),
-  KEY `product_stock_fk` (`stock_id`),
-  CONSTRAINT `product_catalog_fk` FOREIGN KEY (`catalog_id`) REFERENCES `catalog` (`id`),
-  CONSTRAINT `product_stock_fk` FOREIGN KEY (`stock_id`) REFERENCES `import` (`id`)
+  CONSTRAINT `product_catalog_fk` FOREIGN KEY (`catalog_id`) REFERENCES `catalog` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-14 13:36:31
+-- Dump completed on 2020-05-16 17:56:40
