@@ -1,3 +1,5 @@
+package main.java.controller;
+
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +9,7 @@ import java.io.PrintWriter;
  * @author Duc on 5/13/2020
  */
 @WebServlet(name = "test", urlPatterns = "/test")
-public class ServletTest extends javax.servlet.http.HttpServlet {
+public class ServletDummy extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
 
     }
