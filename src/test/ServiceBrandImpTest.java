@@ -11,14 +11,3 @@ import org.junit.jupiter.api.Test;
  **/
 
 class ServiceBrandImpTest {
-
-    @Test
-    void getImportList() {
-        IServiceBrand dao = new ServiceBrandImp();
-    }
-
-    @Test
-    void getBrandByName() {
-        IServiceBrand service = new ServiceBrandImp();
-    }
-}

@@ -22,9 +22,11 @@ public class ServletProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-//        IImportService service = new ImportServiceImp();
-//        List<Product> productList = service.getImportList();
+
+/*        String action = request.getParameter("action");
+        IImportService service = new ImportServiceImp();
+        List<Product> productList = service.getImportList();
+
 
         if (action == null) {
             action = "";
@@ -37,6 +39,6 @@ public class ServletProduct extends HttpServlet {
             case "add":
                 request.getRequestDispatcher("views/admin/brand/brand-register.jsp").forward(request, response);
                 break;
-        }
+        }*/
     }
 }
