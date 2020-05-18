@@ -10,7 +10,7 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-public interface IServiceProduct {
+public interface IProductService {
     List<Product> getProductList();
 
     Product getProductById(int id);

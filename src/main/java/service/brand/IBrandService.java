@@ -9,7 +9,7 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-public interface IServiceBrand {
+public interface IBrandService {
     List<Brand> getBrandList();
 
     Brand getBrandById(int id);

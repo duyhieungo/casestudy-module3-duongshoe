@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,13 +15,13 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-public class ServiceBrandImp implements IServiceBrand {
+public class BrandServiceImp implements IBrandService {
     private Connection connection;
     private PreparedStatement statement;
     private ResultSet resultSet;
     private List<Brand> brandList;
 
-    public ServiceBrandImp() {
+    public BrandServiceImp() {
         connection = DBHandle.getConnection();
     }
 
