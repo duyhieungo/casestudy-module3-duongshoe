@@ -147,10 +147,10 @@
                         <span class="menu-title">Quản lý sản phẩm</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic-products">
+                    <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=view_user">Xem sản phẩm</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=create_user">Thêm sản phẩm</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
                         </ul>
                     </div>
                 </li>
@@ -159,10 +159,10 @@
                         <span class="menu-title">Quản lý danh mục</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic-catalog">
+                    <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=view_user">Xem danh mục</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=create_user">Thêm danh mục</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
                         </ul>
                     </div>
                 </li>
@@ -171,9 +171,9 @@
                         <span class="menu-title">Quản lý hóa đơn</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic-bill">
+                    <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=view_user">Xem hóa đơn</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
                         </ul>
                     </div>
                 </li>
@@ -182,10 +182,10 @@
                         <span class="menu-title">Quản lý người dùng</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/dashboard?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/dashboard?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
                 </li>
