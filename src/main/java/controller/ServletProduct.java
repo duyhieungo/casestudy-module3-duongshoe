@@ -22,10 +22,10 @@ public class ServletProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 /*        String action = request.getParameter("action");
         IImportService service = new ImportServiceImp();
         List<Product> productList = service.getImportList();
+
 
 
         if (action == null) {

@@ -6,5 +6,4 @@ package test;
  **/
 
 class ServiceBrandImpTest {
-
 }
