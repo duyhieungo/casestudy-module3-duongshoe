@@ -1,5 +1,6 @@
 package main.java.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class Brand {
     private int id;
+    private int brandCode;
     private String name;
     private String description;
     private String status;
@@ -19,24 +21,34 @@ public class Brand {
         productList = new LinkedList<>();
     }
 
-    public Brand(int id, String name, String description, String status) {
-        productList = new LinkedList<>();
+    public Brand(int id, int brandCode, String name) {
         this.id = id;
+        this.brandCode = brandCode;
+        this.name = name;
+    }
+
+    public Brand(int id, int brandCode, String name, String description, String status, List<Product> productList) {
+        this.id = id;
+        this.brandCode = brandCode;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.productList = productList;
+    }
+
+    public Brand(int id, int brandCode, String name, String description, String status) {
+        this.id = id;
+        productList = new LinkedList<>();
+        this.brandCode = brandCode;
         this.name = name;
         this.description = description;
         this.status = status;
     }
 
-    public Brand(String name, String description, String status) {
+    public Brand(int id, int brandCode, String name, String description, String status, Product product) {
+        this.id = id;
         productList = new LinkedList<>();
-        this.name = name;
-        this.description = description;
-        this.status = status;
-    }
-
-
-    public Brand(String name, String description, String status, Product product) {
-        productList = new LinkedList<>();
+        this.brandCode = brandCode;
         this.name = name;
         this.description = description;
         this.status = status;
@@ -49,6 +61,14 @@ public class Brand {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getBrandCode() {
+        return brandCode;
+    }
+
+    public void setBrandCode(int brandCode) {
+        this.brandCode = brandCode;
     }
 
     public String getName() {
@@ -91,5 +111,15 @@ public class Brand {
                 ", description='" + description + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!obj.getClass().equals(this.getClass())) {
+            return false;
+        }
+        Brand brand = (Brand) obj;
+        return brand.getName().equals(this.name)
+                || brand.getId() == this.id;
     }
 }
