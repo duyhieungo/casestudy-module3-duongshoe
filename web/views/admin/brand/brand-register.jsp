@@ -13,7 +13,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Trang chủ Sản phẩm</title>
+    <title>Thêm sản phẩm</title>
     <!-- plugins:css -->
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/vendors/simple-line-icons/css/simple-line-icons.css">
@@ -107,70 +107,79 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../../index.html">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-category"><span class="nav-link">Cửa hàng</span></li>
+                <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
-                       aria-controls="product">
-                        <span class="menu-title">Quản lý sản phẩm</span>
-                        <i class="icon-basket-loaded menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <span class="menu-title">Sản phẩm</span>
+                        <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="product">
+                    <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="dashboard?action=view_user">Xem sản phẩm</a>
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="${pageContext.request.contextPath}/product?action=view">Bảng tổng hợp</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/product?action=add">Thêm
+                                mới</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="dashboard?action=create_user">Thêm sản
-                                phẩm</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
-                       aria-controls="brand">
-                        <span class="menu-title">Quản lý Nhà cung cấp</span>
+                    <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
+                        <span class="menu-title">Icons</span>
+                        <i class="icon-globe menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pages/forms/basic_elements.html">
+                        <span class="menu-title">Form Elements</span>
+                        <i class="icon-book-open menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pages/charts/chartist.html">
+                        <span class="menu-title">Charts</span>
+                        <i class="icon-chart menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pages/tables/basic-table.html">
+                        <span class="menu-title">Tables</span>
                         <i class="icon-grid menu-icon"></i>
                     </a>
-                    <div class="collapse" id="brand">
+                </li>
+                <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                        <span class="menu-title">General Pages</span>
+                        <i class="icon-doc menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="dashboard?action=view_user">Xem nhà cung
-                                cấp</a>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.html"> Login </a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="dashboard?action=create_user">Thêm nhà cung
-                                cấp</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.html">
+                                Register </a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/blank-page.html"> Blank
+                                Page </a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#bill" aria-expanded="false"
-                       aria-controls="bill">
-                        <span class="menu-title">Quản lý hóa đơn</span>
-                        <i class="icon-note menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="bill">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="dashboard?action=view_user">Xem hóa đơn</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
-                       aria-controls="user">
-                        <span class="menu-title">Quản lý người dùng</span>
-                        <i class="icon-user menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="user">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/dashboard?action=view_user">Xem người
-                                dùng</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/dashboard?action=create_user">Thêm người
-                                dùng</a></li>
-                        </ul>
-                    </div>
+                <li class="nav-item pro-upgrade">
+              <span class="nav-link">
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade"
+                   href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i
+                        class="icon-badge mx-2"></i> Upgrade to Pro</a>
+              </span>
                 </li>
             </ul>
         </nav>
@@ -181,58 +190,52 @@
                     <h3 class="page-title">Bảng sản phẩm</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="col-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Những sản phẩm trong kho</h4>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Hãng</th>
-                                        <th>Size</th>
-                                        <th>Số lượng</th>
-                                        <th>Ngày nhập</th>
-                                        <th>Tình trạng</th>
-                                        <th colspan="3" style="text-align: center">Thao tác</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${productList}" var="record">
-                                        <tr>
-                                            <td>${record.getId()}</td>
-                                            <td>${record.getName()}</td>
-                                            <td>${record.getBrand()}</td>
-                                            <td>${record.getSize()}</td>
-                                            <td>${record.getQuantity()}</td>
-                                            <td>${record.getImportDate()}</td>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${record.getStatus() == 'Đủ'}">
-                                                        <label class="badge badge-success">Đủ hàng</label>
-                                                    </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thiếu'}">
-                                                        <label class="badge badge-danger">Thiếu hàng</label>
-                                                    </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thừa'}">
-                                                        <label class="badge badge-warning">Thừa hàng</label>
-                                                    </c:when>
-                                                </c:choose>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-options"></i></a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-pencil"></i></a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+                                <h4 class="card-title">Thêm sản phẩm mới</h4>
+                                <p class="card-description"> Basic form elements </p>
+                                <form class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">Tên sản phẩm</label>
+                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nike">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail3">Hãng</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="hãng">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Size</label>
+                                        <input type="number" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Gender</label>
+                                        <select class="form-control" id="exampleSelectGender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>File upload</label>
+                                        <input type="file" name="img[]" class="file-upload-default">
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                            <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputCity1">City</label>
+                                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleTextarea1">Textarea</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    <button class="btn btn-light">Cancel</button>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -1,43 +1,35 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Duc
-  Date: 5/13/2020
-  Time: 10:53 PM
+  User: Admin
+  Date: 17/05/2020
+  Time: 16:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Stellar Admin</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="./resources/vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="./resources/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="./resources/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="./resources/vendors/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="./resources/chartist/chartist.min.css">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="./resources/css/style.css">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="./resources/images/favicon.png"/>
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png"/>
 </head>
 <body>
 <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-            <a class="navbar-brand brand-logo" href="views/admin/index.jsp">
-                <img src="resources/images/logo.svg" alt="logo" class="logo-dark"/>
+            <a class="navbar-brand brand-logo" href="index.html">
+                <img src="${pageContext.request.contextPath}/resources/images/logo.svg" alt="logo" class="logo-dark"/>
             </a>
-            <a class="navbar-brand brand-logo-mini" href="views/admin/index.jsp"><img src="resources/images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                    src="${pageContext.request.contextPath}/resources/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
@@ -63,7 +55,8 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="images/faces/face10.jpg" alt="image" class="img-sm profile-pic"></div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face10.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -71,7 +64,8 @@
                         </a>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="images/faces/face12.jpg" alt="image" class="img-sm profile-pic"></div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face12.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -79,7 +73,8 @@
                         </a>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="images/faces/face1.jpg" alt="image" class="img-sm profile-pic"></div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face1.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -110,11 +105,14 @@
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                        aria-expanded="false">
-                        <img class="img-xs rounded-circle ml-2" src="images/faces/face8.jpg" alt="Profile image"> <span
-                            class="font-weight-normal"> Henry Klein </span></a>
+                        <img class="img-xs rounded-circle ml-2"
+                             src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                             alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                            <img class="img-md rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                                 alt="Profile image">
                             <p class="mb-1 mt-3">Allen Moreno</p>
                             <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                         </div>
@@ -125,7 +123,8 @@
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
                             Activity</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                        <a class="dropdown-item" href="/admin"><i
+                                class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
                     </div>
                 </li>
             </ul>
@@ -135,15 +134,15 @@
             </button>
         </div>
     </nav>
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="profile-image">
-                            <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
+                            <img class="img-xs rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                                 alt="profile image">
                             <div class="dot-indicator bg-success"></div>
                         </div>
                         <div class="text-wrapper">
@@ -165,74 +164,61 @@
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
+                <li class="nav-item nav-category"><span class="nav-link">Cửa hàng</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                       aria-controls="ui-basic">
-                        <span class="menu-title">Basic UI Elements</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
+                       aria-controls="product">
+                        <span class="menu-title">Quản lý sản phẩm</span>
+                        <i class="icon-basket-loaded menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="pages/ui-features/typography.html">Typography</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/icons/simple-line-icons.html">
-                        <span class="menu-title">Icons</span>
-                        <i class="icon-globe menu-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
-                        <span class="menu-title">Form Elements</span>
-                        <i class="icon-book-open menu-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/charts/chartist.html">
-                        <span class="menu-title">Charts</span>
-                        <i class="icon-chart menu-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/tables/basic-table.html">
-                        <span class="menu-title">Tables</span>
+                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
+                       aria-controls="brand">
+                        <span class="menu-title">Quản lý Nhà cung cấp</span>
                         <i class="icon-grid menu-icon"></i>
                     </a>
-                </li>
-                <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                        <span class="menu-title">General Pages</span>
-                        <i class="icon-doc menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="auth">
+
+                    <div class="collapse" id="brand">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/samples/register.html"> Register </a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                            <li class="nav-item"><a class="nav-link" href="pages/samples/blank-page.html"> Blank
-                                Page </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item pro-upgrade">
-              <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade"
-                   href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i
-                        class="icon-badge mx-2"></i> Upgrade to Pro</a>
-              </span>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#bill" aria-expanded="false"
+                       aria-controls="bill">
+                        <span class="menu-title">Quản lý hóa đơn</span>
+                        <i class="icon-note menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="bill">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
+                       aria-controls="user">
+                        <span class="menu-title">Quản lý người dùng</span>
+                        <i class="icon-user menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="user">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </nav>
-        <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="row purchace-popup">
@@ -313,7 +299,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Quick Action Toolbar Starts-->
                 <div class="row quick-action-toolbar">
                     <div class="col-md-12 grid-margin">
                         <div class="card">
@@ -346,7 +331,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Quick Action Toolbar Ends-->
                 <div class="row">
                     <div class="col-md-12 grid-margin">
                         <div class="card">
@@ -468,12 +452,14 @@
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="images/faces/face1.jpg"
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face1.jpg"
                                                      alt="profile image"> Katie Holmes
                                             </td>
                                             <td>$3621</td>
-                                            <td><img src="images/dashboard/alipay.png" alt="alipay"
-                                                     class="gateway-icon mr-2"> alipay
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
                                             </td>
                                             <td>04 Jun 2019</td>
                                             <td>18 Jul 2019</td>
@@ -483,12 +469,14 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="images/faces/face2.jpg"
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face2.jpg"
                                                      alt="profile image"> Minnie Copeland
                                             </td>
                                             <td>$6245</td>
-                                            <td><img src="images/dashboard/paypal.png" alt="alipay"
-                                                     class="gateway-icon mr-2"> Paypal
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/paypal.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> Paypal
                                             </td>
                                             <td>25 Sep 2019</td>
                                             <td>07 Oct 2019</td>
@@ -498,12 +486,14 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="images/faces/face3.jpg"
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face3.jpg"
                                                      alt="profile image"> Rodney Sims
                                             </td>
                                             <td>$9265</td>
-                                            <td><img src="images/dashboard/alipay.png" alt="alipay"
-                                                     class="gateway-icon mr-2"> alipay
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
                                             </td>
                                             <td>12 dec 2019</td>
                                             <td>26 Aug 2019</td>
@@ -513,12 +503,14 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="images/faces/face4.jpg"
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face4.jpg"
                                                      alt="profile image"> Carolyn Barker
                                             </td>
                                             <td>$2263</td>
-                                            <td><img src="images/dashboard/alipay.png" alt="alipay"
-                                                     class="gateway-icon mr-2"> alipay
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
                                             </td>
                                             <td>30 Sep 2019</td>
                                             <td>20 Oct 2019</td>
@@ -549,8 +541,6 @@
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
@@ -559,28 +549,16 @@
                             class="icon-heart text-danger"></i></span>
                 </div>
             </footer>
-            <!-- partial -->
         </div>
-        <!-- main-panel ends -->
     </div>
-    <!-- page-body-wrapper ends -->
 </div>
-<!-- container-scroller -->
-<!-- plugins:js -->
-<script src="vendors/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- Plugin js for this page -->
-<script src="./vendors/chart.js/Chart.min.js"></script>
-<script src="./vendors/moment/moment.min.js"></script>
-<script src="./vendors/daterangepicker/daterangepicker.js"></script>
-<script src="./vendors/chartist/chartist.min.js"></script>
-<!-- End plugin js for this page -->
-<!-- inject:js -->
-<script src="js/off-canvas.js"></script>
-<script src="js/misc.js"></script>
-<!-- endinject -->
-<!-- Custom js for this page -->
-<script src="./js/dashboard.js"></script>
-<!-- End custom js for this page -->
+<script src="${pageContext.request.contextPath}/resources/vendors/js/vendor.bundle.base.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/chart.js/Chart.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/moment/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/chartist/chartist.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/off-canvas.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/misc.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
 </body>
 </html>
