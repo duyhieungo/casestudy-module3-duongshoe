@@ -14,6 +14,5 @@ class ServiceBrandImpTest {
     @Test
     void getImportList() {
         IServiceBrand dao = new ServiceBrandImp();
-        System.out.println(dao.getImportListDAO());
     }
 }
