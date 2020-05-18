@@ -31,7 +31,7 @@
                         <c:if test="${requestScope.error != null}">
                             <span class="font-weight-light">${requestScope.error}</span>
                         </c:if>
-                        <form class="pt-3" method="post" action="/dashboard">
+                        <form class="pt-3" method="post">
                             <div class="form-group">
                                 <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
                             </div>

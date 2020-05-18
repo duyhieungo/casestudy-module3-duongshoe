@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DashboardServlet", urlPatterns = "/dashboard")
-public class DashboardServlet extends HttpServlet {
+@WebServlet(name = "AdminServlet", urlPatterns = "/admin")
+public class AdminServlet extends HttpServlet {
     private ServiceUserImp serviceUserImp;
 
     public void init() {
@@ -31,11 +31,24 @@ public class DashboardServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "view_product":
+                break;
+            case "create_product":
+                break;
+            case "view_catalog":
+                break;
+            case "create_catalog":
+                break;
+            case "view_bill":
+                break;
             case "view_user":
                 showUserTable(request, response);
                 break;
             case "create_user":
                 showCreateUserForm(request, response);
+                break;
+            default:
+                showLoginAdminForm(request, response);
                 break;
         }
     }
@@ -58,6 +71,19 @@ public class DashboardServlet extends HttpServlet {
                 rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_LOGIN_ADMIN);
                 rd.forward(request, response);
             }
+        } catch (ServletException ex) {
+            System.err.println(Error.ERROR_006);
+        } catch (IOException ex) {
+            System.err.println(Error.ERROR_005);
+        }
+    }
+
+    //Hiển thi form đăng nhập admin.
+    private void showLoginAdminForm(HttpServletRequest request, HttpServletResponse response){
+        RequestDispatcher rd;
+        try {
+            rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_LOGIN_ADMIN);
+            rd.forward(request, response);
         } catch (ServletException ex) {
             System.err.println(Error.ERROR_006);
         } catch (IOException ex) {
