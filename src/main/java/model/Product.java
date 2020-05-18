@@ -1,8 +1,5 @@
 package main.java.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * @author Duc on 5/18/2020
  * @project casestudy-module3-duongshoe
@@ -10,37 +7,38 @@ import java.time.format.DateTimeFormatter;
 
 public class Product {
     private int id;
+    private int productCode;
     private String name;
     private Brand brand;
     private int size;
-    private int quantity;
-    private LocalDateTime importTime;
+    private String imageLink;
+    private String description;
     private String status;
 
     public Product() {
     }
 
-    public Product(int id, String name, Brand brand, int size, int quantity, LocalDateTime importTime, String status) {
+    public Product(int id, int productCode, String name, int size, String imageLink, String description, String status, Brand brand) {
         this.id = id;
+        this.productCode = productCode;
         this.name = name;
         this.brand = brand;
         this.size = size;
-        this.quantity = quantity;
-        this.importTime = importTime;
-        this.status = status;
-    }
-
-    public Product(String name, Brand brand, int size, int quantity, LocalDateTime importTime, String status) {
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.quantity = quantity;
-        this.importTime = importTime;
+        this.imageLink = imageLink;
+        this.description = description;
         this.status = status;
     }
 
     public int getId() {
         return id;
+    }
+
+    public int getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(int productCode) {
+        this.productCode = productCode;
     }
 
     public void setId(int id) {
@@ -71,28 +69,20 @@ public class Product {
         this.size = size;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getImageLink() {
+        return imageLink;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
-    public LocalDateTime getImportDateTime() {
-        return importTime;
+    public String getDescription() {
+        return description;
     }
 
-    public String getImportDate() {
-        return importTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-    }
-
-    public String getImportTime() {
-        return importTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-    }
-
-    public void setImportTime(LocalDateTime importTime) {
-        this.importTime = importTime;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getStatus() {
@@ -110,8 +100,6 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", brand='" + brand + '\'' +
                 ", size=" + size +
-                ", quantity=" + quantity +
-                ", importTime=" + importTime +
                 ", status='" + status + '\'' +
                 '}';
     }

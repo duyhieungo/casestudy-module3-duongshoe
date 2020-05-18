@@ -1,5 +1,6 @@
 package test;
 
+import main.java.model.Brand;
 import main.java.service.brand.ServiceBrandImp;
 import main.java.service.brand.IServiceBrand;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,3 @@ import org.junit.jupiter.api.Test;
  **/
 
 class ServiceBrandImpTest {
-
-/*    @Test
-    void getImportList() {
-        IServiceBrand dao = new ServiceBrandImp();
-        System.out.println(dao.getImportListDAO());
-    }*/
-}
