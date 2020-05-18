@@ -165,8 +165,8 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
                 </li>
