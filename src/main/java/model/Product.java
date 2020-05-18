@@ -1,27 +1,26 @@
-package main.java.model.product;
+package main.java.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 /**
  * @author Duc on 5/18/2020
  * @project casestudy-module3-duongshoe
  **/
 
-public class Import {
+public class Product {
     private int id;
     private String name;
-    private String brand;
+    private Brand brand;
     private int size;
     private int quantity;
     private LocalDateTime importTime;
     private String status;
 
-    public Import() {
+    public Product() {
     }
 
-    public Import(int id, String name, String brand, int size, int quantity, LocalDateTime importTime, String status) {
+    public Product(int id, String name, Brand brand, int size, int quantity, LocalDateTime importTime, String status) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -31,7 +30,7 @@ public class Import {
         this.status = status;
     }
 
-    public Import(String name, String brand, int size, int quantity, LocalDateTime importTime, String status) {
+    public Product(String name, Brand brand, int size, int quantity, LocalDateTime importTime, String status) {
         this.name = name;
         this.brand = brand;
         this.size = size;
@@ -56,11 +55,11 @@ public class Import {
         this.name = name;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 

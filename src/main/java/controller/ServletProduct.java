@@ -1,8 +1,6 @@
 package main.java.controller;
 
-import main.java.model.product.Import;
-import main.java.service.product.IImportService;
-import main.java.service.product.ImportServiceImp;
+import main.java.model.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +15,7 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-@WebServlet(name = "ServletProduct", urlPatterns = "/product")
+@WebServlet(name = "ServletProduct", urlPatterns = "/brand")
 public class ServletProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,15 +24,18 @@ public class ServletProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         IImportService service = new ImportServiceImp();
-        List<Import> importList = service.getImportList();
+        List<Product> productList = service.getImportList();
 
         if (action == null) {
             action = "";
         }
         switch (action) {
             case "view":
-                request.setAttribute("importList", importList);
-                request.getRequestDispatcher("views/admin/product/product-home.jsp").forward(request, response);
+                request.setAttribute("importList", productList);
+                request.getRequestDispatcher("views/admin/brand/brand-home.jsp").forward(request, response);
+                break;
+            case "add":
+                request.getRequestDispatcher("views/admin/brand/brand-register.jsp").forward(request, response);
                 break;
         }
     }
