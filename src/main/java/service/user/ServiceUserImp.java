@@ -20,7 +20,7 @@ public class ServiceUserImp implements IServiceUser {
         String username;
         String password;
         try {
-            connection = DBHandle.getConnec();
+            connection = DBHandle.getConnection();
             preparedStatement = connection.prepareStatement(Query.SELECT_ADMIN_FROM_USER);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
