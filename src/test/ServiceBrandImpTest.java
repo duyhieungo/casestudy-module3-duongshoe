@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 
 class ServiceBrandImpTest {
 
-    @Test
+/*    @Test
     void getImportList() {
         IServiceBrand dao = new ServiceBrandImp();
         System.out.println(dao.getImportListDAO());
-    }
+    }*/
 }
