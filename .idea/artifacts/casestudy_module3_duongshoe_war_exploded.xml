@@ -7,6 +7,20 @@
         <element id="directory" name="classes">
           <element id="module-output" name="casestudy-module3-duongshoe" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="mysql:mysql-connector-java:8.0.15" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar" />
+          <element id="file-copy" path="$USER_HOME$/.m2/repository/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar" />
+          <element id="library" level="module" name="JUnit4" module-name="casestudy-module3-duongshoe" />
+          <element id="library" level="project" name="protobuf-java-3.6.1" />
+        </element>
       </element>
     </root>
   </artifact>

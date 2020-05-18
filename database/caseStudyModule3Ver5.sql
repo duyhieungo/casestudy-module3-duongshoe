@@ -173,7 +173,7 @@ LOCK TABLES `import` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `brand`
 --
 
 DROP TABLE IF EXISTS `product`;
@@ -197,7 +197,7 @@ CREATE TABLE `product` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `brand`
 --
 
 LOCK TABLES `product` WRITE;
