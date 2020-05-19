@@ -195,7 +195,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Các sản phẩm hiện có</h4>
+                                <h4 class="card-title">Những sản phẩm trong kho</h4>
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -203,6 +203,8 @@
                                         <th>Sản phẩm</th>
                                         <th>Hãng</th>
                                         <th>Size</th>
+                                        <th>Số lượng</th>
+                                        <th>Ngày nhập</th>
                                         <th>Tình trạng</th>
                                         <th colspan="3" style="text-align: center">Thao tác</th>
                                     </tr>
@@ -212,26 +214,30 @@
                                         <tr>
                                             <td>${record.getId()}</td>
                                             <td>${record.getName()}</td>
-                                            <td>${record.getBrand().getName()}</td>
+                                            <td>${record.getBrand()}</td>
                                             <td>${record.getSize()}</td>
+                                            <td>${record.getQuantity()}</td>
+                                            <td>${record.getImportDate()}</td>
                                             <td>
                                                 <c:choose>
-                                                    <c:when test="${record.getStatus() == 'Đang kinh doanh'}">
-                                                        <label class="badge badge-success">Đang kinh doanh</label>
+                                                    <c:when test="${record.getStatus() == 'Đủ'}">
+                                                        <label class="badge badge-success">Đủ hàng</label>
                                                     </c:when>
-                                                    <c:when test="${record.getStatus() == 'Ngừng kinh doanh'}">
-                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
+                                                    <c:when test="${record.getStatus() == 'Thiếu'}">
+                                                        <label class="badge badge-danger">Thiếu hàng</label>
+                                                    </c:when>
+                                                    <c:when test="${record.getStatus() == 'Thừa'}">
+                                                        <label class="badge badge-warning">Thừa hàng</label>
                                                     </c:when>
                                                 </c:choose>
                                             </td>
-                                            <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=view-detail&id=${record.getId()}"
-                                                   class="nav-link"><i class="icon-options"></i></a>
+                                            <td width="10px">
+                                                <a href="#" class="nav-link"><i class="icon-options"></i></a>
                                             </td>
-                                            <td style="width: 10px">
+                                            <td width="10px">
                                                 <a href="#" class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
-                                            <td style="width: 10px">
+                                            <td width="10px">
                                                 <a href="#" class="nav-link"><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
