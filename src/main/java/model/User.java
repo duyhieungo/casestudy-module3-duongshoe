@@ -1,15 +1,20 @@
 package main.java.model;
 
+import java.sql.Date;
+
 public class User {
     private int id;
     private int roleId;
+    private String tempRole;
     private String firstName;
     private String lastName;
-    private int gender;
-    private String dateOfBirth;
+    private boolean gender;
+    private String tempGender;
+    private Date dateOfBirth;
     private String phone;
     private String email;
     private int status;
+    private String tempStatus;
     private String address;
     private String username;
     private String password;
@@ -22,8 +27,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, int roleId, String firstName, String lastName, int gender, String dateOfBirth, String phone, String address, String email, String username, String password, int status) {
-        this.id = id;
+    public User(int roleId, String firstName, String lastName, boolean gender, Date dateOfBirth, String phone, String address, String email, String username, String password, int status) {
         this.roleId = roleId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +38,28 @@ public class User {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.status = status;
+    }
+
+    public User(int id, String tempRole, String firstName, String lastName, String tempGender, Date dateOfBirth, String phone, String email, String tempStatus, String address, String username, String password) {
+        this.id = id;
+        this.tempRole = tempRole;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tempGender = tempGender;
+        this.dateOfBirth = dateOfBirth;
+        this.phone = phone;
+        this.email = email;
+        this.tempStatus = tempStatus;
+        this.address = address;
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(int id, String firstName, int roleId, int status) {
+        this.id = id;
+        this.firstName = firstName;
+        this.roleId = roleId;
         this.status = status;
     }
 
@@ -69,19 +95,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getGender() {
+    public boolean getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(boolean gender) {
         this.gender = gender;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -131,5 +157,33 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getTempRole() {
+        return tempRole;
+    }
+
+    public void setTempRole(String tempRole) {
+        this.tempRole = tempRole;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public String getTempGender() {
+        return tempGender;
+    }
+
+    public void setTempGender(String tempGender) {
+        this.tempGender = tempGender;
+    }
+
+    public String getTempStatus() {
+        return tempStatus;
+    }
+
+    public void setTempStatus(String tempStatus) {
+        this.tempStatus = tempStatus;
     }
 }
