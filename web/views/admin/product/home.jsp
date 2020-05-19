@@ -213,7 +213,7 @@
                                                         <label class="badge badge-success">Đang kinh doanh</label>
                                                     </c:when>
                                                     <c:when test="${product.getStatus() == 0}">
-                                                        <label class="badge badge-danger">Không kinh doanh</label>
+                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
                                                     </c:when>
                                                 </c:choose>
                                             </td>
