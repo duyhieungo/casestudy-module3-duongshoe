@@ -182,33 +182,42 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Bảng sản phẩm</h3>
+                    <h3 class="page-title">Chi tiết sản phẩm</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Lịch sử nhập hàng</h4>
-                                <p class="card-description"> Ngày cập nhật <code>.table-bordered</code>
+                                <p class="card-description"> Ngày cập nhật: <code>${requestDate}</code>
                                 </p>
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th> #</th>
-                                        <th> Ngày nhập</th>
-                                        <th> Số lượng</th>
-                                        <th> Đơn giá</th>
-                                        <th> Thành tiền</th>
+                                        <th>Mã đơn</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Mã hàng</th>
+                                        <th>Giá nhập</th>
+                                        <th>Tình trạng</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td> 1</td>
-                                        <td> Herman Beck</td>
-                                        <td> Herman Beck</td>
-                                        <td> $ 77.99</td>
-                                        <td> May 15, 2015</td>
-                                    </tr>
+                                    <c:forEach items="${importRecords}" var="record">
+                                        <tr>
+                                            <td>${record.getImportID()}</td>
+                                            <td>${record.getImportDate()}</td>
+                                            <td>${record.getProductCode()}</td>
+                                            <td>${record.getPrice()}</td>
+                                            <td><c:choose>
+                                                <c:when test="${record.getStatus() == 1}">
+                                                    <label class="badge badge-success">Còn hàng</label>
+                                                </c:when>
+                                                <c:when test="${record.getStatus() == 0}">
+                                                    <label class="badge badge-danger">Đã bán</label>
+                                                </c:when>
+                                            </c:choose></td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -217,17 +226,17 @@
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Lịch sử Bán hàng</h4>
-                                <p class="card-description"> Add class <code>.table-bordered</code>
+                                <h4 class="card-title">Lịch sử Đặt hàng</h4>
+                                <p class="card-description"> Ngày cập nhật: <code>${requestDate}</code>
                                 </p>
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th> #</th>
-                                        <th> First name</th>
-                                        <th> Progress</th>
-                                        <th> Amount</th>
-                                        <th> Deadline</th>
+                                        <th>Mã đơn</th>
+                                        <th>Ngày bán</th>
+                                        <th>Mã hàng</th>
+                                        <th>Giá bán</th>
+                                        <th>Tình trạng</th>
                                     </tr>
                                     </thead>
                                     <tbody>

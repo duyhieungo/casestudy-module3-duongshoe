@@ -125,7 +125,9 @@
                                                     href="${pageContext.request.contextPath}/product?action=">Xem sản
                                 phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/product?action=add">Thêm sản
+                            <li class="nav-item"><a class="nav-link"
+                                                    href="${pageContext.request.contextPath}/product?action=add">Thêm
+                                sản
                                 phẩm</a></li>
                         </ul>
                     </div>
@@ -216,7 +218,7 @@
                                                 </c:choose>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail"
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getProductID()}"
                                                    class="nav-link"><i class="icon-options"></i></a>
                                             </td>
                                             <td style="width: 10px">

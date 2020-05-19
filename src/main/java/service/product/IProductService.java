@@ -2,6 +2,7 @@ package main.java.service.product;
 
 import main.java.model.Product;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  **/
 
 public interface IProductService {
-    List<Product> getProductList();
+    List<Product> getProductList() throws SQLException;
 
-    List<String> getImageLinks(Product product);
+    List<String> getImageLinks(Product product) throws SQLException;
+
+    Product getProductByID(int id) throws SQLException;
 }

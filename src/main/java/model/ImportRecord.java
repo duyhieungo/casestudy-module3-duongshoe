@@ -1,6 +1,7 @@
 package main.java.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Duc on 5/19/2020
@@ -88,6 +89,14 @@ public class ImportRecord {
 
     public LocalDateTime getImportDateTime() {
         return importDateTime;
+    }
+
+    public String getImportDate() {
+        return importDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+    }
+
+    public String getImportTime() {
+        return importDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
     public void setImportDateTime(LocalDateTime localDateTime) {
