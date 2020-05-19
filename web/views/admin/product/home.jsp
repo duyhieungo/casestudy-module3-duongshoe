@@ -126,7 +126,7 @@
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=add">Thêm
+                                                    href="${pageContext.request.contextPath}/product?action=register">Thêm
                                 sản
                                 phẩm</a></li>
                         </ul>

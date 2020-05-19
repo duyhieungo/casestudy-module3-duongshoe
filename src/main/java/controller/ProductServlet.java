@@ -41,11 +41,19 @@ public class ProductServlet extends HttpServlet {
             case "detail":
                 displayDetail(request, response);
                 break;
-            case "add":
-                request.getRequestDispatcher("views/admin/brand/brand-register.jsp").forward(request, response);
+            case "register":
+                showRegisterForm(request, response);
                 break;
             default:
                 displayProductList(request, response);
+        }
+    }
+
+    private void showRegisterForm(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.getRequestDispatcher("views/admin/product/register.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -53,10 +61,9 @@ public class ProductServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         IStockService stockService = new StockServiceImp();
         String requestDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
         try {
             List<ImportRecord> importRecords = stockService.getImportRecordByProductID(id);
-            importRecords.sort(new Comparator<>() {
+            importRecords.sort(new Comparator<ImportRecord>() {
                 @Override
                 public int compare(ImportRecord o1, ImportRecord o2) {
                     return o1.getImportDateTime().compareTo(o2.getImportDateTime());
