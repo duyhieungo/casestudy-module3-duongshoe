@@ -13,7 +13,7 @@ public class Query {
             "       product.description,\n" +
             "       CASE product.status\n" +
             "           WHEN product.status = 1 THEN 'Đang kinh doanh'\n" +
-            "           WHEN product.status = 0 THEN 'Không kinh doanh'\n" +
+            "           WHEN product.status = 0 THEN 'Ngừng kinh doanh'\n" +
             "           ELSE 'Sản phẩm lỗi'\n" +
             "           END              AS status\n" +
             "FROM product\n" +

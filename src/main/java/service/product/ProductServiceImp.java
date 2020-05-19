@@ -19,7 +19,6 @@ import java.util.List;
  **/
 
 public class ProductServiceImp implements IProductService {
-
     private IBrandService serviceBrand;
     private Connection connection;
     private PreparedStatement statement;
@@ -69,6 +68,7 @@ public class ProductServiceImp implements IProductService {
         return productList;
     }
 
+    @Override
     public List<Product> getProductListWithImage() {
         List<Product> products = getProductList();
         try {
@@ -82,7 +82,6 @@ public class ProductServiceImp implements IProductService {
         }
         return products;
     }
-
 
     @Override
     public Product getProductById(int id) {

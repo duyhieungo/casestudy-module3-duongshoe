@@ -13,6 +13,8 @@ import java.util.List;
 public interface IProductService {
     List<Product> getProductList();
 
+    List<Product> getProductListWithImage();
+
     Product getProductById(int id);
 
     boolean addProductToDB(Product product);

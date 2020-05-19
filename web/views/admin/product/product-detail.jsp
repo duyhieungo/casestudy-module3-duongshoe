@@ -178,53 +178,70 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Bảng sản phẩm</h3>
+                    <h3 class="page-title">Bảng chi tiết sản phẩm</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Các sản phẩm hiện có</h4>
+                                <h4 class="card-title">Thống kê</h4>
+                                <p class="card-description"> Ngày cập nhật: </p>
+                                <p>
+                                <ul class="list-arrow">
+                                    <li style="font-size: 21px"><b>Tồn kho:</b></li>
+                                    <li style="font-size: 21px"><b>Đã bán: </b></li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Đơn nhập hàng</h4>
+                                <p class="card-description"> Ngày/tháng/năm</p>
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Hãng</th>
-                                        <th>Size</th>
-                                        <th>Tình trạng</th>
-                                        <th colspan="3" style="text-align: center">Thao tác</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${productList}" var="record">
+                                    <c:forEach items="${recordList}" var="record">
                                         <tr>
                                             <td>${record.getId()}</td>
-                                            <td>${record.getName()}</td>
-                                            <td>${record.getBrand().getName()}</td>
-                                            <td>${record.getSize()}</td>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${record.getStatus() == 'Đang kinh doanh'}">
-                                                        <label class="badge badge-success">Đang kinh doanh</label>
-                                                    </c:when>
-                                                    <c:when test="${record.getStatus() == 'Ngừng kinh doanh'}">
-                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
-                                                    </c:when>
-                                                </c:choose>
-                                            </td>
-                                            <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=view-detail&id=${record.getId()}"
-                                                   class="nav-link"><i class="icon-options"></i></a>
-                                            </td>
-                                            <td style="width: 10px">
-                                                <a href="#" class="nav-link"><i class="icon-pencil"></i></a>
-                                            </td>
-                                            <td style="width: 10px">
-                                                <a href="#" class="nav-link"><i class="icon-trash"></i></a>
-                                            </td>
+                                            <td>${record.getImportDate()}</td>
+                                            <td>${record.getQuantity()}</td>
+                                            <td>${record.getUnitPrice()}</td>
+                                            <td>${record.getQuantity() * record.getUnitPrice()}</td>
                                         </tr>
                                     </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Đơn bán hàng</h4>
+                                <p class="card-description"> Ngày cập nhật <code>.table</code>
+                                </p>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ngày bán</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>Thành tiền</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>
