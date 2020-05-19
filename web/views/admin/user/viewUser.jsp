@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -134,62 +135,58 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.html">
+                    <a class="nav-link" href="index.html">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
-                        <span class="menu-title">Icons</span>
-                        <i class="icon-globe menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <span class="menu-title">Quản lý sản phẩm</span>
+                        <i class="icon-layers menu-icon"></i>
                     </a>
+                    <div class="collapse">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../pages/forms/basic_elements.html">
-                        <span class="menu-title">Form Elements</span>
-                        <i class="icon-book-open menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <span class="menu-title">Quản lý danh mục</span>
+                        <i class="icon-layers menu-icon"></i>
                     </a>
+                    <div class="collapse">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../pages/charts/chartist.html">
-                        <span class="menu-title">Charts</span>
-                        <i class="icon-chart menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <span class="menu-title">Quản lý hóa đơn</span>
+                        <i class="icon-layers menu-icon"></i>
                     </a>
+                    <div class="collapse">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <span class="menu-title">Quản lý người dùng</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="ui-basic">
+                    <div class="collapse">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                        <span class="menu-title">General Pages</span>
-                        <i class="icon-doc menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item pro-upgrade">
-              <span class="nav-link">
-                <a class="btn btn-block px-0 btn-rounded btn-upgrade" href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i class="icon-badge mx-2"></i> Upgrade to Pro</a>
-              </span>
                 </li>
             </ul>
         </nav>
@@ -208,18 +205,50 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên</th>
-                                        <th>Ngày tạo</th>
                                         <th>Loại tài khoản</th>
-                                        <th colspan="3">Tùy chọn</th>
+                                        <th>Trạng thái</th>
+                                        <th colspan="3" style="text-align: center">Tùy chọn</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${listUser}" var="user">
                                     <tr>
-                                        <td>Jacob</td>
-                                        <td>53275531</td>
-                                        <td>12 May 2017</td>
-                                        <td><label class="badge badge-danger">Pending</label></td>
+                                        <td>${user.getId()}</td>
+                                        <td>${user.getFirstName()}</td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${user.getRoleId() == 1}">
+                                                    <label class="badge badge-success">Khách hàng</label>
+                                                </c:when>
+                                                <c:when test="${user.getRoleId() == 2}">
+                                                    <label class="badge badge-danger">Admin</label>
+                                                </c:when>
+                                                <c:when test="${user.getRoleId() == 3}">
+                                                    <label class="badge badge-warning">Khách hàng VIP 1</label>
+                                                </c:when>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${user.getStatus() == 1}">
+                                                    <label class="badge badge-success">Đang hoạt động</label>
+                                                </c:when>
+                                                <c:when test="${user.getStatus() == 2}">
+                                                    <label class="badge badge-danger">Bị khóa</label>
+                                                </c:when>
+                                            </c:choose>
+                                        </td>
+                                        <td width="10px">
+                                            <a href="/admin?action=view_details_user&id=${user.getId()}" class="nav-link"><i class="icon-options"></i></a>
+                                        </td>
+                                        <td width="10px">
+                                            <a href="/admin?action=edit_user&id=${user.getId()}" class="nav-link"><i class="icon-pencil"></i></a>
+                                        </td>
+                                        <td width="10px">
+                                            <a href="/admin?action=delete_user&id=${user.getId()}" class="nav-link"><i class="icon-trash"></i></a>
+                                        </td>
                                     </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
