@@ -229,7 +229,7 @@
       </li>
 
       <li>
-        <a href="about.html">Về chúng tôi</a>
+        <a href="about.html">Về chúng tôii</a>
       </li>
 
       <li>
