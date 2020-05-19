@@ -49,9 +49,6 @@ public class Product {
         this.brand = brand;
         this.size = size;
         this.imageLinks = imageLinks;
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
     }
 
     public Product(int id, int productCode, String name, Brand brand, int size, String imageLink) {
@@ -60,10 +57,7 @@ public class Product {
         this.name = name;
         this.brand = brand;
         this.size = size;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
+        this.imageLinks = new LinkedList<>();
         imageLinks.add(imageLink);
     }
 
@@ -74,13 +68,11 @@ public class Product {
         this.name = name;
         this.brand = brand;
         this.size = size;
+        this.imageLinks = new LinkedList<>();
         this.description = description;
         this.status = status;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
-        importRecords.add(importRecord);
+        this.importRecords = new LinkedList<>();
+        this.importRecords.add(importRecord);
     }
 
     public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, SaleRecord saleRecord) {
@@ -89,16 +81,12 @@ public class Product {
         this.name = name;
         this.brand = brand;
         this.size = size;
+        this.imageLinks = new LinkedList<>();
         this.description = description;
         this.status = status;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
-        saleRecords.add(saleRecord);
-
+        this.saleRecords = new LinkedList<>();
+        this.saleRecords.add(saleRecord);
     }
-
 
     public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, BillRecord billRecord) {
         this.id = id;
@@ -106,13 +94,11 @@ public class Product {
         this.name = name;
         this.brand = brand;
         this.size = size;
+        this.imageLinks = new LinkedList<>();
         this.description = description;
         this.status = status;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
-        billRecords.add(billRecord);
+        this.billRecords = new LinkedList<>();
+        this.billRecords.add(billRecord);
     }
 
     public Product(int id, int productCode, String name, int size, String description, String status, Brand brand) {
@@ -123,10 +109,6 @@ public class Product {
         this.size = size;
         this.description = description;
         this.status = status;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
     }
 
     public Product(int id, int productCode, String name, int size, String description, String status) {
@@ -136,10 +118,6 @@ public class Product {
         this.size = size;
         this.description = description;
         this.status = status;
-        imageLinks = new LinkedList<>();
-        importRecords = new LinkedList<>();
-        saleRecords = new LinkedList<>();
-        billRecords = new LinkedList<>();
     }
 
     public int getId() {
@@ -224,10 +202,6 @@ public class Product {
 
     public void setImportRecords(List<ImportRecord> importRecords) {
         this.importRecords = importRecords;
-    }
-
-    public void addImportRecords(ImportRecord importRecord) {
-        importRecords.add(importRecord);
     }
 
     public List<SaleRecord> getSaleRecords() {

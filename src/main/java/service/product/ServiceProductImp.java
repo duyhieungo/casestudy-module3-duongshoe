@@ -2,9 +2,7 @@ package main.java.service.product;
 
 import main.java.model.Brand;
 import main.java.model.Product;
-import main.java.service.brand.IBrandService;
-import main.java.util.DBHandle;
-import main.java.util.Query;
+import main.java.service.brand.IServiceBrand;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,16 +16,15 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-public class ProductServiceImp implements IProductService {
-    private IBrandService serviceBrand;
+public class ServiceProductImp implements IServiceProduct {
+    private IServiceBrand serviceBrand;
     private Connection connection;
     private PreparedStatement statement;
     private ResultSet resultSet;
     private List<Product> productList;
 
-    public ProductServiceImp(IBrandService serviceBrand) {
+    public ServiceProductImp(IServiceBrand serviceBrand) {
         this.serviceBrand = serviceBrand;
-        connection = DBHandle.getConnection();
     }
 
     @Override
@@ -37,8 +34,24 @@ public class ProductServiceImp implements IProductService {
             if (isEmpty()) {
                 return productList;
             }
+            String query = "SELECT product.id,\n" +
+                    "       product.product_code,\n" +
+                    "       product.product_name,\n" +
+                    "       catalog.id           AS brand_id,\n" +
+                    "       catalog.catalog_code AS brand_code,\n" +
+                    "       catalog.name         AS brand_name,\n" +
+                    "       product.size,\n" +
+                    "       product.image_link,\n" +
+                    "       product.description,\n" +
+                    "       CASE product.status\n" +
+                    "           WHEN product.status = 1 THEN 'Đang kinh doanh'\n" +
+                    "           WHEN product.status = 0 THEN 'Không kinh doanh'\n" +
+                    "           ELSE 'Sản phẩm lỗi'\n" +
+                    "           END              AS status\n" +
+                    "FROM product\n" +
+                    "         JOIN catalog on product.catalog_id = catalog.id;";
             try {
-                statement = connection.prepareStatement(Query.SELECT_ALL_PRODUCTS);
+                statement = connection.prepareStatement(query);
                 resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     Brand brand = new Brand(
@@ -54,6 +67,7 @@ public class ProductServiceImp implements IProductService {
                             resultSet.getInt("product_code"),
                             resultSet.getString("product_name"),
                             resultSet.getInt("size"),
+                            resultSet.getString("image_link"),
                             resultSet.getString("description"),
                             resultSet.getString("status"),
                             brand
@@ -69,23 +83,9 @@ public class ProductServiceImp implements IProductService {
     }
 
     @Override
-    public List<Product> getProductListWithImage() {
-        List<Product> products = getProductList();
-        try {
-            statement = connection.prepareStatement(Query.SELECT_ALL_IMAGES);
-            resultSet = statement.executeQuery();
-            int productID = resultSet.getInt("product_id");
-            String imageLink = resultSet.getString("image_link");
-            products.get(productID).addImageLink(imageLink);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return products;
-    }
-
-    @Override
     public Product getProductById(int id) {
-        return getProductList().get(id);
+        getProductList();
+        return productList.get(id);
     }
 
     @Override
@@ -97,12 +97,13 @@ public class ProductServiceImp implements IProductService {
                     "product_code, " +
                     "product_name, " +
                     "size, " +
+                    "image_link, " +
                     "description, " +
                     "status" +
                     ")" +
-                    "VALUES(?,?,?,?,?,?);";
+                    "VALUES(?,?,?,?,?,?,?);";
             try {
-                setParam(product, query);
+                updateProduct(product, query);
                 return (statement.executeUpdate() > -1);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -120,12 +121,13 @@ public class ProductServiceImp implements IProductService {
                     "product_code = ?, " +
                     "product_name = ?, " +
                     "size = ?, " +
+                    "image_link = ?, " +
                     "description = ?, " +
                     "status = ?" +
                     "WHERE id = ?;";
             try {
-                setParam(product, query);
-                statement.setInt(7, product.getId());
+                updateProduct(product, query);
+                statement.setInt(8, product.getId());
                 return (statement.executeUpdate() > -1);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -134,14 +136,15 @@ public class ProductServiceImp implements IProductService {
         return false;
     }
 
-    private void setParam(Product product, String query) throws SQLException {
+    private void updateProduct(Product product, String query) throws SQLException {
         statement = connection.prepareStatement(query);
         statement.setInt(1, product.getBrand().getId());
         statement.setInt(2, product.getProductCode());
         statement.setString(3, product.getName());
         statement.setInt(4, product.getSize());
-        statement.setString(5, product.getDescription());
-        statement.setInt(6, product.getStatus().equals("Đang kinh doanh") ? 1 : 0);
+        statement.setString(5, product.getImageLink());
+        statement.setString(6, product.getDescription());
+        statement.setInt(7, product.getStatus().equals("Đang kinh doanh") ? 1 : 0);
     }
 
     @Override
