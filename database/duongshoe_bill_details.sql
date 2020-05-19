@@ -1,0 +1,10 @@
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (1, 1, 3, 2, 2000000, '2020-05-18 01:59:29', '2020-05-19 14:50:58');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (2, 2, 5, 1, 10000000, '2020-05-18 01:59:29', '2020-05-19 14:59:53');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (3, 3, 6, 2, 850000, '2020-05-18 01:59:29', '2020-05-19 15:05:23');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (4, 4, 1, 1, 1800000, '2020-05-18 01:59:29', '2020-05-19 14:59:53');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (5, 5, 2, 2, 850000, '2020-05-18 01:59:29', '2020-05-19 15:05:23');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (6, 6, 3, 1, 850000, '2020-05-18 01:59:29', '2020-05-19 14:26:33');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (7, 7, 5, 1, 2000000, '2020-05-18 01:59:29', '2020-05-19 14:59:53');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (8, 8, 3, 2, 4400000, '2020-05-18 01:59:29', '2020-05-19 14:50:58');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (9, 9, 3, 1, 4400000, '2020-05-18 01:59:29', '2020-05-19 14:26:34');
+INSERT INTO duongshoe.bill_details (id, bill_id, product_detail_id, quantity, price, create_date, update_date) VALUES (10, 10, 3, 2, 20000000, '2020-05-18 01:59:29', '2020-05-19 14:26:34');
