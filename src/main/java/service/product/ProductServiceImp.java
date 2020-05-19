@@ -54,6 +54,48 @@ public class ProductServiceImp implements IProductService {
         return parseResultSet(resultSet);
     }
 
+    public List<Integer> getSizeList() throws SQLException {
+        List<Integer> sizeList = new LinkedList<>();
+        String query = "SELECT * FROM size";
+        statement = connection.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            sizeList.add(resultSet.getInt("size"));
+        }
+        return sizeList;
+    }
+
+    public boolean addToDB(Product product) throws SQLException {
+        String query = "INSERT INTO product" +
+                "    (catalog_id, product_name, description, status)" +
+                "VALUES (?, ?, ?, ?);";
+        statement = connection.prepareStatement(query);
+        statement.setInt(1, product.getCatalogID());
+        statement.setString(2, product.getProductName());
+        statement.setString(3, product.getDescription());
+        statement.setInt(4, product.getStatus());
+        if (statement.executeUpdate() != -1) {
+            String query2 = "INSERT INTO product_detail" +
+                    "    (product_id, size_id)" +
+                    "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1), " +
+                    "(SELECT size.id FROM size WHERE size = ?));";
+            statement = connection.prepareStatement(query2);
+            statement.setInt(1, product.getSize());
+            if (statement.executeUpdate() != -1) {
+                String query3 = "INSERT INTO attachment(product_id, image_link, status) " +
+                        "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
+                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
+                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
+                statement = connection.prepareStatement(query3);
+                statement.setString(1, product.getImages().get(0));
+                statement.setString(2, product.getImages().get(1));
+                statement.setString(3, product.getImages().get(2));
+                return statement.executeUpdate() != -1;
+            }
+        }
+        return false;
+    }
+
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         Catalog catalog = new Catalog();

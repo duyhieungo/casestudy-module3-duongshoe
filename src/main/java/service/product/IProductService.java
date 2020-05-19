@@ -16,4 +16,8 @@ public interface IProductService {
     List<String> getImageLinks(Product product) throws SQLException;
 
     Product getProductByID(int id) throws SQLException;
+
+    List<Integer> getSizeList() throws SQLException;
+
+    boolean addToDB(Product product) throws SQLException;
 }

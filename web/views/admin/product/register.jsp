@@ -178,51 +178,76 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Bảng sản phẩm</h3>
+                    <h3 class="page-title">Thêm sản phẩm mới</h3>
+                    <p>${message}</p>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Thêm sản phẩm mới</h4>
-                                <p class="card-description"> Basic form elements </p>
-                                <form class="forms-sample">
+                                <h4 class="card-title">Form thêm sản phẩm</h4>
+                                <br>
+                                <form class="forms-sample" method="post">
                                     <div class="form-group">
-                                        <label for="exampleInputName1">Tên sản phẩm</label>
-                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nike">
+                                        <label for="name">Tên sản phẩm</label>
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Tên sản phẩm" name="product-name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail3">Hãng</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="hãng">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword4">Size</label>
-                                        <input type="number" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleSelectGender">Gender</label>
-                                        <select class="form-control" id="exampleSelectGender">
-                                            <option>Male</option>
-                                            <option>Female</option>
+                                        <label for="catalog">Hãng</label>
+                                        <select class="form-control" id="catalog" name="catalog-id">
+                                            <c:forEach items="${catalogList}" var="catalog">
+                                                <option value="${catalog.getCatalogID()}">${catalog.getCatalogName()}</option>
+                                            </c:forEach>
+                                            <option value="">Thêm hãng mới</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>File upload</label>
+                                        <label for="size">Size</label>
+                                        <select class="form-control" id="size" name="product-size">
+                                            <c:forEach items="${sizeList}" var="size">
+                                                <option value="${size}">${size}</option>
+                                            </c:forEach>
+                                            <option value="">Thêm size</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink1">Link ảnh 1</label>
+                                        <input type="text" class="form-control" id="imageLink1"
+                                               placeholder="Link ảnh" name="image-link-1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink2">Link ảnh 2</label>
+                                        <input type="text" class="form-control" id="imageLink2"
+                                               placeholder="Link ảnh" name="image-link-2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink3">Link ảnh 3</label>
+                                        <input type="text" class="form-control" id="imageLink3"
+                                               placeholder="Link ảnh" name="image-link-3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tải Ảnh</label>
                                         <input type="file" name="img[]" class="file-upload-default">
                                         <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                            <input type="text" class="form-control file-upload-info" disabled
+                                                   placeholder="Upload Image">
                                             <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputCity1">City</label>
-                                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+                                        <label for="description">Mô tả</label>
+                                        <textarea class="form-control" id="description" rows="4"
+                                                  name="product-description"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleTextarea1">Textarea</label>
-                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                        <label for="status">Tình trạng</label>
+                                        <select class="form-control" id="status" name="product-status">
+                                            <option value="1">Đang kinh doanh</option>
+                                            <option value="0">Ngừng kinh doanh</option>
+                                        </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                     <button class="btn btn-light">Cancel</button>
