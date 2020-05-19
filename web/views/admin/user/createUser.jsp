@@ -133,7 +133,8 @@
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="profile-image">
-                            <img class="img-xs rounded-circle" src="resources/images/faces/face8.jpg" alt="profile image">
+                            <img class="img-xs rounded-circle" src="resources/images/faces/face8.jpg"
+                                 alt="profile image">
                             <div class="dot-indicator bg-success"></div>
                         </div>
                         <div class="text-wrapper">
@@ -150,58 +151,69 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../../index.html">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
                 <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <span class="menu-title">Quản lý sản phẩm</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" href="../../pages/icons/simple-line-icons.html">
+                        <span class="menu-title">Icons</span>
+                        <i class="icon-globe menu-icon"></i>
                     </a>
-                    <div class="collapse">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <span class="menu-title">Quản lý danh mục</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" href="../../pages/forms/basic_elements.html">
+                        <span class="menu-title">Form Elements</span>
+                        <i class="icon-book-open menu-icon"></i>
                     </a>
-                    <div class="collapse">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <span class="menu-title">Quản lý hóa đơn</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" href="../../pages/charts/chartist.html">
+                        <span class="menu-title">Charts</span>
+                        <i class="icon-chart menu-icon"></i>
                     </a>
-                    <div class="collapse">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
-                        </ul>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <span class="menu-title">Quản lý người dùng</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="dashboard?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item nav-category"><span class="nav-link">Sample Pages</span></li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                        <span class="menu-title">General Pages</span>
+                        <i class="icon-doc menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="auth">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/login.html"> Login </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/register.html">
+                                Register </a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="../../pages/samples/blank-page.html"> Blank
+                                Page </a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item pro-upgrade">
+              <span class="nav-link">
+                <a class="btn btn-block px-0 btn-rounded btn-upgrade"
+                   href="https://www.bootstrapdash.com/product/stellar-admin-template/" target="_blank"> <i
+                        class="icon-badge mx-2"></i> Upgrade to Pro</a>
+              </span>
                 </li>
             </ul>
         </nav>
@@ -239,7 +251,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="gender">
+                                                    <select class="form-control">
                                                         <option name="male" value="1">Nam</option>
                                                         <option name="female" value="0">Nữ</option>
                                                     </select>
@@ -260,7 +272,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Số điện thoại</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="phone"/>
+                                                    <input type="number" class="form-control" name="phone"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +298,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="password"/>
+                                                    <input type="password" class="form-control" name="passowrd"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,21 +308,9 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="role">
-                                                        <option name="admin" value="2">Admin</option>
-                                                        <option name="user" value="1">Người dùng</option>
-                                                        <option name="vipUser" value="3">Người dùng VIP 1</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Trạng thái</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control" name="status">
-                                                        <option name="admin" value="1">Đang hoạt động</option>
-                                                        <option name="user" value="0">Bị khóa</option>
+                                                    <select class="form-control">
+                                                        <option name="admin" value="1">Quản trị viên</option>
+                                                        <option name="user" value="0">Người dùng</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -327,8 +327,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <button type="submit" class="btn btn-primary mr-2">Lưu</button>
-                                        <button type="reset" class="btn btn-light">Xóa</button>
+                                    <button type="submit" class="btn btn-primary mr-2">Lưu</button>
+                                    <button type="reset" class="btn btn-light">Xóa</button>
                                 </form>
                             </div>
                         </div>

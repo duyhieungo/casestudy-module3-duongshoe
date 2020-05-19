@@ -10,22 +10,26 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Stellar Admin</title>
-    <link rel="stylesheet" href="resources/vendors/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="resources/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="resources/vendors/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="resources/vendors/chartist/chartist.min.css">
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="shortcut icon" href="resources/images/favicon.png" />
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/chartist/chartist.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/favicon.png"/>
 </head>
 <body>
 <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
             <a class="navbar-brand brand-logo" href="index.html">
-                <img src="resources/images/logo.svg" alt="logo" class="logo-dark" />
+                <img src="${pageContext.request.contextPath}/resources/images/logo.svg" alt="logo" class="logo-dark"/>
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="resources/images/logo-mini.svg" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                    src="${pageContext.request.contextPath}/resources/images/logo-mini.svg" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
@@ -37,11 +41,13 @@
                 <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
                 <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#"
+                       data-toggle="dropdown" aria-expanded="false">
                         <i class="icon-speech"></i>
                         <span class="count">7</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
+                         aria-labelledby="messageDropdown">
                         <a class="dropdown-item py-3">
                             <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
                             <span class="badge badge-pill badge-primary float-right">View all</span>
@@ -49,7 +55,8 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face10.jpg" alt="image" class="img-sm profile-pic"> </div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face10.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -57,7 +64,8 @@
                         </a>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face12.jpg" alt="image" class="img-sm profile-pic"> </div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face12.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -65,7 +73,8 @@
                         </a>
                         <a class="dropdown-item preview-item">
                             <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face1.jpg" alt="image" class="img-sm profile-pic"> </div>
+                                <img src="${pageContext.request.contextPath}/resources/images/faces/face1.jpg"
+                                     alt="image" class="img-sm profile-pic"></div>
                             <div class="preview-item-content flex-grow py-2">
                                 <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
                                 <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -74,13 +83,15 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
-                    <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#"
+                       data-toggle="dropdown" aria-expanded="false">
                         <div class="d-inline-flex mr-3">
                             <i class="flag-icon flag-icon-us"></i>
                         </div>
                         <span class="profile-text font-weight-normal">English</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
+                    <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2"
+                         aria-labelledby="LanguageDropdown">
                         <a class="dropdown-item">
                             <i class="flag-icon flag-icon-us"></i> English </a>
                         <a class="dropdown-item">
@@ -92,23 +103,33 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                        <img class="img-xs rounded-circle ml-2" src="resources/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
+                       aria-expanded="false">
+                        <img class="img-xs rounded-circle ml-2"
+                             src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                             alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="resources/images/faces/face8.jpg" alt="Profile image">
+                            <img class="img-md rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                                 alt="Profile image">
                             <p class="mb-1 mt-3">Allen Moreno</p>
                             <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                         </div>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i> Messages</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
+                        <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile
+                            <span class="badge badge-pill badge-danger">1</span></a>
+                        <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i>
+                            Messages</a>
+                        <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
+                            Activity</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a class="dropdown-item" href="/admin"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                        <a class="dropdown-item" href="/admin"><i
+                                class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
                     </div>
                 </li>
             </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                 <span class="icon-menu"></span>
             </button>
         </div>
@@ -119,7 +140,9 @@
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="profile-image">
-                            <img class="img-xs rounded-circle" src="resources/images/faces/face8.jpg" alt="profile image">
+                            <img class="img-xs rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                                 alt="profile image">
                             <div class="dot-indicator bg-success"></div>
                         </div>
                         <div class="text-wrapper">
@@ -141,13 +164,14 @@
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
+                <li class="nav-item nav-category"><span class="nav-link">Cửa hàng</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
+                       aria-controls="product">
                         <span class="menu-title">Quản lý sản phẩm</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-basket-loaded menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
@@ -155,11 +179,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <span class="menu-title">Quản lý danh mục</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
+                       aria-controls="brand">
+                        <span class="menu-title">Quản lý Nhà cung cấp</span>
+                        <i class="icon-grid menu-icon"></i>
                     </a>
-                    <div class="collapse">
+
+                    <div class="collapse" id="brand">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
@@ -167,22 +193,24 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#bill" aria-expanded="false"
+                       aria-controls="bill">
                         <span class="menu-title">Quản lý hóa đơn</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-note menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="bill">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
+                       aria-controls="user">
                         <span class="menu-title">Quản lý người dùng</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-user menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="user">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
@@ -198,8 +226,10 @@
                         <div class="card card-secondary">
                   <span class="card-body d-lg-flex align-items-center">
                     <p class="mb-lg-0">Like what you see? Check out our premium version for more.</p>
-                    <a href="https://github.com/BootstrapDash/StellarAdmin-Free-Bootstrap-Admin-Template" target="_blank" class="btn ml-lg-auto download-button btn-success btn-sm my-1 my-sm-0">Download Free Version</a>
-                    <a href="https://www.bootstrapdash.com/product/stellar-admin/" target="_blank" class="btn btn-warning purchase-button btn-sm ml-sm-2 my-1 my-sm-0">Upgrade To Pro</a>
+                    <a href="https://github.com/BootstrapDash/StellarAdmin-Free-Bootstrap-Admin-Template"
+                       target="_blank" class="btn ml-lg-auto download-button btn-success btn-sm my-1 my-sm-0">Download Free Version</a>
+                    <a href="https://www.bootstrapdash.com/product/stellar-admin/" target="_blank"
+                       class="btn btn-warning purchase-button btn-sm ml-sm-2 my-1 my-sm-0">Upgrade To Pro</a>
                     <button class="close popup-dismiss ml-2">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -216,7 +246,8 @@
                                     <canvas id="sessionsDoughnutChart" height="210"></canvas>
                                     <div class="wrapper d-flex flex-column justify-content-center absolute absolute-center">
                                         <h2 class="text-center mb-0 font-weight-bold">8.234</h2>
-                                        <small class="d-block text-center text-muted  font-weight-semibold mb-0">Total Leads</small>
+                                        <small class="d-block text-center text-muted  font-weight-semibold mb-0">Total
+                                            Leads</small>
                                     </div>
                                 </div>
                                 <div class="wrapper mt-4 d-flex flex-wrap align-items-cente">
@@ -273,20 +304,28 @@
                         <div class="card">
                             <div class="card-header d-block d-md-flex">
                                 <h5 class="mb-0">Quick Actions</h5>
-                                <p class="ml-auto mb-0">How are your active users trending overtime?<i class="icon-bulb"></i></p>
+                                <p class="ml-auto mb-0">How are your active users trending overtime?<i
+                                        class="icon-bulb"></i></p>
                             </div>
-                            <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
+                            <div class="d-md-flex row m-0 quick-action-btns" role="group"
+                                 aria-label="Quick action buttons">
                                 <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                                    <button type="button" class="btn px-0"> <i class="icon-user mr-2"></i> Add Client</button>
+                                    <button type="button" class="btn px-0"><i class="icon-user mr-2"></i> Add Client
+                                    </button>
                                 </div>
                                 <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                                    <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Create Quote</button>
+                                    <button type="button" class="btn px-0"><i class="icon-docs mr-2"></i> Create Quote
+                                    </button>
                                 </div>
                                 <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                                    <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Enter Payment</button>
+                                    <button type="button" class="btn px-0"><i class="icon-folder mr-2"></i> Enter
+                                        Payment
+                                    </button>
                                 </div>
                                 <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
-                                    <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i>Create Invoice</button>
+                                    <button type="button" class="btn px-0"><i class="icon-book-open mr-2"></i>Create
+                                        Invoice
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -299,7 +338,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="d-sm-flex align-items-baseline report-summary-header">
-                                            <h5 class="font-weight-semibold">Report Summary</h5> <span class="ml-auto">Updated Report</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                                            <h5 class="font-weight-semibold">Report Summary</h5> <span class="ml-auto">Updated Report</span>
+                                            <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -356,21 +397,26 @@
                                 <div class="row income-expense-summary-chart-text">
                                     <div class="col-xl-4">
                                         <h5>Income And Expenses Summary</h5>
-                                        <p class="small text-muted">A comparison of people who mark themselves of their ineterest from the date range given above. Learn more.</p>
+                                        <p class="small text-muted">A comparison of people who mark themselves of their
+                                            ineterest from the date range given above. Learn more.</p>
                                     </div>
                                     <div class=" col-md-3 col-xl-2">
-                                        <p class="income-expense-summary-chart-legend"> <span style="border-color: #6469df"></span> Total Income </p>
+                                        <p class="income-expense-summary-chart-legend"><span
+                                                style="border-color: #6469df"></span> Total Income </p>
                                         <h3>$ 1,766.00</h3>
                                     </div>
                                     <div class="col-md-3 col-xl-2">
-                                        <p class="income-expense-summary-chart-legend"> <span style="border-color: #37ca32"></span> Total Expense </p>
+                                        <p class="income-expense-summary-chart-legend"><span
+                                                style="border-color: #37ca32"></span> Total Expense </p>
                                         <h3>$ 5,698.30</h3>
                                     </div>
                                     <div class="col-md-6 col-xl-4 d-flex align-items-center">
                                         <div class="input-group" id="income-expense-summary-chart-daterange">
-                                            <div class="inpu-group-prepend input-group-text"><i class="icon-calendar"></i></div>
+                                            <div class="inpu-group-prepend input-group-text"><i
+                                                    class="icon-calendar"></i></div>
                                             <input type="text" class="form-control">
-                                            <div class="input-group-prepend input-group-text"><i class="icon-arrow-down"></i></div>
+                                            <div class="input-group-prepend input-group-text"><i
+                                                    class="icon-arrow-down"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -406,9 +452,15 @@
                                         <tbody>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="resources/images/faces/face1.jpg" alt="profile image"> Katie Holmes </td>
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face1.jpg"
+                                                     alt="profile image"> Katie Holmes
+                                            </td>
                                             <td>$3621</td>
-                                            <td><img src="resources/images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
+                                            </td>
                                             <td>04 Jun 2019</td>
                                             <td>18 Jul 2019</td>
                                             <td>
@@ -417,9 +469,15 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="resources/images/faces/face2.jpg" alt="profile image"> Minnie Copeland </td>
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face2.jpg"
+                                                     alt="profile image"> Minnie Copeland
+                                            </td>
                                             <td>$6245</td>
-                                            <td><img src="resources/images/dashboard/paypal.png" alt="alipay" class="gateway-icon mr-2"> Paypal</td>
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/paypal.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> Paypal
+                                            </td>
                                             <td>25 Sep 2019</td>
                                             <td>07 Oct 2019</td>
                                             <td>
@@ -428,9 +486,15 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="resources/images/faces/face3.jpg" alt="profile image"> Rodney Sims </td>
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face3.jpg"
+                                                     alt="profile image"> Rodney Sims
+                                            </td>
                                             <td>$9265</td>
-                                            <td><img src="resources/images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
+                                            </td>
                                             <td>12 dec 2019</td>
                                             <td>26 Aug 2019</td>
                                             <td>
@@ -439,9 +503,15 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img class="img-sm rounded-circle" src="resources/images/faces/face4.jpg" alt="profile image"> Carolyn Barker </td>
+                                                <img class="img-sm rounded-circle"
+                                                     src="${pageContext.request.contextPath}/resources/images/faces/face4.jpg"
+                                                     alt="profile image"> Carolyn Barker
+                                            </td>
                                             <td>$2263</td>
-                                            <td><img src="resources/images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
+                                            <td><img
+                                                    src="${pageContext.request.contextPath}/resources/images/dashboard/alipay.png"
+                                                    alt="alipay" class="gateway-icon mr-2"> alipay
+                                            </td>
                                             <td>30 Sep 2019</td>
                                             <td>20 Oct 2019</td>
                                             <td>
@@ -455,12 +525,14 @@
                                     <p class="text-muted">Showing 1 to 10 of 57 entries</p>
                                     <nav class="ml-auto">
                                         <ul class="pagination separated pagination-info">
-                                            <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-left"></i></a></li>
+                                            <li class="page-item"><a href="#" class="page-link"><i
+                                                    class="icon-arrow-left"></i></a></li>
                                             <li class="page-item active"><a href="#" class="page-link">1</a></li>
                                             <li class="page-item"><a href="#" class="page-link">2</a></li>
                                             <li class="page-item"><a href="#" class="page-link">3</a></li>
                                             <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                            <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-right"></i></a></li>
+                                            <li class="page-item"><a href="#" class="page-link"><i
+                                                    class="icon-arrow-right"></i></a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -471,20 +543,22 @@
             </div>
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                            href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+                            class="icon-heart text-danger"></i></span>
                 </div>
             </footer>
         </div>
     </div>
 </div>
-<script src="resources/vendors/js/vendor.bundle.base.js"></script>
-<script src="resources/vendors/chart.js/Chart.min.js"></script>
-<script src="resources/vendors/moment/moment.min.js"></script>
-<script src="resources/vendors/daterangepicker/daterangepicker.js"></script>
-<script src="resources/vendors/chartist/chartist.min.js"></script>
-<script src="resources/js/off-canvas.js"></script>
-<script src="resources/js/misc.js"></script>
-<script src="resources/js/dashboard.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/js/vendor.bundle.base.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/chart.js/Chart.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/moment/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/chartist/chartist.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/off-canvas.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/misc.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
 </body>
 </html>

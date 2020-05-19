@@ -15,20 +15,7 @@ public class DBHandle {
     private DBHandle() {
     }
 
-    public static Connection getConnection() {
-        String urlDB = "jdbc:mysql://localhost:3306/duongshoe";
-        String userDB = "root";
-        String passDB = "123456";
-
-        try {
-            return DriverManager.getConnection(urlDB, userDB, passDB);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static Connection getConnec(){
+    public static Connection getConnection(){
         Connection connection = null;
         try {
             Class.forName(Jdbc.JDBC_DRIVER);
