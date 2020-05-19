@@ -43,6 +43,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void displayDetail(HttpServletRequest request, HttpServletResponse response) {
+
         try {
             request.getRequestDispatcher("views/admin/product/detail.jsp").forward(request, response);
         } catch (ServletException | IOException e) {

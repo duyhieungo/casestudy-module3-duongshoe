@@ -7,30 +7,27 @@ import java.time.LocalDateTime;
  * @project casestudy-module3-duongshoe
  **/
 
-public class Import {
+public class ImportRecord {
     private int importID;
     private int productDetailID;
+    private Product product;
     private String productCode;
-    private String productName;
-    private String catalogName;
     private int size;
     private int price;
     private int status;
-    private LocalDateTime localDateTime;
+    private LocalDateTime importDateTime;
 
-    public Import() {
+    public ImportRecord() {
     }
 
-    public Import(int importID, int productDetailID, String productCode, String productName, String catalogName, int size, int price, int status, LocalDateTime localDateTime) {
+    public ImportRecord(int importID, int productDetailID, Product product, int size, int price, int status, LocalDateTime importDateTime) {
         this.importID = importID;
         this.productDetailID = productDetailID;
-        this.productCode = productCode;
-        this.productName = productName;
-        this.catalogName = catalogName;
+        this.product = product;
         this.size = size;
         this.price = price;
         this.status = status;
-        this.localDateTime = localDateTime;
+        this.importDateTime = importDateTime;
     }
 
     public int getImportID() {
@@ -49,28 +46,28 @@ public class Import {
         this.productDetailID = productDetailID;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public String getProductName() {
+        return product.getProductName();
+    }
+
+    public String getCatalogName() {
+        return product.getCatalogName();
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public String getProductCode() {
         return productCode;
     }
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getCatalogName() {
-        return catalogName;
-    }
-
-    public void setCatalogName(String catalogName) {
-        this.catalogName = catalogName;
     }
 
     public int getSize() {
@@ -89,12 +86,12 @@ public class Import {
         this.price = price;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getImportDateTime() {
+        return importDateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setImportDateTime(LocalDateTime localDateTime) {
+        this.importDateTime = localDateTime;
     }
 
     public int getStatus() {

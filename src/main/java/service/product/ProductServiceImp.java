@@ -50,6 +50,7 @@ public class ProductServiceImp implements IProductService {
                 catalog.setDescription(resultSet.getString("catalog.description"));
                 catalog.setStatus(resultSet.getInt("catalog.status"));
                 product.setCatalog(catalog);
+                product.setImages(getImageLinks(product));
                 products.add(product);
             }
         } catch (SQLException e) {
