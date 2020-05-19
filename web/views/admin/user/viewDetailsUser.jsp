@@ -283,7 +283,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="passowrd" value="${user.getPassword()}" disabled/>
+                                                    <input type="text" class="form-control" name="password" value="${user.getPassword()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>

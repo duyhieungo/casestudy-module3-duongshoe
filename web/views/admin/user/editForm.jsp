@@ -330,7 +330,7 @@
                                     </div>
                                     <div class="row">
                                         <button type="submit" class="btn btn-primary mr-2">Lưu</button>
-<%--                                        <button type="reset" class="btn btn-light">Xóa</button>--%>
+                                        <%--                                        <button type="reset" class="btn btn-light">Xóa</button>--%>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
                                         <p>
