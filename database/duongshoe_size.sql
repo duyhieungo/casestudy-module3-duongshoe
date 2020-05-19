@@ -1,0 +1,10 @@
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (1, 36, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (2, 37, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (3, 38, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (4, 39, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (5, 40, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (6, 41, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (7, 42, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (8, 43, 1, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (9, 44, 0, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
+INSERT INTO duongshoe.size (id, size, status, create_date, update_date) VALUES (10, 45, 0, '2020-05-19 14:19:01', '2020-05-19 14:19:01');
