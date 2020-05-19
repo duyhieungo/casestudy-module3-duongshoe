@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,30 +16,24 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-@WebServlet(name = "ServletProduct", urlPatterns = "/brand")
+@WebServlet(name = "ServletProduct", urlPatterns = "/users")
 public class ServletProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-/*        String action = request.getParameter("action");
-        IImportService service = new ImportServiceImp();
-        List<Product> productList = service.getImportList();
-
-
+        String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
             case "view":
-//                request.setAttribute("importList", productList);
                 request.getRequestDispatcher("views/admin/brand/brand-home.jsp").forward(request, response);
                 break;
             case "add":
                 request.getRequestDispatcher("views/admin/brand/brand-register.jsp").forward(request, response);
                 break;
-        }*/
+        }
     }
 }
