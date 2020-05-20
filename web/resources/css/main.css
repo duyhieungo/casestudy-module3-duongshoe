@@ -230,7 +230,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*---------------------------------------------*/
 .left-top-bar {
-  font-family: Poppins-Regular;
+  font-family: Helvetica;
   font-size: 12px;
   line-height: 1.8;
   color: #b2b2b2;
@@ -367,10 +367,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu > li > a {
-  font-family: Poppins-Medium;
+  font-family: Helvetica, sans-serif;
   font-size: 14px;
   color: #333;
-  padding: 5px 0px;
+  padding: 5px 0;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -736,7 +736,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu-m > li > a {
-  font-family: Poppins-Medium;
+  font-family: Helvetica;
   font-size: 14px;
   color: white;
   line-height: 2.8;
@@ -2340,7 +2340,7 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ L-Text >= 26 ]*/
 .ltext-101 {
-  font-family: Poppins-Regular;
+  font-family: "Helvetica Neue";
   font-size: 28px;
   line-height: 1.2857;
 }

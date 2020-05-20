@@ -36,6 +36,7 @@ public class ProductServiceImp implements IProductService {
         return products;
     }
 
+
     public List<String> getImageLinks(Product product) throws SQLException {
         List<String> imageLinks = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_ALL_IMAGE_FROM_PRODUCT);
@@ -97,10 +98,12 @@ public class ProductServiceImp implements IProductService {
         return false;
     }
 
+
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         Catalog catalog = new Catalog();
-        product.setProductID(resultSet.getInt("product_detail.id"));
+        product.setDetailID(resultSet.getInt("product_detail.id"));
+        product.setProductID(resultSet.getInt("product_id"));
         product.setCatalogID(resultSet.getInt("catalog.id"));
         product.setProductName(resultSet.getString("product_name"));
         product.setDescription(resultSet.getString("product.description"));
@@ -114,4 +117,5 @@ public class ProductServiceImp implements IProductService {
         product.setImages(getImageLinks(product));
         return product;
     }
+
 }

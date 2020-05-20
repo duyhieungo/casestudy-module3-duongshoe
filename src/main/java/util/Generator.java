@@ -49,4 +49,37 @@ public class Generator {
             e.printStackTrace();
         }
     }
+
+    public static class Sale {
+        public static void main(String[] args) {
+            Connection connection = DBHandle.getConnection();
+            Random random = new Random();
+            String query = "INSERT INTO duongshoe.sale " +
+                    "(product_id, " +
+                    "price, " +
+                    "status, " +
+                    "created_date) " +
+                    "VALUES (?,?,?,?);";
+            try {
+                PreparedStatement statement = connection.prepareStatement(query);
+                for (int index = 1; index < 150; index++) {
+                    statement.setInt(1, random.nextInt(10) + 1);
+                    statement.setInt(2, (int) (2000000 + (BigDecimal.valueOf(random.nextDouble()).setScale(1, RoundingMode.HALF_UP).doubleValue() * 1000000)));
+                    int year = 2010 + random.nextInt(10);
+                    int month = 1 + random.nextInt(11);
+                    int day = 1 + random.nextInt(28);
+                    int hour = 10 + random.nextInt(10);
+                    int minute = 10 + random.nextInt(40);
+                    int sec = 10 + random.nextInt(40);
+                    statement.setInt(3, 1);
+                    statement.setString(4, LocalDateTime.of(
+                            year, month, day, hour, minute, sec
+                    ).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                    statement.executeUpdate();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

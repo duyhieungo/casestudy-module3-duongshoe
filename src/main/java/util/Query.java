@@ -9,6 +9,7 @@ public class Query {
             "JOIN catalog on product.catalog_id = catalog.id\n" +
             "JOIN size on product_detail.size_id = size.id";
 
+
     public static final String SELECT_ALL_IMAGE_FROM_PRODUCT = "SELECT * FROM attachment\n" +
             "WHERE product_id = ?;";
 

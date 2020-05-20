@@ -9,6 +9,7 @@ import java.util.List;
  **/
 
 public class Product {
+    private int detailID;
     private int productID;
     private int catalogID;
     private String productName;
@@ -16,14 +17,15 @@ public class Product {
     private int status;
     private Catalog catalog;
     private int size;
-    List<String> images;
+    private List<String> images;
 
     public Product() {
         images = new LinkedList<>();
         catalog = new Catalog();
     }
 
-    public Product(int productID, int catalogID, String productName, String description, int status, Catalog catalog, int size, List<String> images) {
+    public Product(int detailID, int productID, int catalogID, String productName, String description, int status, Catalog catalog, int size, List<String> images) {
+        this.detailID = detailID;
         this.productID = productID;
         this.catalogID = catalogID;
         this.productName = productName;
@@ -32,6 +34,14 @@ public class Product {
         this.catalog = catalog;
         this.size = size;
         this.images = images;
+    }
+
+    public int getDetailID() {
+        return detailID;
+    }
+
+    public void setDetailID(int detailID) {
+        this.detailID = detailID;
     }
 
     public int getProductID() {
@@ -109,7 +119,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + productID +
+                "id=" + detailID +
                 ", catalogId=" + catalogID +
                 ", productName='" + productName + '\'' +
                 ", description='" + description + '\'' +
