@@ -198,8 +198,8 @@
                     </a>
                     <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/user?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/user?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -283,7 +283,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="passowrd" value="${user.getPassword()}" disabled/>
+                                                    <input type="text" class="form-control" name="password" value="${user.getPassword()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
