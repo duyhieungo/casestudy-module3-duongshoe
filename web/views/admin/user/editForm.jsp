@@ -1,3 +1,5 @@
+<%@ page import="main.java.model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -221,7 +223,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="firstName" class="form-control"/>
+                                                    <input type="text" name="firstName" class="form-control" value="${user.getFirstName()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +231,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Họ và tên đệm</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="lastName" class="form-control"/>
+                                                    <input type="text" name="lastName" class="form-control" value="${user.getLastName()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,9 +242,36 @@
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="gender">
-                                                        <option name="male" value="1">Nam</option>
-                                                        <option name="female" value="0">Nữ</option>
+                                                        <c:set var="gender" value="${user.getTempGender()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${gender.equals('Nam')}">
+                                                                <option name="male" value="1" selected>Nam</option>
+                                                                <option name="female" value="0">Nữ</option>
+                                                            </c:when>
+                                                            <c:when test="${gender.equals('Nữ')}">
+                                                                <option name="male" value="1">Nam</option>
+                                                                <option name="female" value="0" selected>Nữ</option>
+                                                            </c:when>
+                                                        </c:choose>
                                                     </select>
+                                                    <%--<select class="form-control" name="gender">
+                                                        <%
+                                                            User user = (User)request.getAttribute("user");
+                                                            String gender = user.getTempGender();
+
+                                                            if (gender.equals("Nam")) {
+                                                        %>
+                                                            <option name="male" value="1" selected>Nam</option>
+                                                            <option name="female" value="0">Nữ</option>
+                                                        <%
+                                                            } else {
+                                                        %>
+                                                            <option name="male" value="1">Nam</option>
+                                                            <option name="female" value="0" selected>Nữ</option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </select>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +279,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Ngày sinh</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" class="form-control" name="dateOfBirth"/>
+                                                    <input type="date" class="form-control" name="dateOfBirth" value="${user.getDateOfBirth()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -260,7 +289,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Số điện thoại</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="phone"/>
+                                                    <input type="text" class="form-control" name="phone" value="${user.getPhone()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,7 +297,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" name="email"/>
+                                                    <input type="email" class="form-control" name="email" value="${user.getEmail()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -278,7 +307,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="username"/>
+                                                    <input type="text" class="form-control" name="username" value="${user.getUsername()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +315,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="password"/>
+                                                    <input type="text" class="form-control" name="password" value="${user.getPassword()}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -297,9 +326,24 @@
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="role">
-                                                        <option name="admin" value="2">Admin</option>
-                                                        <option name="user" value="1">Người dùng</option>
-                                                        <option name="vipUser" value="3">Người dùng VIP 1</option>
+                                                        <c:set var="role" value="${user.getTempRole()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${role.equals('Admin')}">
+                                                                <option name="user" value="1">Người dùng</option>
+                                                                <option name="admin" value="2" selected>Admin</option>
+                                                                <option name="vipUser" value="3">Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role.equals('Khách hàng')}">
+                                                                <option name="user" value="1" selected>Người dùng</option>
+                                                                <option name="admin" value="2" >Admin</option>
+                                                                <option name="vipUser" value="3">Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role.equals('Khách hàng VIP 1')}">
+                                                                <option name="user" value="1">Người dùng</option>
+                                                                <option name="admin" value="2" >Admin</option>
+                                                                <option name="vipUser" value="3" selected>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                        </c:choose>
                                                     </select>
                                                 </div>
                                             </div>
@@ -309,8 +353,17 @@
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="status">
-                                                        <option name="admin" value="1">Đang hoạt động</option>
-                                                        <option name="user" value="0">Bị khóa</option>
+                                                        <c:set var="status" value="${user.getTempStatus()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${status.equals('Đang hoạt động')}">
+                                                                <option name="admin" value="1" selected>Đang hoạt động</option>
+                                                                <option name="user" value="0">Bị khóa</option>
+                                                            </c:when>
+                                                            <c:when test="${status.equals('Bị khóa')}">
+                                                                <option name="admin" value="1">Đang hoạt động</option>
+                                                                <option name="user" value="0" selected>Bị khóa</option>
+                                                            </c:when>
+                                                        </c:choose>
                                                     </select>
                                                 </div>
                                             </div>
@@ -322,14 +375,13 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Địa chỉ</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="address" class="form-control"/>
+                                                    <input type="text" name="address" class="form-control" value="${user.getAddress()}"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <button type="submit" class="btn btn-primary mr-2">Lưu</button>
-                                        <button type="reset" class="btn btn-light">Xóa</button>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
                                         <p>

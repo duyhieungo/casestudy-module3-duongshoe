@@ -208,7 +208,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Thêm người dùng </h3>
+                    <h3 class="page-title"> Chi tiết tài khoản </h3>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin">
@@ -221,7 +221,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="firstName" class="form-control"/>
+                                                    <input type="text" name="firstName" class="form-control" value="${user.getFirstName()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,7 +229,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Họ và tên đệm</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="lastName" class="form-control"/>
+                                                    <input type="text" name="lastName" class="form-control" value="${user.getLastName()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -239,10 +239,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="gender">
-                                                        <option name="male" value="1">Nam</option>
-                                                        <option name="female" value="0">Nữ</option>
-                                                    </select>
+                                                    <input type="text" name="gender" class="form-control" value="${user.getTempGender()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -250,7 +247,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Ngày sinh</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" class="form-control" name="dateOfBirth"/>
+                                                    <input type="date" class="form-control" name="dateOfBirth" value="${user.getDateOfBirth()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -260,7 +257,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Số điện thoại</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="phone"/>
+                                                    <input type="number" class="form-control" name="phone" value="${user.getPhone()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -268,7 +265,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" name="email"/>
+                                                    <input type="email" class="form-control" name="email" value="${user.getEmail()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -278,7 +275,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="username"/>
+                                                    <input type="text" class="form-control" name="username" value="${user.getUsername()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +283,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="password"/>
+                                                    <input type="text" class="form-control" name="passowrd" value="${user.getPassword()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -296,11 +293,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="role">
-                                                        <option name="admin" value="2">Admin</option>
-                                                        <option name="user" value="1">Người dùng</option>
-                                                        <option name="vipUser" value="3">Người dùng VIP 1</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" name="role" value="${user.getTempRole()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -308,10 +301,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control" name="status">
-                                                        <option name="admin" value="1">Đang hoạt động</option>
-                                                        <option name="user" value="0">Bị khóa</option>
-                                                    </select>
+                                                    <input type="text" class="form-control" name="status" value="${user.getTempStatus()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -322,14 +312,13 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Địa chỉ</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="address" class="form-control"/>
+                                                    <input type="text" name="address" class="form-control" value="${user.getAddress()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-primary mr-2">Lưu</button>
-                                        <button type="reset" class="btn btn-light">Xóa</button>
+                                        <button type="submit" class="btn btn-primary mr-2">Xóa</button>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
                                         <p>

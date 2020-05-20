@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "AdminServlet", urlPatterns = "/admin")
 public class AdminServlet extends HttpServlet {
@@ -26,31 +29,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "";
-        }
-        switch (action) {
-            case "view_product":
-                break;
-            case "create_product":
-                break;
-            case "view_catalog":
-                break;
-            case "create_catalog":
-                break;
-            case "view_bill":
-                break;
-            case "view_user":
-                showUserTable(request, response);
-                break;
-            case "create_user":
-                showCreateUserForm(request, response);
-                break;
-            default:
-                showLoginAdminForm(request, response);
-                break;
-        }
+        showLoginAdminForm(request, response);
     }
 
     //xác nhận tài khoản admin
@@ -64,7 +43,7 @@ public class AdminServlet extends HttpServlet {
             userName = request.getParameter("username");
             password = request.getParameter("password");
             if (userName.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
-                rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_DASHBOARD);
+                rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_REDIRECT_DASHBOARD);
                 rd.forward(request, response);
             } else {
                 request.setAttribute(Error.ERROR, Error.ERROR_004);
@@ -79,7 +58,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     //Hiển thi form đăng nhập admin.
-    private void showLoginAdminForm(HttpServletRequest request, HttpServletResponse response){
+    private void showLoginAdminForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher rd;
         try {
             rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_LOGIN_ADMIN);
@@ -88,32 +67,6 @@ public class AdminServlet extends HttpServlet {
             System.err.println(Error.ERROR_006);
         } catch (IOException ex) {
             System.err.println(Error.ERROR_005);
-        }
-    }
-
-    //Hiển thị form đăng kí
-    public void showCreateUserForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher rd;
-        try {
-            rd = request.getRequestDispatcher(Link.DASHBOARD_TO_CREATE_FORM_USER);
-            rd.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //Hiển thị bảng người dùng
-    public void showUserTable(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher rd;
-        try {
-            rd = request.getRequestDispatcher(Link.DASHBOARD_TO_VIEW_USER);
-            rd.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

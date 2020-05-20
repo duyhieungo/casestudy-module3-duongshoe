@@ -1,0 +1,3 @@
+INSERT INTO duongshoe.role (id, role_name, status, create_date, update_date) VALUES (1, 'User', 0, '2020-05-17 16:36:01', '2020-05-17 16:36:01');
+INSERT INTO duongshoe.role (id, role_name, status, create_date, update_date) VALUES (2, 'Admin', 1, '2020-05-17 16:36:01', '2020-05-17 16:36:01');
+INSERT INTO duongshoe.role (id, role_name, status, create_date, update_date) VALUES (3, 'VIP 1', 2, '2020-05-17 16:36:01', '2020-05-17 16:36:01');
