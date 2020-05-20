@@ -243,7 +243,7 @@
                                                   name="product-description"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="status">Tình trạng</label>
+                                        <label for="status">eTình trạng</label>
                                         <select class="form-control" id="status" name="product-status">
                                             <option value="1">Đang kinh doanh</option>
                                             <option value="0">Ngừng kinh doanh</option>
