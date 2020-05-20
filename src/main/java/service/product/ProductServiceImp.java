@@ -84,14 +84,16 @@ public class ProductServiceImp implements IProductService {
             statement.setInt(1, product.getSize());
             if (statement.executeUpdate() != -1) {
                 String query3 = "INSERT INTO attachment(product_id, image_link, status) " +
-                        "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
-                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
-                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
+                        "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
                 statement = connection.prepareStatement(query3);
-                statement.setString(1, product.getImages().get(0));
-                statement.setString(2, product.getImages().get(1));
-                statement.setString(3, product.getImages().get(2));
-                return statement.executeUpdate() != -1;
+                List<String> imageLinks = product.getImages();
+                for (String imageLink : imageLinks) {
+                    statement.setString(1, imageLink);
+                    if (statement.executeUpdate() == -1) {
+                        return false;
+                    }
+                }
+                return true;
             }
         }
         return false;

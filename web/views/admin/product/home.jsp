@@ -122,11 +122,12 @@
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=">Xem sản
+                                                    href="${pageContext.request.contextPath}/product?">Danh sách
+                                sản
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=register">Thêm
+                                                    href="${pageContext.request.contextPath}/product?action=create">Thêm
                                 sản
                                 phẩm</a></li>
                         </ul>
@@ -188,23 +189,23 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Những sản phẩm trong kho</h4>
-                                <table class="table">
+                                <h4 class="card-title">Những sản phẩm hiện có</h4>
+                                <table class="table table-hover">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Hãng</th>
-                                        <th>Size</th>
-                                        <th>Tình trạng</th>
-                                        <th colspan="3" style="text-align: center">Thao tác</th>
+                                    <tr style="text-align: center">
+                                        <th style="font-weight: bold">ID</th>
+                                        <th style="font-weight: bold">Sản phẩm</th>
+                                        <th style="font-weight: bold">Hãng</th>
+                                        <th style="font-weight: bold">Size</th>
+                                        <th style="font-weight: bold">Tình trạng</th>
+                                        <th colspan="3" style="font-weight: bold">Thao tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${products}" var="product">
-                                        <tr>
+                                        <tr style="text-align: center">
                                             <td>${product.getProductID()}</td>
-                                            <td>${product.getProductName()}</td>
+                                            <td style="text-align: left">${product.getProductName()}</td>
                                             <td>${product.getCatalogName()}</td>
                                             <td>${product.getSize()}</td>
                                             <td>
@@ -222,7 +223,8 @@
                                                    class="nav-link"><i class="icon-options"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="#" class="nav-link"><i class="icon-pencil"></i></a>
+                                                <a href="${pageContext.request.contextPath}/product?action=update&id=${product.getProductID()}"
+                                                   class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td style="width: 10px">
                                                 <a href="#" class="nav-link"><i class="icon-trash"></i></a>
