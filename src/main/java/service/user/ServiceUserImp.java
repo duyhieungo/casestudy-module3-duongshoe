@@ -192,7 +192,7 @@ public class ServiceUserImp implements IServiceUser {
             preparedStatement.setString(10, user.getUsername());
             preparedStatement.setString(11, user.getPassword());
             rowUpdate = preparedStatement.executeUpdate() > 0;
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.err.println("Khong update duoc user");
         }
         return rowUpdate;

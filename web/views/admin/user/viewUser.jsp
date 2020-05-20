@@ -183,8 +183,8 @@
                     </a>
                     <div class="collapse">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/user?action=view_user">Xem người dùng</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/user?action=create_user">Thêm người dùng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -233,19 +233,19 @@
                                                     <c:when test="${user.getStatus() == 1}">
                                                         <label class="badge badge-success">Đang hoạt động</label>
                                                     </c:when>
-                                                    <c:when test="${user.getStatus() == 2}">
+                                                    <c:when test="${user.getStatus() == 0}">
                                                         <label class="badge badge-danger">Bị khóa</label>
                                                     </c:when>
                                                 </c:choose>
                                             </td>
                                             <td width="10px">
-                                                <a href="/admin?action=view_details_user&id=${user.getId()}" class="nav-link"><i class="icon-options"></i></a>
+                                                <a href="/user?action=view_details_user&id=${user.getId()}" class="nav-link"><i class="icon-options"></i></a>
                                             </td>
                                             <td width="10px">
-                                                <a href="/admin?action=edit_user&id=${user.getId()}" class="nav-link"><i class="icon-pencil"></i></a>
+                                                <a href="/user?action=edit_user&id=${user.getId()}" class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td width="10px">
-                                                <a href="/admin?action=delete_user&id=${user.getId()}" class="nav-link"><i class="icon-trash"></i></a>
+                                                <a href="/user?action=delete_user&id=${user.getId()}" class="nav-link"><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
