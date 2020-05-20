@@ -1,4 +1,4 @@
-package test;
+package main.java.util;
 
 import main.java.util.DBHandle;
 
@@ -16,7 +16,7 @@ import java.util.Random;
  * @project casestudy-module3-duongshoe
  **/
 
-public class GenerateRandomData {
+public class Generator {
     public static void main(String[] args) {
         Connection connection = DBHandle.getConnection();
         Random random = new Random();

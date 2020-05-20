@@ -4,104 +4,110 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author Duc on 5/18/2020
+ * @author Duc on 5/19/2020
  * @project casestudy-module3-duongshoe
  **/
 
 public class ImportRecord {
-    private int id;
+    private int importID;
+    private int productDetailID;
     private Product product;
-    private int quantity;
-    private double unitPrice;
+    private String productCode;
+    private int size;
+    private int price;
+    private int status;
     private LocalDateTime importDateTime;
-    private String status;
 
     public ImportRecord() {
     }
 
-    public ImportRecord(int id, Product product, int quantity, double unitPrice, LocalDateTime importDateTime, String status) {
-        this.id = id;
+    public ImportRecord(int importID, int productDetailID, Product product, int size, int price, int status, LocalDateTime importDateTime) {
+        this.importID = importID;
+        this.productDetailID = productDetailID;
         this.product = product;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.importDateTime = importDateTime;
+        this.size = size;
+        this.price = price;
         this.status = status;
-    }
-
-    public ImportRecord(Product product, int quantity, double unitPrice, LocalDateTime importDateTime, String status) {
-        this.product = product;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
         this.importDateTime = importDateTime;
-        this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public int getImportID() {
+        return importID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setImportID(int importID) {
+        this.importID = importID;
+    }
+
+    public int getProductDetailID() {
+        return productDetailID;
+    }
+
+    public void setProductDetailID(int productDetailID) {
+        this.productDetailID = productDetailID;
     }
 
     public Product getProduct() {
         return product;
     }
 
+    public String getProductName() {
+        return product.getProductName();
+    }
+
+    public String getCatalogName() {
+        return product.getCatalogName();
+    }
+
     public void setProduct(Product product) {
         this.product = product;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
-    public double getUnitPrice() {
-        return unitPrice;
+    public int getSize() {
+        return size;
     }
 
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public LocalDateTime getImportDateTime() {
         return importDateTime;
     }
 
-    public void setImportDateTime(LocalDateTime importDateTime) {
-        this.importDateTime = importDateTime;
+    public String getImportDate() {
+        return importDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
 
     public String getImportTime() {
         return importDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
-    public String getImportDate() {
-        return importDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    public void setImportDateTime(LocalDateTime localDateTime) {
+        this.importDateTime = localDateTime;
     }
 
-    @Override
-    public String toString() {
-        return "Import{" +
-                "id=" + id +
-                ", product=" + product +
-                ", quantity=" + quantity +
-                ", unitPrice=" + unitPrice +
-                ", importTime=" + importDateTime +
-                ", status='" + status + '\'' +
-                '}';
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

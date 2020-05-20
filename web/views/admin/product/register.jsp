@@ -13,7 +13,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Trang chủ Sản phẩm</title>
+    <title>Thêm sản phẩm</title>
     <!-- plugins:css -->
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/vendors/simple-line-icons/css/simple-line-icons.css">
@@ -178,61 +178,80 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Bảng sản phẩm</h3>
+                    <h3 class="page-title">Thêm sản phẩm mới</h3>
+                    <p>${message}</p>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="col-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Những sản phẩm trong kho</h4>
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Sản phẩm</th>
-                                        <th>Hãng</th>
-                                        <th>Size</th>
-                                        <th>Số lượng</th>
-                                        <th>Ngày nhập</th>
-                                        <th>Tình trạng</th>
-                                        <th colspan="3" style="text-align: center">Thao tác</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${productList}" var="record">
-                                        <tr>
-                                            <td>${record.getId()}</td>
-                                            <td>${record.getName()}</td>
-                                            <td>${record.getBrand()}</td>
-                                            <td>${record.getSize()}</td>
-                                            <td>${record.getQuantity()}</td>
-                                            <td>${record.getImportDate()}</td>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${record.getStatus() == 'Đủ'}">
-                                                        <label class="badge badge-success">Đủ hàng</label>
-                                                    </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thiếu'}">
-                                                        <label class="badge badge-danger">Thiếu hàng</label>
-                                                    </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thừa'}">
-                                                        <label class="badge badge-warning">Thừa hàng</label>
-                                                    </c:when>
-                                                </c:choose>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-options"></i></a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-pencil"></i></a>
-                                            </td>
-                                            <td width="10px">
-                                                <a href="#" class="nav-link"><i class="icon-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+                                <h4 class="card-title">Form thêm sản phẩm</h4>
+                                <br>
+                                <form class="forms-sample" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Tên sản phẩm</label>
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Tên sản phẩm" name="product-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="catalog">Hãng</label>
+                                        <select class="form-control" id="catalog" name="catalog-id">
+                                            <c:forEach items="${catalogList}" var="catalog">
+                                                <option value="${catalog.getCatalogID()}">${catalog.getCatalogName()}</option>
+                                            </c:forEach>
+                                            <option value="">Thêm hãng mới</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="size">Size</label>
+                                        <select class="form-control" id="size" name="product-size">
+                                            <c:forEach items="${sizeList}" var="size">
+                                                <option value="${size}">${size}</option>
+                                            </c:forEach>
+                                            <option value="">Thêm size</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink1">Link ảnh 1</label>
+                                        <input type="text" class="form-control" id="imageLink1"
+                                               placeholder="Link ảnh" name="image-link-1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink2">Link ảnh 2</label>
+                                        <input type="text" class="form-control" id="imageLink2"
+                                               placeholder="Link ảnh" name="image-link-2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imageLink3">Link ảnh 3</label>
+                                        <input type="text" class="form-control" id="imageLink3"
+                                               placeholder="Link ảnh" name="image-link-3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tải Ảnh</label>
+                                        <input type="file" name="img[]" class="file-upload-default">
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" class="form-control file-upload-info" disabled
+                                                   placeholder="Upload Image">
+                                            <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                          </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Mô tả</label>
+                                        <textarea class="form-control" id="description" rows="4"
+                                                  name="product-description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">eTình trạng</label>
+                                        <select class="form-control" id="status" name="product-status">
+                                            <option value="1">Đang kinh doanh</option>
+                                            <option value="0">Ngừng kinh doanh</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    <button class="btn btn-light">Cancel</button>
+                                </form>
                             </div>
                         </div>
                     </div>

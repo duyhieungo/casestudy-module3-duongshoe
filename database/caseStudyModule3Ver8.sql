@@ -69,6 +69,7 @@ create table if not exists product_detail
     size_id     int                                null,
     create_date datetime default CURRENT_TIMESTAMP null,
     update_date datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP,
+    status      int      default 1                 not null,
     constraint size_detail_product_fk
         foreign key (product_id) references product (id),
     constraint size_detail_size_fk
@@ -163,3 +164,4 @@ create table if not exists bill_details
         foreign key (product_detail_id) references product_detail (id)
 )
     charset = utf8;
+
