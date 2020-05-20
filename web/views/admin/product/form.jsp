@@ -233,31 +233,57 @@
                                             <option value="">Thêm size</option>
                                         </select>
                                     </div>
-                                    <c:forEach items="${product.getImages()}" var="image" varStatus="count">
-                                        <div class="form-group">
-                                            <label for="image${count.count}">Link Ảnh ${count.count}</label>
-                                            <input type="text" class="form-control" id="image${count.count}"
-                                            <c:choose>
-                                            <c:when test="${image == null}">
-                                                   placeholder="Không có ảnh"
-                                            </c:when>
-                                            <c:otherwise>
-                                                   placeholder="${image}"
-                                            </c:otherwise>
-                                            </c:choose>
-                                                   name="image-link-${count.count}">
-                                        </div>
-                                    </c:forEach>
                                     <div class="form-group">
-                                        <label>Tải Ảnh</label>
-                                        <input type="file" name="" class="file-upload-default">
-                                        <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled
-                                                   placeholder="Link Url Ảnh">
-                                            <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                          </span>
-                                        </div>
+                                        <label for="image1">Link Ảnh 1</label>
+                                        <input type="text" class="form-control" id="image1"
+                                        <c:choose>
+                                        <c:when test="${product.getImages()[0] == null}">
+                                               placeholder="Không có ảnh"
+                                        </c:when>
+                                        <c:otherwise>
+                                               placeholder="${product.getImages()[0]}"
+                                        </c:otherwise>
+                                        </c:choose>
+                                               name="image-link-1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image2">Link Ảnh 2</label>
+                                        <input type="text" class="form-control" id="image2"
+                                        <c:choose>
+                                        <c:when test="${product.getImages()[1] == null}">
+                                               placeholder="Không có ảnh"
+                                        </c:when>
+                                        <c:otherwise>
+                                               placeholder="${product.getImages()[1]}"
+                                        </c:otherwise>
+                                        </c:choose>
+                                               name="image-link-2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image3">Link Ảnh 3</label>
+                                        <input type="text" class="form-control" id="image3"
+                                        <c:choose>
+                                        <c:when test="${product.getImages()[2] == null}">
+                                               placeholder="Không có ảnh"
+                                        </c:when>
+                                        <c:otherwise>
+                                               placeholder="${product.getImages()[2]}"
+                                        </c:otherwise>
+                                        </c:choose>
+                                               name="image-link-3">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image4">Link Ảnh 4</label>
+                                        <input type="text" class="form-control" id="image4"
+                                        <c:choose>
+                                        <c:when test="${product.getImages()[3] == null}">
+                                               placeholder="Không có ảnh"
+                                        </c:when>
+                                        <c:otherwise>
+                                               placeholder="${product.getImages()[3]}"
+                                        </c:otherwise>
+                                        </c:choose>
+                                               name="image-link-4">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Mô tả</label>
@@ -280,8 +306,17 @@
                                             </c:choose>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Thêm sản phẩm</button>
-                                    <button class="btn btn-light">Huỷ bỏ</button>
+                                    <button type="submit" class="btn btn-primary mr-2">
+                                        <c:choose>
+                                            <c:when test="${action == 'create'}">
+                                                Thêm mới
+                                            </c:when>
+                                            <c:when test="${action == 'update'}">
+                                                Cập nhật
+                                            </c:when>
+                                        </c:choose>
+                                    </button>
+                                    <button class="btn btn-light" type="reset">Huỷ bỏ</button>
                                 </form>
                             </div>
                         </div>

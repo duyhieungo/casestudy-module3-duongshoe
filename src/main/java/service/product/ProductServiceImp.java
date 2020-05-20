@@ -67,25 +67,16 @@ public class ProductServiceImp implements IProductService {
     }
 
     public boolean addToDB(Product product) throws SQLException {
-        String query = "INSERT INTO product" +
-                "    (catalog_id, product_name, description, status)" +
-                "VALUES (?, ?, ?, ?);";
-        statement = connection.prepareStatement(query);
+        statement = connection.prepareStatement(Query.INSERT_NEW_PRODUCT);
         statement.setInt(1, product.getCatalogID());
         statement.setString(2, product.getProductName());
         statement.setString(3, product.getDescription());
         statement.setInt(4, product.getStatus());
         if (statement.executeUpdate() != -1) {
-            String query2 = "INSERT INTO product_detail" +
-                    "    (product_id, size_id)" +
-                    "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1), " +
-                    "(SELECT size.id FROM size WHERE size = ?));";
-            statement = connection.prepareStatement(query2);
+            statement = connection.prepareStatement(Query.INSERT_PRODUCT_SIZE);
             statement.setInt(1, product.getSize());
             if (statement.executeUpdate() != -1) {
-                String query3 = "INSERT INTO attachment(product_id, image_link, status) " +
-                        "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
-                statement = connection.prepareStatement(query3);
+                statement = connection.prepareStatement(Query.INSERT_PRODUCT_IMAGE);
                 List<String> imageLinks = product.getImages();
                 for (String imageLink : imageLinks) {
                     statement.setString(1, imageLink);
@@ -99,10 +90,48 @@ public class ProductServiceImp implements IProductService {
         return false;
     }
 
+    @Override
+    public boolean updateDB(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.UPDATE_PRODUCT);
+        statement.setInt(1, product.getCatalogID());
+        statement.setString(2, product.getProductName());
+        statement.setString(3, product.getDescription());
+        statement.setInt(4, product.getStatus());
+        statement.setInt(5, product.getProductID());
+        if (statement.executeUpdate() != -1) {
+            statement = connection.prepareStatement(Query.UPDATE_PRODUCT_SIZE);
+            statement.setInt(1, product.getSize());
+            statement.setInt(2, product.getDetailID());
+            if (statement.executeUpdate() != -1) {
+                statement = connection.prepareStatement(Query.SELECT_ATTACHMENT_ID_BY_PRODUCT_ID);
+                statement.setInt(1, product.getProductID());
+                ResultSet resultSet = statement.executeQuery();
+                List<Integer> idList = new LinkedList<>();
+                resultSet.next();
+                while (resultSet.next()) {
+                    idList.add(resultSet.getInt("id"));
+                }
+                statement = connection.prepareStatement(Query.UPDATE_PRODUCT_IMAGE);
+                List<String> imageLinks = product.getImages();
+                int count = 0;
+                for (String imageLink : imageLinks) {
+                    statement.setString(1, imageLink);
+                    statement.setInt(2, idList.get(count++));
+                    if (statement.executeUpdate() == -1) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         Catalog catalog = new Catalog();
-        product.setProductID(resultSet.getInt("product_detail.id"));
+        product.setDetailID(resultSet.getInt("product_detail.id"));
+        product.setProductID(resultSet.getInt("product_id"));
         product.setCatalogID(resultSet.getInt("catalog.id"));
         product.setProductName(resultSet.getString("product_name"));
         product.setDescription(resultSet.getString("product.description"));

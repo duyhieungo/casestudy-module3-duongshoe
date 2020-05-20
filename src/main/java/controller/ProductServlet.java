@@ -49,7 +49,14 @@ public class ProductServlet extends HttpServlet {
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
         Product product = parseRequestData(request);
-        System.out.println(request.getParameterMap());
+        try {
+            if (productService.updateDB(product)) {
+                request.setAttribute("message", "Cập nhật thành công");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        showForm(request, response);
     }
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -61,7 +68,7 @@ public class ProductServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        showRegisterForm(request, response);
+        showForm(request, response);
     }
 
     private Product parseRequestData(HttpServletRequest request) {
@@ -73,6 +80,7 @@ public class ProductServlet extends HttpServlet {
         product.addImages(request.getParameter("image-link-1"));
         product.addImages(request.getParameter("image-link-2"));
         product.addImages(request.getParameter("image-link-3"));
+        product.addImages(request.getParameter("image-link-4"));
         return product;
     }
 
@@ -86,7 +94,7 @@ public class ProductServlet extends HttpServlet {
                 displayDetail(request, response);
                 break;
             case "create":
-                showRegisterForm(request, response);
+                showForm(request, response);
                 break;
             case "update":
                 showEditForm(request, response);
@@ -109,7 +117,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void showRegisterForm(HttpServletRequest request, HttpServletResponse response) {
+    private void showForm(HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setAttribute("action", request.getParameter("action"));
             setCatalogAndSizeList(request);
