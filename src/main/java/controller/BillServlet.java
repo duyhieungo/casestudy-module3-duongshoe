@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.List;
 
-@WebServlet(name = "BillServlet",urlPatterns = "/admin/bills")
+@WebServlet(name = "BillServlet",urlPatterns = "/bills")
 public class BillServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private BillServiceImpl billServiceImpl;
