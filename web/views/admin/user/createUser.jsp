@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>Duong shoe's Admin</title>
     <link rel="stylesheet" href="resources/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="resources/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css">
@@ -228,7 +228,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" name="email" class="form-control"/>
+                                                    <input type="text" name="email" id="email" class="form-control" />
                                                     <div id="emailError"></div>
                                                 </div>
                                             </div>
@@ -318,7 +318,7 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
                             href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
                         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
                                 class="icon-heart text-danger"></i></span>

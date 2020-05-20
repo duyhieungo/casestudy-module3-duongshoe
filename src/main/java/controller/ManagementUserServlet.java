@@ -103,19 +103,15 @@ public class ManagementUserServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = null;
         try {
             user = serviceUserImp.selectUser(id);
-            if (user == null) {
-                requestDispatcher = request.getRequestDispatcher("error404.jsp");
-            } else {
-                request.setAttribute("user", user);
-                if (type == Common.VIEW_DETAILS_USER) {
-                    requestDispatcher = request.getRequestDispatcher(Link.VIEW_DETAILS_USER);
-                } else if (type == Common.DELETE_USER) {
-                    requestDispatcher = request.getRequestDispatcher(Link.DELETE_USER_FORM);
-                } else if (type == Common.UPDATE_USER) {
-                    requestDispatcher = request.getRequestDispatcher(Link.UPDATE_USER_FORM);
-                }
-                requestDispatcher.forward(request, response);
+            request.setAttribute("user", user);
+            if (type == Common.VIEW_DETAILS_USER) {
+                requestDispatcher = request.getRequestDispatcher(Link.VIEW_DETAILS_USER);
+            } else if (type == Common.DELETE_USER) {
+                requestDispatcher = request.getRequestDispatcher(Link.DELETE_USER_FORM);
+            } else if (type == Common.UPDATE_USER) {
+                requestDispatcher = request.getRequestDispatcher(Link.UPDATE_USER_FORM);
             }
+            requestDispatcher.forward(request, response);
         } catch (ServletException ex) {
             System.err.println(Error.ERROR_010);
         } catch (IOException ex) {
@@ -147,15 +143,15 @@ public class ManagementUserServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
         try {
             id = Integer.parseInt(request.getParameter("id"));
-/*            user = serviceUserImp.selectUser(id);
+            user = serviceUserImp.selectUser(id);
             if (user == null) {
-                requestDispatcher = request.getRequestDispatcher("error404.jsp");
-            } else {*/
+                requestDispatcher = request.getRequestDispatcher("views/admin/error404.jsp");
+            } else {
                 serviceUserImp.deleteUser(id);
                 requestDispatcher = request.getRequestDispatcher(Link.DASHBOARD_TO_DELETE_USER);
                 request.setAttribute("message", Alert.ALERT_002);
-                requestDispatcher.forward(request, response);
-//            }
+            }
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             System.err.println(Error.ERROR_012);
         } catch (IOException e) {

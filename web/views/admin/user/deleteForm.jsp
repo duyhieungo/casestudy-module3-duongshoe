@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -20,6 +21,7 @@
 </head>
 <body>
 <div class="container-scroller">
+    <%--header--%>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
             <a class="navbar-brand brand-logo" href="/dashboard">
@@ -67,6 +69,7 @@
             </button>
         </div>
     </nav>
+    <%--left menu--%>
     <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -152,6 +155,7 @@
                 </li>
             </ul>
         </nav>
+        <%--content--%>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -162,6 +166,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <form method="post" class="form-sample">
+                                    <p class="card-description"> Thông tin cá nhân </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
@@ -306,7 +311,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <button type="submit" class="btn btn-primary mr-2">Xóa</button>
+                                    <div class="row">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary mr-2">Xóa</button>
+                                        </div>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
                                         <p>
@@ -322,10 +330,9 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
                             href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
-                                class="icon-heart text-danger"></i></span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
                     </div>
                 </footer>
             </div>
