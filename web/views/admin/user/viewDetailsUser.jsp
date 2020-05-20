@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -20,6 +21,7 @@
 </head>
 <body>
 <div class="container-scroller">
+    <%--header--%>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
             <a class="navbar-brand brand-logo" href="/dashboard">
@@ -33,7 +35,7 @@
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <i class="icon-magnifier"></i><input type="search" class="form-control" placeholder="Tìm kiếm" title="Search here">
                 </form>
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
@@ -67,6 +69,7 @@
             </button>
         </div>
     </nav>
+    <%--left menu--%>
     <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -152,6 +155,7 @@
                 </li>
             </ul>
         </nav>
+        <%--content--%>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -186,7 +190,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="gender" class="form-control" value="${user.getTempGender()}" disabled/>
+                                                    <select class="form-control" name="gender">
+                                                    <c:set var="gender" value="${user.getGender()}"/>
+                                                    <c:choose>
+                                                        <c:when test="${gender}">
+                                                            <option name="male" value="1" selected disabled>Nam</option>
+                                                            <option name="female" value="0" disabled>Nữ</option>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option name="male" value="1" disabled>Nam</option>
+                                                            <option name="female" value="0" selected disabled>Nữ</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +256,26 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="role" value="${user.getTempRole()}" disabled/>
+                                                    <select class="form-control" name="role">
+                                                        <c:set var="role" value="${user.getRoleId()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${role == 2}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" selected disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 1}">
+                                                                <option name="user" value="1" selected disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 3}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" selected disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +283,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="status" value="${user.getTempStatus()}" disabled/>
+                                                    <select class="form-control" name="status">
+                                                        <c:set var="status" value="${user.getStatus()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${status == 1}">
+                                                                <option name="admin" value="1" selected disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" disabled>Bị khóa</option>
+                                                            </c:when>
+                                                            <c:when test="${status == 0}">
+                                                                <option name="admin" value="1" disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" selected disabled>Bị khóa</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -271,10 +318,9 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
                             href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
-                                class="icon-heart text-danger"></i></span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
                     </div>
                 </footer>
             </div>

@@ -20,6 +20,7 @@
 </head>
 <body>
 <div class="container-scroller">
+    <%--header--%>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
             <a class="navbar-brand brand-logo" href="/dashboard">
@@ -33,7 +34,7 @@
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <i class="icon-magnifier"></i><input type="search" class="form-control" placeholder="Tìm kiếm" title="Search here">
                 </form>
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
@@ -68,6 +69,7 @@
         </div>
     </nav>
     <div class="container-fluid page-body-wrapper">
+        <%--left menu--%>
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item nav-profile">
@@ -161,27 +163,32 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" class="form-sample">
+                                <form method="post" class="form-sample" name="userForm" onsubmit="return validate();">
                                     <p class="card-description"> Thông tin cá nhân </p>
                                     <div class="row">
+                                        <%--first name--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="firstName" class="form-control"/>
+                                                    <div id="firstNameError"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%--last name--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Họ và tên đệm</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="lastName" class="form-control"/>
+                                                    <div id="lastNameError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <%--gender--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
@@ -190,67 +197,81 @@
                                                         <option name="male" value="1">Nam</option>
                                                         <option name="female" value="0">Nữ</option>
                                                     </select>
+                                                    <div id="genderError"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%--date of birth--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Ngày sinh</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" class="form-control" name="dateOfBirth"/>
+                                                    <input type="date" name="dateOfBirth" class="form-control"/>
+                                                    <div id="dateOfBirthError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <%--phone number--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Số điện thoại</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="phone"/>
+                                                    <input type="text" name="phoneNumber" class="form-control"/>
+                                                    <div id="phoneNumberError"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%--email--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" name="email"/>
+                                                    <input type="email" name="email" class="form-control"/>
+                                                    <div id="emailError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <%--username--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Tên đăng nhập</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="username"/>
+                                                    <input type="text" name="username" class="form-control"/>
+                                                    <div id="usernameError"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%--password--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="password"/>
+                                                    <input type="text" name="password" class="form-control"/>
+                                                    <div id="passwordError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <%--role--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
                                                     <select class="form-control" name="role">
-                                                        <option name="admin" value="2">Admin</option>
                                                         <option name="user" value="1">Người dùng</option>
                                                         <option name="vipUser" value="3">Người dùng VIP 1</option>
+                                                        <option name="admin" value="2">Admin</option>
                                                     </select>
+                                                    <div id="roleError"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <%--status--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
@@ -259,25 +280,30 @@
                                                         <option name="admin" value="1">Đang hoạt động</option>
                                                         <option name="user" value="0">Bị khóa</option>
                                                     </select>
+                                                    <div id="statusError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <p class="card-description"> Địa chỉ </p>
                                     <div class="row">
+                                        <%--address--%>
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Địa chỉ</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="address" class="form-control"/>
+                                                    <div id="addressError"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <%--button--%>
                                         <button type="submit" class="btn btn-primary mr-2">Lưu</button>
                                         <button type="reset" class="btn btn-light">Xóa</button>
                                     </div>
+                                    <%--message--%>
                                     <div class="row" style="margin-top: 20px">
                                         <p>
                                             <c:if test='${message != null}'>
@@ -308,5 +334,6 @@
     <script src="resources/js/misc.js"></script>
     <script src="resources/js/typeahead.js"></script>
     <script src="resources/js/select2.js"></script>
+    <script src="resources/js/validateUser.js"></script>
 </body>
 </html>

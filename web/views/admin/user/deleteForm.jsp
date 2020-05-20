@@ -33,7 +33,7 @@
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <i class="icon-magnifier"></i><input type="search" class="form-control" placeholder="Tìm kiếm" title="Search here">
                 </form>
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
@@ -162,7 +162,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <form method="post" class="form-sample">
-                                    <p class="card-description"> Thông tin cá nhân </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
@@ -186,7 +185,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="gender" class="form-control" value="${user.getTempGender()}" disabled/>
+                                                    <select class="form-control" name="gender">
+                                                        <c:set var="gender" value="${user.getGender()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${gender}">
+                                                                <option name="male" value="1" selected disabled>Nam</option>
+                                                                <option name="female" value="0" disabled>Nữ</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option name="male" value="1" disabled>Nam</option>
+                                                                <option name="female" value="0" selected disabled>Nữ</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +241,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="passowrd" value="${user.getPassword()}" disabled/>
+                                                    <input type="text" class="form-control" name="password" value="${user.getPassword()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +251,26 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="role" value="${user.getTempRole()}" disabled/>
+                                                    <select class="form-control" name="role">
+                                                        <c:set var="role" value="${user.getRoleId()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${role == 2}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" selected disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 1}">
+                                                                <option name="user" value="1" selected disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 3}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" selected disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +278,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="status" value="${user.getTempStatus()}" disabled/>
+                                                    <select class="form-control" name="status">
+                                                        <c:set var="status" value="${user.getStatus()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${status == 1}">
+                                                                <option name="admin" value="1" selected disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" disabled>Bị khóa</option>
+                                                            </c:when>
+                                                            <c:when test="${status == 0}">
+                                                                <option name="admin" value="1" disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" selected disabled>Bị khóa</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -264,7 +306,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
                                         <button type="submit" class="btn btn-primary mr-2">Xóa</button>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
