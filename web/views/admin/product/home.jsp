@@ -127,9 +127,8 @@
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=create">Thêm
-                                sản
-                                phẩm</a></li>
+                                                    href="${pageContext.request.contextPath}/product?">Danh
+                                sách nhãn hàng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -183,13 +182,16 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Bảng sản phẩm</h3>
+                    <h3 class="page-title" style="float: left">Bảng sản phẩm</h3>
                 </div>
+                <a href="${pageContext.request.contextPath}/product?action=create}"
+                    class="nav-link"><i class="icon-plus"></i> Thêm sản phẩm</a>
                 <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Những sản phẩm hiện có</h4>
+                                <br>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr style="text-align: center">
