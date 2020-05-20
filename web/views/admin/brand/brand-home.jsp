@@ -210,23 +210,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${productList}" var="record">
+                                    <c:forEach items="${productList}" var="product">
                                         <tr>
-                                            <td>${record.getId()}</td>
-                                            <td>${record.getName()}</td>
-                                            <td>${record.getBrand()}</td>
-                                            <td>${record.getSize()}</td>
-                                            <td>${record.getQuantity()}</td>
-                                            <td>${record.getImportDate()}</td>
+                                            <td>${product.getId()}</td>
+                                            <td>${product.getName()}</td>
+                                            <td>${product.getBrand()}</td>
+                                            <td>${product.getSize()}</td>
+                                            <td>${product.getQuantity()}</td>
+                                            <td>${product.getImportDate()}</td>
                                             <td>
                                                 <c:choose>
-                                                    <c:when test="${record.getStatus() == 'Đủ'}">
+                                                    <c:when test="${product.getStatus() == 'Đủ'}">
                                                         <label class="badge badge-success">Đủ hàng</label>
                                                     </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thiếu'}">
+                                                    <c:when test="${product.getStatus() == 'Thiếu'}">
                                                         <label class="badge badge-danger">Thiếu hàng</label>
                                                     </c:when>
-                                                    <c:when test="${record.getStatus() == 'Thừa'}">
+                                                    <c:when test="${product.getStatus() == 'Thừa'}">
                                                         <label class="badge badge-warning">Thừa hàng</label>
                                                     </c:when>
                                                 </c:choose>

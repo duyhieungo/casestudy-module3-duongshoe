@@ -1,24 +1,23 @@
 package main.java.service.product;
 
-import main.java.model.Brand;
 import main.java.model.Product;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author Duc on 5/18/2020
+ * @author Duc on 5/19/2020
  * @project casestudy-module3-duongshoe
  **/
 
 public interface IProductService {
-    List<Product> getProductList();
+    List<Product> getProductList() throws SQLException;
 
-    Product getProductById(int id);
+    List<String> getImageLinks(Product product) throws SQLException;
 
-    boolean addProductToDB(Product product);
+    Product getProductByID(int id) throws SQLException;
 
-    boolean updateProduct(Product product);
+    List<Integer> getSizeList() throws SQLException;
 
-    boolean isExist(int id);
-
+    boolean addToDB(Product product) throws SQLException;
 }
