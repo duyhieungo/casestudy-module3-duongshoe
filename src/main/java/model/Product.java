@@ -14,7 +14,7 @@ public class Product {
     private String name;
     private Brand brand;
     private int size;
-    private List<String> imageLinks;
+    private String imageLinks;
     private String description;
     private String status;
     private List<ImportRecord> importRecords;
@@ -22,13 +22,20 @@ public class Product {
     private List<BillRecord> billRecords;
 
     public Product() {
-        imageLinks = new LinkedList<>();
         importRecords = new LinkedList<>();
         saleRecords = new LinkedList<>();
         billRecords = new LinkedList<>();
     }
 
-    public Product(int id, int productCode, String name, Brand brand, int size, List<String> imageLinks, String description, String status, List<ImportRecord> importRecords, List<SaleRecord> saleRecords, List<BillRecord> billRecords) {
+    public Product(int id, int productCode, String name, String imageLinks, String description) {
+        this.id = id;
+        this.productCode = productCode;
+        this.name = name;
+        this.imageLinks = imageLinks;
+        this.description = description;
+    }
+
+    public Product(int id, int productCode, String name, Brand brand, int size, String imageLinks, String description, String status, List<ImportRecord> importRecords, List<SaleRecord> saleRecords, List<BillRecord> billRecords) {
         this.id = id;
         this.productCode = productCode;
         this.name = name;
@@ -42,64 +49,56 @@ public class Product {
         this.billRecords = billRecords;
     }
 
-    public Product(int id, int productCode, String name, Brand brand, int size, List<String> imageLinks) {
-        this.id = id;
-        this.productCode = productCode;
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.imageLinks = imageLinks;
-    }
 
-    public Product(int id, int productCode, String name, Brand brand, int size, String imageLink) {
-        this.id = id;
-        this.productCode = productCode;
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.imageLinks = new LinkedList<>();
-        imageLinks.add(imageLink);
-    }
-
-
-    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, ImportRecord importRecord) {
-        this.id = id;
-        this.productCode = productCode;
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.imageLinks = new LinkedList<>();
-        this.description = description;
-        this.status = status;
-        this.importRecords = new LinkedList<>();
-        this.importRecords.add(importRecord);
-    }
-
-    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, SaleRecord saleRecord) {
-        this.id = id;
-        this.productCode = productCode;
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.imageLinks = new LinkedList<>();
-        this.description = description;
-        this.status = status;
-        this.saleRecords = new LinkedList<>();
-        this.saleRecords.add(saleRecord);
-    }
-
-    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, BillRecord billRecord) {
-        this.id = id;
-        this.productCode = productCode;
-        this.name = name;
-        this.brand = brand;
-        this.size = size;
-        this.imageLinks = new LinkedList<>();
-        this.description = description;
-        this.status = status;
-        this.billRecords = new LinkedList<>();
-        this.billRecords.add(billRecord);
-    }
+//    public Product(int id, int productCode, String name, Brand brand, int size, String imageLink) {
+//        this.id = id;
+//        this.productCode = productCode;
+//        this.name = name;
+//        this.brand = brand;
+//        this.size = size;
+//        this.imageLinks = new LinkedList<>();
+//        imageLinks.add(imageLink);
+//    }
+//
+//
+//    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, ImportRecord importRecord) {
+//        this.id = id;
+//        this.productCode = productCode;
+//        this.name = name;
+//        this.brand = brand;
+//        this.size = size;
+//        this.imageLinks = new LinkedList<>();
+//        this.description = description;
+//        this.status = status;
+//        this.importRecords = new LinkedList<>();
+//        this.importRecords.add(importRecord);
+//    }
+//
+//    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, SaleRecord saleRecord) {
+//        this.id = id;
+//        this.productCode = productCode;
+//        this.name = name;
+//        this.brand = brand;
+//        this.size = size;
+//        this.imageLinks = new LinkedList<>();
+//        this.description = description;
+//        this.status = status;
+//        this.saleRecords = new LinkedList<>();
+//        this.saleRecords.add(saleRecord);
+//    }
+//
+//    public Product(int id, int productCode, String name, Brand brand, int size, String description, String status, BillRecord billRecord) {
+//        this.id = id;
+//        this.productCode = productCode;
+//        this.name = name;
+//        this.brand = brand;
+//        this.size = size;
+//        this.imageLinks = new LinkedList<>();
+//        this.description = description;
+//        this.status = status;
+//        this.billRecords = new LinkedList<>();
+//        this.billRecords.add(billRecord);
+//    }
 
     public Product(int id, int productCode, String name, int size, String description, String status, Brand brand) {
         this.id = id;
@@ -168,16 +167,25 @@ public class Product {
         this.size = size;
     }
 
-    public List<String> getImageLinks() {
+//    public List<String> getImageLinks() {
+//        return imageLinks;
+//    }
+//
+//    public void setImageLinks(List<String> imageLinks) {
+//        this.imageLinks = imageLinks;
+//    }
+//
+//    public boolean addImageLink(String imageLink) {
+//        return imageLinks.add(imageLink);
+//    }
+
+
+    public String getImageLinks() {
         return imageLinks;
     }
 
-    public void setImageLinks(List<String> imageLinks) {
+    public void setImageLinks(String imageLinks) {
         this.imageLinks = imageLinks;
-    }
-
-    public boolean addImageLink(String imageLink) {
-        return imageLinks.add(imageLink);
     }
 
     public String getDescription() {

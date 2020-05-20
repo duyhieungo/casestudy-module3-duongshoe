@@ -1,4 +1,5 @@
 /*
+
 package main.java.service.product;
 
 import main.java.model.Brand;
@@ -14,11 +15,17 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-*/
+
+/**
+ * @author Duc on 5/18/2020
+ * @project casestudy-module3-duongshoe
+ **/
+
 /**
  * @author Duc on 5/18/2020
  * @project casestudy-module3-duongshoe
  **//*
+
 
 
 public class ProductServiceImp implements IProductService {
