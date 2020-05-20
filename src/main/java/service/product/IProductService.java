@@ -19,7 +19,7 @@ public interface IProductService {
 
     List<Integer> getSizeList() throws SQLException;
 
-    boolean addToDB(Product product) throws SQLException;
+    boolean addNewProduct(Product product) throws SQLException;
 
-    boolean updateDB(Product product) throws SQLException;
+    boolean updateProduct(Product product) throws SQLException;
 }

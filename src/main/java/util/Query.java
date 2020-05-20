@@ -27,13 +27,14 @@ public class Query {
             "    (catalog_id, product_name, description, status)" +
             "VALUES (?, ?, ?, ?);";
 
+    public static final String SELECT_NEW_PRODUCT = "SELECT product.id FROM product ORDER BY id DESC LIMIT 1;";
+
     public static final String INSERT_PRODUCT_SIZE = "INSERT INTO product_detail" +
             "    (product_id, size_id)" +
-            "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1), " +
+            "VALUES (?, " +
             "(SELECT size.id FROM size WHERE size = ?));";
 
-    public static final String INSERT_PRODUCT_IMAGE = "INSERT INTO attachment(product_id, image_link, status) " +
-            "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
+    public static final String INSERT_PRODUCT_IMAGE = "INSERT INTO attachment (product_id, image_link, status) VALUES (?,?,?)";
 
     public static final String UPDATE_PRODUCT = "UPDATE product\n" +
             "SET catalog_id = ?,\n" +

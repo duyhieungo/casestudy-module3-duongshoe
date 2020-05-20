@@ -49,8 +49,9 @@ public class ProductServlet extends HttpServlet {
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
         Product product = parseRequestData(request);
+        product.setProductID(Integer.parseInt(request.getParameter("id")));
         try {
-            if (productService.updateDB(product)) {
+            if (productService.updateProduct(product)) {
                 request.setAttribute("message", "Cập nhật thành công");
             }
         } catch (SQLException e) {
@@ -62,7 +63,7 @@ public class ProductServlet extends HttpServlet {
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
         Product product = parseRequestData(request);
         try {
-            if (productService.addToDB(product)) {
+            if (productService.addNewProduct(product)) {
                 request.setAttribute("message", "Thêm Thành công");
             }
         } catch (SQLException e) {
