@@ -10,23 +10,12 @@ public class BillServiceImpl implements BillService {
     private String jdbcURL = "jdbc:mysql://localhost:3306/duongshoe?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
-
-    private static final String INSERT_BILLS_SQL =
-            "INSERT INTO bill" +
-                    "  (user_id,amount,message," +
-                    "discount,shipping_fee,payment," +
-                    "date_of_payment,status,create_date," +
-                    "update_date) VALUES " +
-                    " (?, ?, ?," +
-                    "?, ?, ?," +
-                    "?, ?, ?,?);";
     private static final String SELECT_BILL_BY_ID =
             "select id,user_id,amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date " +
                     "from bill where id =?";
     private static final String SELECT_ALL_BILLS = "select * from bill";
-    private static final String DELETE_BILLS_SQL = "delete from bill where id = ?;";
-    private static final String UPDATE_BILLS_SQL = "update bill set amount=?,message=?,discount=?,shipping_fee=?,payment,date_of_payment=?,status=?,create_date=?,update_date =? " +
-            "where id = ?;";
+    private static final String UPDATE_BILLS_SQL =
+            "update bill set status=? where id = ?;";
 
     public BillServiceImpl() {
     }
@@ -44,25 +33,6 @@ public class BillServiceImpl implements BillService {
             e.printStackTrace();
         }
         return connection;
-    }
-
-    public void insertBill(Bill bill) throws SQLException {
-        System.out.println(INSERT_BILLS_SQL);
-        try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_BILLS_SQL)) {
-            preparedStatement.setDouble(1, bill.getAmount());
-            preparedStatement.setString(2, bill.getMessage());
-            preparedStatement.setDouble(3, bill.getDiscount());
-            preparedStatement.setDouble(4, bill.getShipping_fee());
-            preparedStatement.setString(5, bill.getPayment());
-            preparedStatement.setDate(6, (Date) bill.getDate_of_payment());
-            preparedStatement.setInt(7, bill.getStatus());
-            preparedStatement.setDate(8, (Date) bill.getCreate_date());
-            preparedStatement.setDate(9, (Date) bill.getUpdate_date());
-            System.out.println(preparedStatement);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            printSQLException(e);
-        }
     }
 
     public Bill selectBill(int id) {
@@ -84,7 +54,6 @@ public class BillServiceImpl implements BillService {
                 int status = rs.getInt("status");
                 Date create_date = rs.getDate("create_date");
                 Date update_date = rs.getDate("update_date");
-
                 bill = new Bill(id, user_id, amount, message, discount, shipping_fee, payment, date_of_payment, status, create_date, update_date);
             }
         } catch (SQLException e) {
@@ -96,7 +65,6 @@ public class BillServiceImpl implements BillService {
     public List<Bill> selectAllBills() {
         List<Bill> bills = new ArrayList<>();
         try (Connection connection = getConnection();
-
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_BILLS);) {
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
@@ -120,29 +88,11 @@ public class BillServiceImpl implements BillService {
         return bills;
     }
 
-    public boolean deleteBill(int id) throws SQLException {
-        boolean rowDeleted;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_BILLS_SQL);) {
-            statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
-        }
-        return rowDeleted;
-    }
-
     public boolean updateBill(Bill bill) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_BILLS_SQL);) {
-            statement.setDouble(1, bill.getAmount());
-            statement.setString(2, bill.getMessage());
-            statement.setDouble(3, bill.getDiscount());
-            statement.setDouble(4, bill.getShipping_fee());
-            statement.setString(5, bill.getPayment());
-            statement.setDate(6, (Date) bill.getDate_of_payment());
-            statement.setInt(7, bill.getStatus());
-            statement.setDate(8, (Date) bill.getCreate_date());
-            statement.setDate(9, (Date) bill.getUpdate_date());
-            statement.setInt(10, bill.getUser_id());
-            statement.setInt(11, bill.getId());
+            statement.setInt(2,bill.getId());
+            statement.setDouble(1, bill.getStatus());
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;

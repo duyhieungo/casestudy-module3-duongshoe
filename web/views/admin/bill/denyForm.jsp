@@ -76,7 +76,7 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="/bills">List Bill</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>
+                            <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
                     </div>
@@ -89,86 +89,84 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Bill Create</h3>
+                    <h3 class="page-title"> Edit</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Create Bill</h4>
-                                <p class="card-description"> Create Bill Basic </p>
+                                <h4 class="card-title">Thông tin chi tiết hóa đơn</h4>
+                                <p class="card-description"> Thông tin chi tiết hóa đơn</p>
                                 <form class="forms-sample" method="post">
                                     <table border="1" cellpadding="5">
-                                    <caption>
-                                        <h2>Add New Bill</h2>
-                                    </caption>
+                                        <
+                                        <caption>
+                                            <h2>
+                                               Xác nhận từ chối hóa đơn
+                                            </h2>
+                                        </caption>
+                                        <c:if test="${bill != null}">
+                                            <input type="hidden" name="id" value="<c:out value='${bill.id}' />"/>
+                                        </c:if>
                                         <tr>
-                                            <th>User_id</th>
-                                            <td>
-                                                <input type="text" name="user_id" id="user_id" size="45"/>
+                                            <th>Mã số khách hàng:</th>
+                                            <td size="45" name="user_id">
+                                                <c:out value="${bill.user_id}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Amount</th>
-                                            <td>
-                                                <input type="text" name="amount" id="amount" size="45"/>
+                                            <th>Số lượng:</th>
+                                            <td size="45" name="amount">
+                                                <c:out value="${bill.amount}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Message:</th>
-                                            <td>
-                                                <input type="text" name="message" id="message" size="45"/>
+                                            <th>Thông tin:</th>
+                                            <td size="45" name="message">
+                                                <c:out value="${bill.message}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Discount:</th>
-                                            <td>
-                                                <input type="text" name="discount" id="discount" size="45"/>
+                                            <th>Chiết khấu:</th>
+                                            <td size="45" name="discount">
+                                                <c:out value="${bill.discount}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Shipping_fee:</th>
-                                            <td>
-                                                <input type="text" name="shipping_fee" id="shipping_fee" size="45"/>
+                                            <th>Phí vận chuyển:</th>
+                                            <td size="45" name="shipping_fee">
+                                                <c:out value="${bill.shipping_fee}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Payment:</th>
-                                            <td>
-                                                <input type="text" name="payment" id="payment" size="45"/>
+                                            <th>Số thanh toán:</th>
+                                            <td size="45" name="payment">
+                                                <c:out value="${bill.payment}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Date_of_payment:</th>
-                                            <td>
-                                                <input type="date" name="date_of_payment" id="date_of_payment" size="45"/>
+                                            <th>Ngày thanh toán</th>
+                                            <td size="45" name="date_of_payment">
+                                                <c:out value="${bill.date_of_payment}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Status:</th>
-                                            <td>
-                                                <input type="text" name="status" id="status" size="45"/>
+                                            <th>Ngày tạo hóa đơn:</th>
+                                            <td size="45" name="create_date">
+                                                <c:out value="${bill.create_date}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Create_date:</th>
-                                            <td>
-                                                <input type="date" name="create_date" id="create_date" size="45"/>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Update_date:</th>
-                                            <td>
-                                                <input type="date" name="update_date" id="update_date" size="45"/>
+                                            <th>Ngày cập nhật hóa đơn</th>
+                                            <td size="45" name="update_date">
+                                                <c:out value="${bill.update_date}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" align="center">
-                                                <button type="submit" value ="Save" class="btn btn-primary mr-2">Submit</button>
-                                                <button class="btn btn-light" href="bills?action=create">Cancel</button>
+                                                <input type="submit" value="Lưu"/>
                                             </td>
                                         </tr>
-
                                     </table>
                                 </form>
                             </div>

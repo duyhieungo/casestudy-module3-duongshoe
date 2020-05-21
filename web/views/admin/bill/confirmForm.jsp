@@ -76,7 +76,7 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link" href="/bills">List Bill</a></li>
-<%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
+                            <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
                     </div>
@@ -84,72 +84,98 @@
                 </li>
             </ul>
         </nav>
+
+
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Bill Table </h3>
+                    <h3 class="page-title"> Edit</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Bill List</h4>
-                                </p>
-                                <table class="table">
-                                    <thead>
-                                    <caption><h2>Bill List</h2></caption>
-                                    <tr>
-<%--                                        <th>ID</th>--%>
-                                        <th>User_Id</th>
-<%--                                        <th>Amount</th>--%>
-                                        <th>Message</th>
-<%--                                        <th>Discount</th>--%>
-                                        <th>Shipping_fee</th>
-                                        <th>Payment</th>
-                                        <th>Date_of_payment</th>
-                                        <th>Status</th>
-<%--                                        <th>Create_date</th>--%>
-<%--                                        <th>Update_date</th>--%>
-                                        <th>Others
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach var="bill" items="${listBill}">
+                                <h4 class="card-title">Thông tin chi tiết hóa đơn</h4>
+                                <p class="card-description"> Thông tin chi tiết hóa đơn</p>
+                                <form class="forms-sample" method="post">
+                                    <table border="1" cellpadding="5">
+                                        <
+                                        <caption>
+                                            <h2>
+                                                Xác nhận hóa đơn
+                                            </h2>
+                                        </caption>
+                                        <c:if test="${bill != null}">
+                                            <input type="hidden" name="id" value="<c:out value='${bill.id}' />"/>
+                                        </c:if>
                                         <tr>
-<%--                                            <td><c:out value="${bill.id}"/></td>--%>
-                                            <td><c:out value="${bill.user_id}"/></td>
-<%--                                            <td><c:out value="${bill.amount}"/></td>--%>
-                                            <td><c:out value="${bill.message}"/></td>
-<%--                                            <td><c:out value="${bill.discount}"/></td>--%>
-                                            <td><c:out value="${bill.shipping_fee}"/></td>
-                                            <td><c:out value="${bill.payment}"/></td>
-                                            <td><c:out value="${bill.date_of_payment}"/></td>
-                                            <td><c:out value="${bill.status}"/></td>
-<%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
-<%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
-                                            <th>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <a  href="/bills?action=confirm&id=${bill.id}">Xác nhận</a>
-                                                <a  href="/bills?action=pending&id=${bill.id}">Chờ</a>
-                                                <a  href="/bills?action=deny&id=${bill.id}">Từ chối</a>
-
-                                            </th>
+                                            <th>Mã số khách hàng:</th>
+                                            <td size="45" name="user_id">
+                                                <c:out value="${bill.user_id}"/>
+                                            </td>
                                         </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
+                                        <tr>
+                                            <th>Số lượng:</th>
+                                            <td size="45" name="amount">
+                                                <c:out value="${bill.amount}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Thông tin:</th>
+                                            <td size="45" name="message">
+                                                <c:out value="${bill.message}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Chiết khấu:</th>
+                                            <td size="45" name="discount">
+                                                <c:out value="${bill.discount}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phí vận chuyển:</th>
+                                            <td size="45" name="shipping_fee">
+                                                <c:out value="${bill.shipping_fee}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Số thanh toán:</th>
+                                            <td size="45" name="payment">
+                                                <c:out value="${bill.payment}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Ngày thanh toán</th>
+                                            <td size="45" name="date_of_payment">
+                                                <c:out value="${bill.date_of_payment}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Ngày tạo hóa đơn:</th>
+                                            <td size="45" name="create_date">
+                                                <c:out value="${bill.create_date}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Ngày cập nhật hóa đơn</th>
+                                            <td size="45" name="update_date">
+                                                <c:out value="${bill.update_date}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" align="center">
+                                                <input type="submit" value="Lưu"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

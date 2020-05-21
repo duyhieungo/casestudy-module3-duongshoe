@@ -2,6 +2,7 @@ package main.java.controller;
 
 import main.java.model.Bill;
 import main.java.service.bill.BillServiceImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet(name = "BillServlet",urlPatterns = "/bills")
+@WebServlet(name = "BillServlet", urlPatterns = "/bills")
 public class BillServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private BillServiceImpl billServiceImpl;
@@ -33,11 +29,16 @@ public class BillServlet extends HttpServlet {
         }
         try {
             switch (action) {
-                case "create":
-                    insertBill(request, response);
+                case "confirm":
+                    confirmBill(request, response);
                     break;
-                case "edit":
-                    updateBill(request, response);
+                case "deny":
+                    denyBill(request, response);
+                    break;
+                case "pending":
+                    pendingBill(request,response);
+                    break;
+                default:
                     break;
             }
         } catch (SQLException ex) {
@@ -53,15 +54,14 @@ public class BillServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "create":
-                    showNewForm(request, response);
+                case "confirm":
+                    showConfirmForm(request, response);
                     break;
-                case "edit":
-                    showEditForm(request, response);
+                case "deny":
+                    showDenyForm(request, response);
                     break;
-                case "delete":
-                    deleteBill(request, response);
-                    break;
+                case "pending":
+                    showPendingForm(request,response);
                 default:
                     listBill(request, response);
                     break;
@@ -79,82 +79,54 @@ public class BillServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/create.jsp");
-        dispatcher.forward(request, response);
-    }
 
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+    private void showConfirmForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Bill existingUser = billServiceImpl.selectBill(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/confirmForm.jsp");
+        request.setAttribute("bill", existingUser);
+        dispatcher.forward(request, response);
+    }
+    private void showPendingForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Bill existingUser = billServiceImpl.selectBill(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/pendingForm.jsp");
+        request.setAttribute("bill", existingUser);
+        dispatcher.forward(request, response);
+    }
+    private void showDenyForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Bill existingUser = billServiceImpl.selectBill(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/denyForm.jsp");
         request.setAttribute("bill", existingUser);
         dispatcher.forward(request, response);
     }
 
-    private void insertBill(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        int user_id=Integer.parseInt(request.getParameter("user_id"));
-        double amount = Double.parseDouble(request.getParameter("amount"));
-        String message=request.getParameter("message");
-        double discount = Double.parseDouble(request.getParameter("discount"));
-        double shipping_fee = Double.parseDouble(request.getParameter("shipping_fee"));
-        String payment=request.getParameter("payment");
-
-        int status=Integer.parseInt(request.getParameter("status"));
-        String temp_create_date = request.getParameter("create_date");
-        String temp_update_date = request.getParameter("update_date");
-        String temp_date_of_payment = request.getParameter("date_of_payment");
-        Date create_date= Date.valueOf(temp_create_date);
-        Date update_date= Date.valueOf(temp_update_date);
-        Date date_of_payment= Date.valueOf(temp_date_of_payment);
-
-        Bill newBill = new Bill(user_id,amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date);
-        billServiceImpl.insertBill(newBill);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/create.jsp");
-        dispatcher.forward(request, response);
-    }
-    private void updateBill(HttpServletRequest request, HttpServletResponse response)
+    private void confirmBill(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        int user_id=Integer.parseInt(request.getParameter("user_id"));
-        double amount = Double.parseDouble(request.getParameter("amount"));
-        String message=request.getParameter("message");
-        double discount = Double.parseDouble(request.getParameter("discount"));
-        double shipping_fee = Double.parseDouble(request.getParameter("shipping_fee"));
-        String payment=request.getParameter("payment");
-
-        String temp_create_date = request.getParameter("create_date");
-        String temp_update_date = request.getParameter("update_date");
-        String temp_date_of_payment = request.getParameter("date_of_payment");
-
-        Date create_date= Date.valueOf(temp_create_date);
-        Date update_date= Date.valueOf(temp_update_date);
-       Date date_of_payment= Date.valueOf(temp_date_of_payment);
-
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String text = date.format(formatter);
-        LocalDate parsedDate = LocalDate.parse(text, formatter);
-
-
-        int status=Integer.parseInt(request.getParameter("status"));
-        Bill anotherBill = new Bill(id, user_id,amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date);
+        int status =1;
+        Bill anotherBill = new Bill(id, status);
         billServiceImpl.updateBill(anotherBill);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/edit.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("/bills");
     }
-    private void deleteBill(HttpServletRequest request, HttpServletResponse response)
+    private void denyBill(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        billServiceImpl.deleteBill(id);
-
-        List<Bill> listBill = billServiceImpl.selectAllBills();
-        request.setAttribute("listBill", listBill);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/list.jsp");
-        dispatcher.forward(request, response);
+        int status = -1;
+        Bill anotherBill = new Bill(id, status);
+        billServiceImpl.updateBill(anotherBill);
+        response.sendRedirect("/bills");
+    }
+    private void pendingBill(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int status = 0;
+        Bill anotherBill = new Bill(id, status);
+        billServiceImpl.updateBill(anotherBill);
+        response.sendRedirect("/bills");
     }
 }
