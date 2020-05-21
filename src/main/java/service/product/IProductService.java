@@ -17,9 +17,15 @@ public interface IProductService {
 
     Product getProductByID(int id) throws SQLException;
 
+    Product getProductByProductID(int id) throws SQLException;
+
     List<Integer> getSizeList() throws SQLException;
 
     boolean addNewProduct(Product product) throws SQLException;
 
     boolean updateProduct(Product product) throws SQLException;
+
+    List<Product> getProductForHomePage() throws SQLException;
+
+    List<Integer> getSizeListByProductID(int id) throws SQLException;
 }
