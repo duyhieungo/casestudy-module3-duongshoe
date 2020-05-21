@@ -157,9 +157,9 @@
 
                                         </tr>
                                     </c:forEach>
-                                    <a href="ViewServlet?page=1">1</a>
-                                    <a href="ViewServlet?page=1">2</a>
-                                    <a href="ViewServlet?page=1">3</a>
+<%--                                    <a href="ViewServlet?page=1">1</a>--%>
+<%--                                    <a href="ViewServlet?page=1">2</a>--%>
+<%--                                    <a href="ViewServlet?page=1">3</a>--%>
 
                                     </tbody>
                                 </table>
