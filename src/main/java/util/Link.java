@@ -9,6 +9,6 @@ public class Link {
     public static final String DASHBOARD_TO_VIEW_USER = "views/admin/user/viewUser.jsp";
     public static final String DASHBOARD_TO_DELETE_USER = "views/admin/user/deleteForm.jsp";
     public static final String VIEW_DETAILS_USER = "views/admin/user/viewDetailsUser.jsp";
-    public static final String DELETE_FORM = "views/admin/user/deleteForm.jsp";
-    public static final String EDIT_FORM = "views/admin/user/editForm.jsp";
+    public static final String DELETE_USER_FORM = "views/admin/user/deleteForm.jsp";
+    public static final String UPDATE_USER_FORM = "views/admin/user/editForm.jsp";
 }

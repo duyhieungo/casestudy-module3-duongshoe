@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -20,95 +21,36 @@
 </head>
 <body>
 <div class="container-scroller">
+    <%--header--%>
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-            <a class="navbar-brand brand-logo" href="../../index.html">
-                <img src="resources/images/logo.svg" alt="logo" class="logo-dark"/>
+            <a class="navbar-brand brand-logo" href="/dashboard">
+                <img src="${pageContext.request.contextPath}/resources/images/logo.svg" alt="logo" class="logo-dark"/>
             </a>
-            <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="resources/images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="/dashboard"><img
+                    src="${pageContext.request.contextPath}/resources/images/logo-mini.svg"
+                    alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
+            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
-                    <i class="icon-magnifier"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+                    <i class="icon-magnifier"></i><input type="search" class="form-control" placeholder="Tìm kiếm" title="Search here">
                 </form>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#"
-                       data-toggle="dropdown" aria-expanded="false">
-                        <i class="icon-speech"></i>
-                        <span class="count">7</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-                         aria-labelledby="messageDropdown">
-                        <a class="dropdown-item py-3">
-                            <p class="mb-0 font-weight-medium float-left">You have 7 unread mails </p>
-                            <span class="badge badge-pill badge-primary float-right">View all</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face10.jpg" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face12.jpg" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                        <a class="dropdown-item preview-item">
-                            <div class="preview-thumbnail">
-                                <img src="resources/images/faces/face1.jpg" alt="image" class="img-sm profile-pic">
-                            </div>
-                            <div class="preview-item-content flex-grow py-2">
-                                <p class="preview-subject ellipsis font-weight-medium text-dark">Travis Jenkins </p>
-                                <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
-                    <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#"
-                       data-toggle="dropdown" aria-expanded="false">
-                        <div class="d-inline-flex mr-3">
-                            <i class="flag-icon flag-icon-us"></i>
-                        </div>
-                        <span class="profile-text font-weight-normal">English</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2"
-                         aria-labelledby="LanguageDropdown">
-                        <a class="dropdown-item">
-                            <i class="flag-icon flag-icon-us"></i> English </a>
-                        <a class="dropdown-item">
-                            <i class="flag-icon flag-icon-fr"></i> French </a>
-                        <a class="dropdown-item">
-                            <i class="flag-icon flag-icon-ae"></i> Arabic </a>
-                        <a class="dropdown-item">
-                            <i class="flag-icon flag-icon-ru"></i> Russian </a>
-                    </div>
-                </li>
                 <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
                     <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
                        aria-expanded="false">
-                        <img class="img-xs rounded-circle ml-2" src="resources/images/faces/face8.jpg"
-                             alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+                        <img class="img-xs rounded-circle ml-2"
+                             src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                             alt="Profile image">
+                        <span class="font-weight-normal"> Admin </span></a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="resources/images/faces/face8.jpg"
+                            <img class="img-md rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
                                  alt="Profile image">
-                            <p class="mb-1 mt-3">Allen Moreno</p>
-                            <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
+                            <p class="mb-1 mt-3">Admin</p>
+                            <p class="font-weight-light text-muted mb-0">admin@gmail.com</p>
                         </div>
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile
                             <span class="badge badge-pill badge-danger">1</span></a>
@@ -117,7 +59,7 @@
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
                             Activity</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a class="dropdown-item" href="/admin"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                        <a href="/admin" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
                     </div>
                 </li>
             </ul>
@@ -127,13 +69,16 @@
             </button>
         </div>
     </nav>
+    <%--left menu--%>
     <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="profile-image">
-                            <img class="img-xs rounded-circle" src="resources/images/faces/face8.jpg" alt="profile image">
+                            <img class="img-xs rounded-circle"
+                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
+                                 alt="profile image">
                             <div class="dot-indicator bg-success"></div>
                         </div>
                         <div class="text-wrapper">
@@ -150,18 +95,19 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/dashboard">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
+                <li class="nav-item nav-category"><span class="nav-link">Cửa hàng</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
+                       aria-controls="product">
                         <span class="menu-title">Quản lý sản phẩm</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-basket-loaded menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
@@ -169,11 +115,13 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <span class="menu-title">Quản lý danh mục</span>
-                        <i class="icon-layers menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
+                       aria-controls="brand">
+                        <span class="menu-title">Quản lý Nhà cung cấp</span>
+                        <i class="icon-grid menu-icon"></i>
                     </a>
-                    <div class="collapse">
+
+                    <div class="collapse" id="brand">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
@@ -181,22 +129,24 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#bill" aria-expanded="false"
+                       aria-controls="bill">
                         <span class="menu-title">Quản lý hóa đơn</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-note menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="bill">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
+                       aria-controls="user">
                         <span class="menu-title">Quản lý người dùng</span>
-                        <i class="icon-layers menu-icon"></i>
+                        <i class="icon-user menu-icon"></i>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse" id="user">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="/user?action=view_user">Xem người dùng</a></li>
                             <li class="nav-item"> <a class="nav-link" href="/user?action=create_user">Thêm người dùng</a></li>
@@ -205,6 +155,7 @@
                 </li>
             </ul>
         </nav>
+        <%--content--%>
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
@@ -239,7 +190,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Giới tính</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="gender" class="form-control" value="${user.getTempGender()}" disabled/>
+                                                    <select class="form-control" name="gender">
+                                                        <c:set var="gender" value="${user.getGender()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${gender}">
+                                                                <option name="male" value="1" selected disabled>Nam</option>
+                                                                <option name="female" value="0" disabled>Nữ</option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option name="male" value="1" disabled>Nam</option>
+                                                                <option name="female" value="0" selected disabled>Nữ</option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +246,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Mật khẩu</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="passowrd" value="${user.getPassword()}" disabled/>
+                                                    <input type="text" class="form-control" name="password" value="${user.getPassword()}" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -293,7 +256,26 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Loại tài khoản</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="role" value="${user.getTempRole()}" disabled/>
+                                                    <select class="form-control" name="role">
+                                                        <c:set var="role" value="${user.getRoleId()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${role == 2}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" selected disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 1}">
+                                                                <option name="user" value="1" selected disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                            <c:when test="${role == 3}">
+                                                                <option name="user" value="1" disabled>Người dùng</option>
+                                                                <option name="admin" value="2" disabled>Admin</option>
+                                                                <option name="vipUser" value="3" selected disabled>Người dùng VIP 1</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -301,7 +283,19 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Trạng thái</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="status" value="${user.getTempStatus()}" disabled/>
+                                                    <select class="form-control" name="status">
+                                                        <c:set var="status" value="${user.getStatus()}"/>
+                                                        <c:choose>
+                                                            <c:when test="${status == 1}">
+                                                                <option name="admin" value="1" selected disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" disabled>Bị khóa</option>
+                                                            </c:when>
+                                                            <c:when test="${status == 0}">
+                                                                <option name="admin" value="1" disabled>Đang hoạt động</option>
+                                                                <option name="user" value="0" selected disabled>Bị khóa</option>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -318,7 +312,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-primary mr-2">Xóa</button>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary mr-2">Xóa</button>
+                                        </div>
                                     </div>
                                     <div class="row" style="margin-top: 20px">
                                         <p>
@@ -334,10 +330,9 @@
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a
                             href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
-                                class="icon-heart text-danger"></i></span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
                     </div>
                 </footer>
             </div>
