@@ -48,10 +48,10 @@ public class HomePageServlet extends HttpServlet {
     }
 
     private void showDetailForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Product existingProduct = productService.getProductByID(id);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product existingProduct = productService.getProductByID(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/user/product-detail.jsp");
-//        request.setAttribute("product", existingProduct);
+        request.setAttribute("product", existingProduct);
         dispatcher.forward(request, response);
     }
 }

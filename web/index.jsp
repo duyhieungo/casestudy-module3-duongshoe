@@ -557,27 +557,27 @@
                     Tất cả sản phẩm
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".ADIDAS">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".1">
                     Adidas
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".NIKE">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".2">
                     Nike
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".GUCCI">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".3">
                     Gucci
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".PUMA">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".4">
                     Puma
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".BITIS">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".5">
                     Biti's
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".VANS">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".6">
                     Vans
                 </button>
             </div>
@@ -704,11 +704,11 @@
 
         <div class="row isotope-grid">
             <c:forEach var="product" items="${productList}">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product.catalog.catalogName}" >
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product.getCatalogID()}" >
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="${product.images[0]}" width="315" height="350" alt="IMG-PRODUCT">
+                            <img src="${product.getImages()[0]}" width="315" height="350" alt="IMG-PRODUCT">
                             <a href="#"
                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Xem nhanh
@@ -717,8 +717,8 @@
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a href="/home?action=view-detail" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    <c:out value="${product.productName}"/>
+                                <a href="/home?action=view-detail&id=${product.getProductID()}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <c:out value="${product.getProductName()}"/>
                                 </a>
 
                                 <span class="stext-105 cl3">
@@ -1735,7 +1735,7 @@
     $('.js-addwish-b2').each(function () {
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
@@ -1746,7 +1746,7 @@
         var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
         $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
 
             $(this).addClass('js-addedwish-detail');
             $(this).off('click');
@@ -1758,7 +1758,7 @@
     $('.js-addcart-detail').each(function () {
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
+            swal(nameProduct, "đã thêm vào Giỏ hàng !", "success");
         });
     });
 

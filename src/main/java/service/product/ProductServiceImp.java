@@ -203,16 +203,10 @@ public class ProductServiceImp implements IProductService {
 
     private Product parseSimpleResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
-        Catalog catalog = new Catalog();
         product.setProductID(resultSet.getInt("product_id"));
         product.setCatalogID(resultSet.getInt("catalog.id"));
         product.setProductName(resultSet.getString("product_name"));
         product.setDescription(resultSet.getString("product.description"));
-        catalog.setCatalogID(resultSet.getInt("catalog.id"));
-        catalog.setCatalogName(resultSet.getString("name"));
-        catalog.setDescription(resultSet.getString("catalog.description"));
-        catalog.setStatus(resultSet.getInt("catalog.status"));
-        product.setCatalog(catalog);
         product.setImages(getImageLinks(product));
         return product;
     }
