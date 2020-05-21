@@ -113,4 +113,14 @@ public class BillServiceImpl implements BillService {
             }
         }
     }
+
+    public ArrayList<Bill> getListByPage(int start,int total){
+        ArrayList<Bill> list = new ArrayList<>();
+       try {
+           Connection con =getConnection();
+           PreparedStatement ps=con.prepareStatement
+                   ("select * from bill limit" + (start-1)+","+total);
+           ResultSet rs =
+       }
+    }
 }

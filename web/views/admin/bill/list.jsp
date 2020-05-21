@@ -1,4 +1,7 @@
-<%--
+<%@ page import="main.java.service.bill.BillServiceImpl" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="main.java.model.Bill" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: thuan
   Date: 5/20/20
@@ -20,8 +23,11 @@
     <link rel="stylesheet" href="resources/vendors/chartist/chartist.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="shortcut icon" href="resources/images/favicon.png"/>
+
+
 </head>
 <body>
+
 
 <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -75,7 +81,8 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">Danh sách hóa đơn</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">Danh sách hóa đơn</a>
+                            </li>
                             <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
@@ -95,7 +102,8 @@
                             <div style="text-align: center" class="card-body">
                                 <h4 class="card-title">Danh sách hóa đơn</h4>
                                 </p>
-                                <table class="table" >
+                                <table class="table">
+
                                     <thead>
                                     <caption><h2>Danh sách hóa đơn</h2></caption>
                                     <tr>
@@ -104,31 +112,36 @@
                                         <%--                                        <th>Amount</th>--%>
                                         <th>Thông tin hóa đơn</th>
                                         <%--                                        <th>Discount</th>--%>
-<%--                                        <th>Phí vận chuyển</th>--%>
+                                        <%--                                        <th>Phí vận chuyển</th>--%>
                                         <th>Số tiền thanh toán</th>
                                         <th>Ngày thanh toán</th>
                                         <th>Status</th>
                                         <%--                                        <th>Create_date</th>--%>
                                         <%--                                        <th>Update_date</th>--%>
-                                        <th style="text-align: center" >Công cụ
+                                        <th style="text-align: center">Công cụ
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
+
+
+
                                     <c:forEach var="bill" items="${listBill}">
+
                                         <tr>
                                                 <%--                                            <td><c:out value="${bill.id}"/></td>--%>
-                                            <td><c:out value="${bill.user_id}"/></td>
+                                            <td ><c:out value="${bill.user_id}"/></td>
                                                 <%--                                            <td><c:out value="${bill.amount}"/></td>--%>
-                                            <td><c:out value="${bill.message}"/></td>
+                                            <td ><c:out value="${bill.message}"/></td>
                                                 <%--                                            <td><c:out value="${bill.discount}"/></td>--%>
-<%--                                            <td><c:out value="${bill.shipping_fee}"/></td>--%>
-                                            <td><c:out value="${bill.payment}"/></td>
-                                            <td><c:out value="${bill.date_of_payment}"/></td>
-                                            <td><c:out value="${bill.status}"/></td>
+                                                <%--                                            <td><c:out value="${bill.shipping_fee}"/></td>--%>
+                                            <td ><c:out value="${bill.payment}"/></td>
+                                            <td ><c:out value="${bill.date_of_payment}"/></td>
+                                            <td ><c:out value="${bill.status}"/></td>
                                                 <%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
                                                 <%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
-                                            <td>
+                                            <td >
                                                 <button onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
                                                     Xác nhận
                                                 </button>
@@ -144,6 +157,8 @@
 
                                         </tr>
                                     </c:forEach>
+
+
                                     </tbody>
                                 </table>
                             </div>
