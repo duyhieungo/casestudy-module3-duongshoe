@@ -1,5 +1,6 @@
 package main.java.controller;
 
+import com.sun.glass.ui.Size;
 import main.java.model.Product;
 import main.java.service.product.IProductService;
 import main.java.service.product.ProductServiceImp;
@@ -41,17 +42,19 @@ public class HomePageServlet extends HttpServlet {
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<Product> productList = productService.getProductList();
+        List<Product> productList = productService.getProductForHomePage();
         request.setAttribute("productList", productList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showDetailForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-//        int id = Integer.parseInt(request.getParameter("id"));
-//        Product existingProduct = productService.getProductByID(id);
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product existingProduct = productService.getProductByProductID(id);
+        request.setAttribute("product", existingProduct);
+        List<Integer> size = productService.getSizeListByProductID(id);
+        request.setAttribute("size", size);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/user/product-detail.jsp");
-//        request.setAttribute("product", existingProduct);
         dispatcher.forward(request, response);
     }
 }

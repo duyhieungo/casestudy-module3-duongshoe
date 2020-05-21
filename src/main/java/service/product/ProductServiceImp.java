@@ -67,6 +67,15 @@ public class ProductServiceImp implements IProductService {
         return parseResultSet(resultSet);
     }
 
+    @Override
+    public Product getProductByProductID(int id) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_PRODUCT_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.first();
+        return parseResultSet(resultSet);
+    }
+
     public List<Integer> getSizeList() throws SQLException {
         List<Integer> sizeList = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_FROM_SIZE);
@@ -76,6 +85,7 @@ public class ProductServiceImp implements IProductService {
         }
         return sizeList;
     }
+
 
     public boolean addNewProduct(Product product) throws SQLException {
         if (addProduct(product)) {
@@ -135,6 +145,29 @@ public class ProductServiceImp implements IProductService {
             return updateProductSizeDB(product) && updateProductImageDB(product);
         }
         return false;
+    }
+
+    @Override
+    public List<Product> getProductForHomePage() throws SQLException {
+        List<Product> products = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_FOR_HOMEPAGE);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            products.add(parseSimpleResultSet(resultSet));
+        }
+        return products;
+    }
+
+    @Override
+    public List<Integer> getSizeListByProductID(int id) throws SQLException {
+        List<Integer> sizeList = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_SIZE_BY_PRODUCT_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            sizeList.add(resultSet.getInt("size"));
+        }
+        return sizeList;
     }
 
     public boolean updateProductDB(Product product) throws SQLException {
@@ -204,6 +237,16 @@ public class ProductServiceImp implements IProductService {
         catalog.setDescription(resultSet.getString("catalog.description"));
         catalog.setStatus(resultSet.getInt("catalog.status"));
         product.setCatalog(catalog);
+        product.setImages(getImageLinks(product));
+        return product;
+    }
+
+    private Product parseSimpleResultSet(ResultSet resultSet) throws SQLException {
+        Product product = new Product();
+        product.setProductID(resultSet.getInt("product_id"));
+        product.setCatalogID(resultSet.getInt("catalog.id"));
+        product.setProductName(resultSet.getString("product_name"));
+        product.setDescription(resultSet.getString("product.description"));
         product.setImages(getImageLinks(product));
         return product;
     }

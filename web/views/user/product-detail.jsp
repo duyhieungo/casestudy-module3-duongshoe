@@ -377,34 +377,34 @@
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                         <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                    <img src="${product.getImages()[0]}" alt="IMG-PRODUCT">
 
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                       href="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg">
+                                       href="${product.getImages()[0]}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[1]}">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                    <img src="${product.getImages()[1]}" alt="IMG-PRODUCT">
 
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                       href="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg">
+                                       href="${product.getImages()[1]}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[2]}">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                    <img src="${product.getImages()[2]}" alt="IMG-PRODUCT">
 
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                       href="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg">
+                                       href="${product.getImages()[2]}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
@@ -417,7 +417,7 @@
             <div class="col-md-6 col-lg-5 p-b-30">
                 <div class="p-r-50 p-t-5 p-lr-0-lg">
                     <h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                        Lightweight Jacket
+                        ${product.getProductName()}
                     </h4>
 
                     <span class="mtext-106 cl2">
@@ -425,8 +425,7 @@
 						</span>
 
                     <p class="stext-102 cl3 p-t-23">
-                        Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare
-                        feugiat.
+                        ${product.getCatalog().getDescription()}
                     </p>
 
                     <!--  -->
@@ -440,29 +439,9 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="time">
                                         <option>Choose an option</option>
-                                        <option>Size S</option>
-                                        <option>Size M</option>
-                                        <option>Size L</option>
-                                        <option>Size XL</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                Color
-                            </div>
-
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
-                                        <option>Choose an option</option>
-                                        <option>Red</option>
-                                        <option>Blue</option>
-                                        <option>White</option>
-                                        <option>Grey</option>
+                                        <c:forEach var="size" items="${size}">
+                                            <option><c:out value="${size}"></c:out></option>
+                                        </c:forEach>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -483,9 +462,9 @@
                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                     </div>
                                 </div>
-
+                                <c:url value="/addtoCart?id=${product.getProductID()}" var="addtoCart"/>
                                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to cart
+                                    <a href="${addtoCart}">Thêm vào giỏ hàng</a>
                                 </button>
                             </div>
                         </div>
@@ -526,15 +505,15 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item p-b-10">
-                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                        <a class="nav-link active" data-toggle="tab" href="#description" role="tab" style="font-family: Helvetica, sans-serif">Mô tả sản phẩm</a>
                     </li>
 
                     <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
+                        <a class="nav-link" data-toggle="tab" href="#information" role="tab" style="font-family: Helvetica, sans-serif">Cách chọn size</a>
                     </li>
 
                     <li class="nav-item p-b-10">
-                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
+                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab" style="font-family: Helvetica, sans-serif">Đánh giá sản phẩm (1)</a>
                     </li>
                 </ul>
 
@@ -544,14 +523,7 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel">
                         <div class="how-pos2 p-lr-15-md">
                             <p class="stext-102 cl6">
-                                Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit
-                                amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus
-                                interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et
-                                elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu
-                                velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec
-                                iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat,
-                                purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus
-                                rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+                                ${product.getDescription()}
                             </p>
                         </div>
                     </div>
@@ -560,57 +532,7 @@
                     <div class="tab-pane fade" id="information" role="tabpanel">
                         <div class="row">
                             <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                                <ul class="p-lr-28 p-lr-15-sm">
-                                    <li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Weight
-											</span>
-
-                                        <span class="stext-102 cl6 size-206">
-												0.79 kg
-											</span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Dimensions
-											</span>
-
-                                        <span class="stext-102 cl6 size-206">
-												110 x 33 x 100 cm
-											</span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Materials
-											</span>
-
-                                        <span class="stext-102 cl6 size-206">
-												60% cotton
-											</span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Color
-											</span>
-
-                                        <span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
-											</span>
-                                    </li>
-
-                                    <li class="flex-w flex-t p-b-7">
-											<span class="stext-102 cl3 size-205">
-												Size
-											</span>
-
-                                        <span class="stext-102 cl6 size-206">
-												XL, L, M, S
-											</span>
-                                    </li>
-                                </ul>
+                                <img src="${pageContext.request.contextPath}/resources/images/page/size-table.jpg" alt="Lựa chọn size">
                             </div>
                         </div>
                     </div>
@@ -623,13 +545,13 @@
                                     <!-- Review -->
                                     <div class="flex-w flex-t p-b-68">
                                         <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                            <img src="${pageContext.request.contextPath}/resources/images/avatar-01.jpg" alt="AVATAR">
+                                            <img src="https://image.thanhnien.vn/1080/uploaded/nguyetminh/2018_05_22/trump_sbnf.jpg" alt="AVATAR">
                                         </div>
 
                                         <div class="size-207">
                                             <div class="flex-w flex-sb-m p-b-17">
 													<span class="mtext-107 cl2 p-r-20">
-														Ariana Grande
+														Donald Trump
 													</span>
 
                                                 <span class="fs-18 cl11">
@@ -642,8 +564,8 @@
                                             </div>
 
                                             <p class="stext-102 cl6">
-                                                Quod autem in homine praestantissimum atque optimum est, id deseruit.
-                                                Apud ceteros autem philosophos
+                                                Sản phẩm của shop rất tốt, tôi đã đi đôi này hết 2 nhiệm kỳ Tổng thống mà vẫn chưa hỏng,
+                                                xin chân thành cảm ơn DuongShoe Shop.
                                             </p>
                                         </div>
                                     </div>
@@ -655,12 +577,12 @@
                                         </h5>
 
                                         <p class="stext-102 cl6">
-                                            Your email address will not be published. Required fields are marked *
+                                            Email của bạn sẽ không được công bố. Các trường đánh dấu * là bắt buộc.
                                         </p>
 
                                         <div class="flex-w flex-m p-t-50 p-b-23">
 												<span class="stext-102 cl3 m-r-16">
-													Your Rating
+													Đánh giá của bạn
 												</span>
 
                                             <span class="wrap-rating fs-18 cl11 pointer">
@@ -675,13 +597,13 @@
 
                                         <div class="row p-b-25">
                                             <div class="col-12 p-b-5">
-                                                <label class="stext-102 cl3" for="review">Your review</label>
+                                                <label class="stext-102 cl3" for="review">Đánh giá</label>
                                                 <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
                                                           id="review" name="review"></textarea>
                                             </div>
 
                                             <div class="col-sm-6 p-b-5">
-                                                <label class="stext-102 cl3" for="name">Name</label>
+                                                <label class="stext-102 cl3" for="name">Họ và tên</label>
                                                 <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text"
                                                        name="name">
                                             </div>
@@ -694,7 +616,7 @@
                                         </div>
 
                                         <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                            Submit
+                                            GỬI
                                         </button>
                                     </form>
                                 </div>
@@ -723,7 +645,7 @@
     <div class="container">
         <div class="p-b-45">
             <h3 class="ltext-106 cl5 txt-center">
-                Related Products
+                SẢN PHẨM CÙNG LOẠI
             </h3>
         </div>
 
@@ -1186,7 +1108,7 @@
 		</span>
 </div>
 
-<!-- Modal1 -->
+<!-- Xem them cua Related Products -->
 <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
     <div class="overlay-modal1 js-hide-modal1"></div>
 
@@ -1204,34 +1126,34 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[0]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg">
+                                           href="${product.getImages()[0]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[1]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg">
+                                           href="${product.getImages()[1]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[2]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[2]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg">
+                                           href="${product.getImages()[2]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -1404,7 +1326,7 @@
     $('.js-addwish-b2').each(function () {
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
@@ -1427,7 +1349,7 @@
     $('.js-addcart-detail').each(function () {
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
+            swal(nameProduct, "đã thêm vào Giỏ hàng !", "success");
         });
     });
 

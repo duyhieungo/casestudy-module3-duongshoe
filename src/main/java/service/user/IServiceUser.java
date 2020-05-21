@@ -4,6 +4,7 @@ import main.java.model.User;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public interface IServiceUser {
     public User selectAdmin() throws SQLException;
@@ -11,6 +12,8 @@ public interface IServiceUser {
     public void createUser(User user) throws SQLException;
 
     public User selectUser(int id);
+
+    public Map<String, String> selectClient();
 
     public List<User> selectAllUsers();
 

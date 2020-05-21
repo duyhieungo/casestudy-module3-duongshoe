@@ -1,4 +1,7 @@
-<%--
+<%@ page import="main.java.service.bill.BillServiceImpl" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="main.java.model.Bill" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: thuan
   Date: 5/20/20
@@ -20,8 +23,11 @@
     <link rel="stylesheet" href="resources/vendors/chartist/chartist.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="shortcut icon" href="resources/images/favicon.png"/>
+
+
 </head>
 <body>
+
 
 <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -61,7 +67,7 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/bills">
+                    <a class="nav-link" href="/bills?action=list">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
@@ -70,13 +76,14 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
-                        <span class="menu-title">Bill Menu</span>
+                        <span class="menu-title">Danh mục hóa đơn</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/bills">List Bill</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>
+                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">Danh sách hóa đơn</a>
+                            </li>
+                            <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
                     </div>
@@ -87,52 +94,73 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Bill Table </h3>
+                    <h3 class="page-title"> DuongShoe</h3>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Bill List</h4>
+                            <div style="text-align: center" class="card-body">
+                                <h4 class="card-title">Danh sách hóa đơn</h4>
                                 </p>
                                 <table class="table">
+
                                     <thead>
-                                    <caption><h2>Bill List</h2></caption>
+                                    <caption><h2>Danh sách hóa đơn</h2></caption>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>User_Id</th>
-                                        <th>Amount</th>
-                                        <th>Message</th>
-                                        <th>Discount</th>
-                                        <th>Shipping_fee</th>
-                                        <th>Payment/th>
-                                        <th>Date_of_payment</th>
+                                        <%--                                        <th>ID</th>--%>
+                                        <th>MSKH</th>
+                                        <%--                                        <th>Amount</th>--%>
+                                        <th>Thông tin hóa đơn</th>
+                                        <%--                                        <th>Discount</th>--%>
+                                        <%--                                        <th>Phí vận chuyển</th>--%>
+                                        <th>Số tiền thanh toán</th>
+                                        <th>Ngày thanh toán</th>
                                         <th>Status</th>
-                                        <th>Create_date</th>
-                                        <th>Update_date</th>
-                                        <th>Others</th>
+                                        <%--                                        <th>Create_date</th>--%>
+                                        <%--                                        <th>Update_date</th>--%>
+                                        <th style="text-align: center">Công cụ
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
+
+
+
                                     <c:forEach var="bill" items="${listBill}">
+
                                         <tr>
-                                            <td><c:out value="${bill.id}"/></td>
-                                            <td><c:out value="${bill.user_id}"/></td>
-                                            <td><c:out value="${bill.amount}"/></td>
-                                            <td><c:out value="${bill.message}"/></td>
-                                            <td><c:out value="${bill.discount}"/></td>
-                                            <td><c:out value="${bill.shipping_fee}"/></td>
-                                            <td><c:out value="${bill.payment}"/></td>
-                                            <td><c:out value="${bill.date_of_payment}"/></td>
-                                            <td><c:out value="${bill.status}"/></td>
-                                            <td><c:out value="${bill.create_date}"/></td>
-                                            <td><c:out value="${bill.update_date}"/></td>
-                                            <td>
-                                                <a href="/bills?action=edit&id=${bill.id}">Edit</a>
-                                                <a href="/bills?action=delete&id=${bill.id}">Delete</a>
+                                                <%--                                            <td><c:out value="${bill.id}"/></td>--%>
+                                            <td ><c:out value="${bill.user_id}"/></td>
+                                                <%--                                            <td><c:out value="${bill.amount}"/></td>--%>
+                                            <td ><c:out value="${bill.message}"/></td>
+                                                <%--                                            <td><c:out value="${bill.discount}"/></td>--%>
+                                                <%--                                            <td><c:out value="${bill.shipping_fee}"/></td>--%>
+                                            <td ><c:out value="${bill.payment}"/></td>
+                                            <td ><c:out value="${bill.date_of_payment}"/></td>
+                                            <td ><c:out value="${bill.status}"/></td>
+                                                <%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
+                                                <%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
+                                            <td >
+                                                <button onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
+                                                    Xác nhận
+                                                </button>
+
+                                                <button onclick="window.location.href = '/bills?action=pending&id=${bill.id}';">
+                                                    Chờ
+                                                </button>
+                                                <button onclick="window.location.href = '/bills?action=deny&id=${bill.id}';">
+                                                    Từ chối
+                                                </button>
                                             </td>
+
+
                                         </tr>
                                     </c:forEach>
+<%--                                    <a href="ViewServlet?page=1">1</a>--%>
+<%--                                    <a href="ViewServlet?page=1">2</a>--%>
+<%--                                    <a href="ViewServlet?page=1">3</a>--%>
+
                                     </tbody>
                                 </table>
                             </div>
