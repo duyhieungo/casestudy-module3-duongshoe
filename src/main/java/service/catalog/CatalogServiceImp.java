@@ -17,11 +17,11 @@ import java.util.List;
  * @project casestudy-module3-duongshoe
  **/
 
-public class CatalogService implements ICatalogService {
+public class CatalogServiceImp implements ICatalogService {
     private Connection connection;
     private PreparedStatement statement;
 
-    public CatalogService() {
+    public CatalogServiceImp() {
         connection = DBHandle.getConnection();
     }
 

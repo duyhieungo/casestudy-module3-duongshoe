@@ -39,13 +39,7 @@ public class ProductServiceImp implements IProductService {
 
     public List<Product> getProductList(Catalog catalog) throws SQLException {
         List<Product> products = new LinkedList<>();
-        String query = "SELECT * " +
-                "FROM product_detail\n" +
-                "         JOIN product on product_detail.product_id = product.id\n" +
-                "         JOIN catalog on product.catalog_id = catalog.id\n" +
-                "         JOIN size on product_detail.size_id = size.id\n" +
-                "WHERE catalog_id = ?;";
-        statement = connection.prepareStatement(query);
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_CATALOG_ID);
         statement.setInt(1, catalog.getCatalogID());
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {

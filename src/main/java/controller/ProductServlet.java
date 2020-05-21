@@ -3,7 +3,7 @@ package main.java.controller;
 import main.java.model.Catalog;
 import main.java.model.ImportRecord;
 import main.java.model.Product;
-import main.java.service.catalog.CatalogService;
+import main.java.service.catalog.CatalogServiceImp;
 import main.java.service.catalog.ICatalogService;
 import main.java.service.product.IProductService;
 import main.java.service.product.ProductServiceImp;
@@ -30,7 +30,7 @@ import java.util.List;
 @WebServlet(name = "ServletProduct", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductServiceImp();
-    private ICatalogService catalogService = new CatalogService();
+    private ICatalogService catalogService = new CatalogServiceImp();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");

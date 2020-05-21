@@ -63,4 +63,11 @@ public class Query {
     public static final String SELECT_FROM_SIZE = "SELECT * FROM size";
 
     public static final String SELECT_FROM_CATALOG = "SELECT * FROM catalog";
+
+    public static final String SELECT_PRODUCT_BY_CATALOG_ID = "SELECT * " +
+            "FROM product_detail\n" +
+            "         JOIN product on product_detail.product_id = product.id\n" +
+            "         JOIN catalog on product.catalog_id = catalog.id\n" +
+            "         JOIN size on product_detail.size_id = size.id\n" +
+            "WHERE catalog_id = ?;";
 }
