@@ -35,7 +35,7 @@ public class StockServiceImp implements IStockService {
     }
 
     public List<ImportRecord> getImportRecordByProduct(Product product) throws SQLException {
-        return getImportRecordByProductID(product.getProductID());
+        return getImportRecordByProductID(product.getDetailID());
     }
 
     public List<ImportRecord> getImportRecordByProductID(int id) throws SQLException {
