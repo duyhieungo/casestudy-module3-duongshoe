@@ -373,37 +373,22 @@
             <div class="col-md-6 col-lg-7 p-b-30">
                 <div class="p-l-25 p-r-30 p-lr-0-lg">
                     <div class="wrap-slick3 flex-sb flex-w">
-                        <div class="wrap-slick3-dots">
-                            <ul class="slick3-dots" role="tablist">
-                                <li class="slick-active" role="presentation">
-                                    <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-                                    <div class="slick3-dot-overlay"></div>
-                                </li>
-                                <li role="presentation">
-                                    <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-                                    <div class="slick3-dot-overlay"></div>
-                                </li>
-                                <li role="presentation">
-                                    <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-                                    <div class="slick3-dot-overlay"></div>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="wrap-slick3-dots"></div>
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                         <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="${product.getImages()[0]}" alt="IMG-PRODUCT">
 
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                       href="src="${product.getImages()[0]}"">
+                                       href="${product.getImages()[0]}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[1]}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="${product.getImages()[1]}" alt="IMG-PRODUCT">
 
@@ -414,7 +399,7 @@
                                 </div>
                             </div>
 
-                            <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                            <div class="item-slick3" data-thumb="${product.getImages()[2]}">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="${product.getImages()[2]}" alt="IMG-PRODUCT">
 
@@ -454,10 +439,9 @@
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="time">
                                         <option>Choose an option</option>
-                                        <option>Size S</option>
-                                        <option>Size M</option>
-                                        <option>Size L</option>
-                                        <option>Size XL</option>
+                                        <c:forEach var="size" items="${size}">
+                                            <option><c:out value="${size}"></c:out></option>
+                                        </c:forEach>
                                     </select>
                                     <div class="dropDownSelect2"></div>
                                 </div>
@@ -1124,7 +1108,7 @@
 		</span>
 </div>
 
-<!-- Modal1 -->
+<!-- Xem them cua Related Products -->
 <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
     <div class="overlay-modal1 js-hide-modal1"></div>
 
@@ -1142,34 +1126,34 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[0]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-01.jpg">
+                                           href="${product.getImages()[0]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[0]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[1]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-02.jpg">
+                                           href="${product.getImages()[1]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                <div class="item-slick3" data-thumb="${product.getImages()[2]}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                        <img src="${product.getImages()[2]}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                           href="${pageContext.request.contextPath}/resources/images/product-detail-03.jpg">
+                                           href="${product.getImages()[2]}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -1342,7 +1326,7 @@
     $('.js-addwish-b2').each(function () {
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
@@ -1365,7 +1349,7 @@
     $('.js-addcart-detail').each(function () {
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
         $(this).on('click', function () {
-            swal(nameProduct, "is added to cart !", "success");
+            swal(nameProduct, "đã thêm vào Giỏ hàng !", "success");
         });
     });
 

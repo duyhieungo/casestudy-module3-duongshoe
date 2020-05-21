@@ -56,6 +56,15 @@ public class ProductServiceImp implements IProductService {
         return parseResultSet(resultSet);
     }
 
+    @Override
+    public Product getProductByProductID(int id) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_PRODUCT_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.first();
+        return parseResultSet(resultSet);
+    }
+
     public List<Integer> getSizeList() throws SQLException {
         List<Integer> sizeList = new LinkedList<>();
         String query = "SELECT * FROM size";
@@ -66,6 +75,7 @@ public class ProductServiceImp implements IProductService {
         }
         return sizeList;
     }
+
 
     public boolean addNewProduct(Product product) throws SQLException {
         if (addProduct(product)) {
@@ -136,6 +146,18 @@ public class ProductServiceImp implements IProductService {
             products.add(parseSimpleResultSet(resultSet));
         }
         return products;
+    }
+
+    @Override
+    public List<Integer> getSizeListByProductID(int id) throws SQLException {
+        List<Integer> sizeList = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_SIZE_BY_PRODUCT_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            sizeList.add(resultSet.getInt("size"));
+        }
+        return sizeList;
     }
 
     public boolean updateProductDB(Product product) throws SQLException {

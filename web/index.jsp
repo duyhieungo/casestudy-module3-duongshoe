@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/icons/favicon.png"/>
+    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/logo-black.png"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
@@ -90,7 +90,7 @@
 
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img src="${pageContext.request.contextPath}/resources/images/icons/logo-01.png" alt="IMG-LOGO">
+                    <img src="${pageContext.request.contextPath}/resources/images/Duong-Shoe-logo-black.png" width="100" height="70" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
@@ -150,8 +150,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="index.html"><img src="${pageContext.request.contextPath}/resources/images/icons/logo-01.png"
-                                      alt="IMG-LOGO"></a>
+            <a href="index.jsp"><img src="${pageContext.request.contextPath}/resources/images/Duong-Shoe-logo-black.png" alt="IMG-LOGO"></a>
         </div>
 
         <!-- Icon header -->

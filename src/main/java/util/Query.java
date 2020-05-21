@@ -29,6 +29,17 @@ public class Query {
             "         JOIN size on product_detail.size_id = size.id " +
             "WHERE product_detail.id = ?;";
 
+    public static final String SELECT_PRODUCT_BY_PRODUCT_ID = "SELECT *\n" +
+            "FROM product_detail\n" +
+            "         JOIN product on product_detail.product_id = product.id\n" +
+            "         JOIN catalog on product.catalog_id = catalog.id\n" +
+            "         JOIN size on product_detail.size_id = size.id " +
+            "WHERE product.id = ?;";
+
+    public static final String SELECT_SIZE_BY_PRODUCT_ID = "SELECT size FROM product_detail\n" +
+            "JOIN size ON product_detail.size_id = size.id\n" +
+            "WHERE product_id = ?";
+
     public static final String SELECT_IMPORT_BY_PRODUCT_ID = "SELECT * FROM import\n" +
             "JOIN product_detail on import.product_detail_id = product_detail.id\n" +
             "WHERE product_detail_id = ?;";
