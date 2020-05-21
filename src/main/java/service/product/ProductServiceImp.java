@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,7 +36,6 @@ public class ProductServiceImp implements IProductService {
         }
         return products;
     }
-
 
     public List<String> getImageLinks(Product product) throws SQLException {
         List<String> imageLinks = new LinkedList<>();
@@ -67,37 +67,109 @@ public class ProductServiceImp implements IProductService {
         return sizeList;
     }
 
-    public boolean addToDB(Product product) throws SQLException {
-        String query = "INSERT INTO product" +
-                "    (catalog_id, product_name, description, status)" +
-                "VALUES (?, ?, ?, ?);";
-        statement = connection.prepareStatement(query);
-        statement.setInt(1, product.getCatalogID());
-        statement.setString(2, product.getProductName());
-        statement.setString(3, product.getDescription());
-        statement.setInt(4, product.getStatus());
-        if (statement.executeUpdate() != -1) {
-            String query2 = "INSERT INTO product_detail" +
-                    "    (product_id, size_id)" +
-                    "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1), " +
-                    "(SELECT size.id FROM size WHERE size = ?));";
-            statement = connection.prepareStatement(query2);
-            statement.setInt(1, product.getSize());
-            if (statement.executeUpdate() != -1) {
-                String query3 = "INSERT INTO attachment(product_id, image_link, status) " +
-                        "VALUES ((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
-                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1)," +
-                        "((SELECT product.id FROM product ORDER BY id DESC LIMIT 1),?,1);";
-                statement = connection.prepareStatement(query3);
-                statement.setString(1, product.getImages().get(0));
-                statement.setString(2, product.getImages().get(1));
-                statement.setString(3, product.getImages().get(2));
-                return statement.executeUpdate() != -1;
-            }
+    public boolean addNewProduct(Product product) throws SQLException {
+        if (addProduct(product)) {
+            return addNewProductSize(product) && addNewProductAllImageDB(product);
         }
         return false;
     }
 
+    public boolean addProduct(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.INSERT_NEW_PRODUCT);
+        statement.setInt(1, product.getCatalogID());
+        statement.setString(2, product.getProductName());
+        statement.setString(3, product.getDescription());
+        statement.setInt(4, product.getStatus());
+        return statement.executeUpdate() != -1;
+    }
+
+    public boolean addNewProductAllImageDB(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_NEW_PRODUCT);
+        ResultSet resultSet = statement.executeQuery();
+        int productId = resultSet.getInt("id");
+        List<String> imageLinks = product.getImages();
+        for (String imageLink : imageLinks) {
+            if (!addProductImage(productId, imageLink)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addProductImage(int productID, String imageLink) throws SQLException {
+        statement = connection.prepareStatement(Query.INSERT_PRODUCT_IMAGE);
+        System.out.println(productID);
+        statement.setInt(1, productID);
+        statement.setString(2, imageLink);
+        statement.setInt(3, 1);
+        return statement.executeUpdate() != -1;
+    }
+
+    public boolean addNewProductSize(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_NEW_PRODUCT);
+        ResultSet resultSet = statement.executeQuery();
+        int productId = resultSet.getInt("id");
+        return addProductSize(productId, product.getSize());
+    }
+
+    public boolean addProductSize(int productID, int size) throws SQLException {
+        statement = connection.prepareStatement(Query.INSERT_PRODUCT_SIZE);
+        statement.setInt(1, productID);
+        statement.setInt(2, size);
+        return statement.executeUpdate() != -1;
+    }
+
+    @Override
+    public boolean updateProduct(Product product) throws SQLException {
+        if (updateProductDB(product)) {
+            return updateProductSizeDB(product) && updateProductImageDB(product);
+        }
+        return false;
+    }
+
+    public boolean updateProductDB(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.UPDATE_PRODUCT);
+        statement.setInt(1, product.getCatalogID());
+        statement.setString(2, product.getProductName());
+        statement.setString(3, product.getDescription());
+        statement.setInt(4, product.getStatus());
+        statement.setInt(5, product.getProductID());
+        return statement.executeUpdate() != -1;
+    }
+
+    public boolean updateProductSizeDB(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.UPDATE_PRODUCT_SIZE);
+        statement.setInt(1, product.getSize());
+        statement.setInt(2, product.getDetailID());
+        return statement.executeUpdate() != -1;
+    }
+
+    public boolean updateProductImageDB(Product product) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_ATTACHMENT_ID_BY_PRODUCT_ID);
+        statement.setInt(1, product.getProductID());
+        ResultSet resultSet = statement.executeQuery();
+        List<Integer> idList = new LinkedList<>();
+        while (resultSet.next()) {
+            idList.add(resultSet.getInt("id"));
+        }
+        statement = connection.prepareStatement(Query.UPDATE_PRODUCT_IMAGE);
+        List<String> imageLinks = product.getImages();
+        Iterator<Integer> iterator = idList.iterator();
+        for (String imageLink : imageLinks) {
+            statement.setString(1, imageLink);
+            if (!iterator.hasNext()) {
+                if (!addProductImage(product.getProductID(), imageLink)) {
+                    return false;
+                }
+            } else {
+                statement.setInt(2, iterator.next());
+                if (statement.executeUpdate() == -1) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
@@ -117,5 +189,4 @@ public class ProductServiceImp implements IProductService {
         product.setImages(getImageLinks(product));
         return product;
     }
-
 }
