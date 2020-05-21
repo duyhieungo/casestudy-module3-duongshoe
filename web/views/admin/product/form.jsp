@@ -127,9 +127,8 @@
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=create">Thêm
-                                sản
-                                phẩm</a></li>
+                                                    href="${pageContext.request.contextPath}/product?">Danh sách nhãn
+                                hàng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -183,29 +182,49 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">
-                        Thông tin sản phẩm
-                    </h3>
-                    <p>${message}</p>
+                    <h4 class="page-title">
+                        <c:choose>
+                            <c:when test="${action == 'create'}">
+                                Thêm Mới
+                            </c:when>
+                            <c:when test="${action == 'update'}">
+                                Cập Nhật
+                            </c:when>
+                        </c:choose>
+                    </h4>
+                    <c:choose>
+                        <c:when test="${status == 1}">
+                            <label class="badge badge-danger" style="font-size: 13px; margin-bottom: 0">
+                                Không thành công
+                            </label>
+                        </c:when>
+                        <c:when test="${status == 0}">
+                            <label class="badge badge-success" style="font-size: 13px; margin-bottom: 0">
+                                Thành công
+                            </label>
+                        </c:when>
+                    </c:choose>
                 </div>
                 <div class="row">
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><c:choose>
-                                    <c:when test="${action == 'create'}">
-                                        Thêm sản phẩm mới
-                                    </c:when>
-                                    <c:when test="${action == 'update'}">
-                                        Cập nhật sản phẩm hiện tại
-                                    </c:when>
-                                </c:choose></h4>
-                                <br>
-                                <form class="forms-sample" method="post">
+                                <p class="card-title" style="margin-bottom: 20px; float: right">Thông tin sản phẩm</p>
+                                <p class="card-description"
+                                   style="margin-bottom: 8px; float: left; color: red">${message}</p>
+                                <form class="forms-sample" method="post" style="clear: both">
                                     <div class="form-group">
-                                        <label for="name">Tên sản phẩm</label>
+                                        <label for="name">Tên</label>
                                         <input type="text" class="form-control" id="name"
-                                               placeholder="${product.getProductName()}" name="product-name">
+                                        <c:choose>
+                                        <c:when test="${product.getProductName() == null}">
+                                               placeholder="Tên sản phẩm không được để trống"
+                                        </c:when>
+                                        <c:otherwise>
+                                               placeholder="${product.getProductName()}"
+                                        </c:otherwise>
+                                        </c:choose>
+                                               name="product-name">
                                     </div>
                                     <div class="form-group">
                                         <label for="catalog">Hãng</label>

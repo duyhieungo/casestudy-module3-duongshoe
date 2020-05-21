@@ -1,5 +1,6 @@
 package main.java.service.product;
 
+import main.java.model.Catalog;
 import main.java.model.Product;
 
 import java.sql.SQLException;
@@ -13,9 +14,11 @@ import java.util.List;
 public interface IProductService {
     List<Product> getProductList() throws SQLException;
 
+    List<Product> getProductList(Catalog catalog) throws SQLException;
+
     List<String> getImageLinks(Product product) throws SQLException;
 
-    Product getProductByID(int id) throws SQLException;
+    Product getProductByDetailID(int id) throws SQLException;
 
     Product getProductByProductID(int id) throws SQLException;
 
@@ -24,6 +27,8 @@ public interface IProductService {
     boolean addNewProduct(Product product) throws SQLException;
 
     boolean updateProduct(Product product) throws SQLException;
+
+    boolean deleteProduct(int id) throws SQLException;
 
     List<Product> getProductForHomePage() throws SQLException;
 

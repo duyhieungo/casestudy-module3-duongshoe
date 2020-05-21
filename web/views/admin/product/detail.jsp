@@ -122,13 +122,13 @@
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=">Danh sách sản
+                                                    href="${pageContext.request.contextPath}/product?action=">Danh sách
+                                sản
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?action=create">Thêm
-                                sản
-                                phẩm</a></li>
+                                                    href="${pageContext.request.contextPath}/product?">Danh sách nhãn
+                                hàng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -185,6 +185,16 @@
                     <h3 class="page-title">Chi tiết sản phẩm</h3>
                 </div>
                 <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title" style="float: left">${product.getProductName()}</h4>
+                                <h4 class="card-title" style="float: right">Nhãn hàng: ${product.getCatalogName()}</h4>
+                                <p class="card-description" style="clear: both"> Size: <code>${product.getSize()}</code></p>
+                                <p> ${product.getDescription()} </p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">

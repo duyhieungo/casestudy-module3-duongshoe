@@ -1,7 +1,9 @@
 package test;
 
+import main.java.model.Catalog;
 import main.java.service.product.IProductService;
 import main.java.service.product.ProductServiceImp;
+import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -24,4 +26,13 @@ class ProductServiceImpTest {
 //            e.printStackTrace();
 //        }
 //    }
+
+
+    @Test
+    void getProductList() throws SQLException {
+        ProductServiceImp serviceImp = new ProductServiceImp();
+        Catalog catalog = new Catalog();
+        catalog.setCatalogID(2);
+        System.out.println(serviceImp.getProductList(catalog));
+    }
 }

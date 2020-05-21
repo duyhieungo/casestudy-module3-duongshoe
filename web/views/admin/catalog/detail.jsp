@@ -122,13 +122,13 @@
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?">Danh sách
+                                                    href="${pageContext.request.contextPath}/product?action=">Danh sách
                                 sản
                                 phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link"
-                                                    href="${pageContext.request.contextPath}/product?">Danh
-                                sách nhãn hàng</a></li>
+                                                    href="${pageContext.request.contextPath}/product?">Danh sách nhãn
+                                hàng</a></li>
                         </ul>
                     </div>
                 </li>
@@ -181,63 +181,41 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="page-header" style="margin-bottom: 5px">
-                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>
+                <div class="page-header">
+                    <h3 class="page-title">Chi tiết sản phẩm</h3>
                 </div>
-                <c:if test="${status == 1}">
-                    <label class="badge badge-warning" style="font-size: 13px; margin-bottom: 18px; margin-top: 8px ">
-                        Xoá thành công
-                    </label>
-                </c:if>
-                <a href="${pageContext.request.contextPath}/product?action=create"
-                   class="nav-link" style="float: right; margin-bottom: 10px"><i class="icon-plus"></i> Thêm mới</a>
-                <div class="row" style="clear: both">
-                    <div class="col-lg-12 grid-margin stretch-card">
+                <div class="row">
+                    <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <p class="card-title" style="margin-bottom: 20px">Các sản phẩm hiện có</p>
-                                <table class="table table-hover">
+                                <h4 class="card-title">Lịch sử nhập hàng</h4>
+                                <p class="card-description"> Ngày cập nhật: <code>${requestDate}</code>
+                                </p>
+                                <table class="table table-bordered">
                                     <thead>
-                                    <tr style="text-align: center">
-                                        <th style="font-weight: bold">ID</th>
-                                        <th style="font-weight: bold">Sản phẩm</th>
-                                        <th style="font-weight: bold">Hãng</th>
-                                        <th style="font-weight: bold">Size</th>
-                                        <th style="font-weight: bold">Tình trạng</th>
-                                        <th colspan="2" style="font-weight: bold">Thao tác</th>
+                                    <tr>
+                                        <th>Mã đơn</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Mã hàng</th>
+                                        <th>Giá nhập</th>
+                                        <th>Tình trạng</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${products}" var="product">
-                                        <tr style="text-align: center">
-                                            <td>${product.getDetailID()}</td>
-                                            <td style="text-align: left">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
-                                                   class="nav-link">${product.getProductName()}</a>
-                                            </td>
-                                            <td>${product.getCatalogName()}</td>
-                                            <td>${product.getSize()}</td>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${product.getStatus() == 1}">
-                                                        <label class="badge badge-success">Đang kinh doanh</label>
-                                                    </c:when>
-                                                    <c:when test="${product.getStatus() == 0}">
-                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
-                                                    </c:when>
-                                                </c:choose>
-                                            </td>
-                                            <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=update&id=${product.getDetailID()}"
-                                                   class="nav-link"><i class="icon-pencil"></i></a>
-                                            </td>
-                                            <td style="width: 10px">
-                                                <a class="nav-link" href="#" onclick="
-                                                        if (confirm('Bạn có chắc chắn muốn xoá ?')) {
-                                                        document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
-                                                        }
-                                                        "><i class="icon-trash"></i></a>
-                                            </td>
+                                    <c:forEach items="${importRecords}" var="record">
+                                        <tr>
+                                            <td>${record.getImportID()}</td>
+                                            <td>${record.getImportDate()}</td>
+                                            <td>${record.getProductCode()}</td>
+                                            <td>${record.getPrice()}</td>
+                                            <td><c:choose>
+                                                <c:when test="${record.getStatus() == 1}">
+                                                    <label class="badge badge-success">Còn hàng</label>
+                                                </c:when>
+                                                <c:when test="${record.getStatus() == 0}">
+                                                    <label class="badge badge-danger">Đã bán</label>
+                                                </c:when>
+                                            </c:choose></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -245,6 +223,119 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Lịch sử Đặt hàng</h4>
+                                <p class="card-description"> Ngày cập nhật: <code>${requestDate}</code>
+                                </p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Mã đơn</th>
+                                        <th>Ngày bán</th>
+                                        <th>Mã hàng</th>
+                                        <th>Giá bán</th>
+                                        <th>Tình trạng</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td> 1</td>
+                                        <td> Herman Beck</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                     style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $ 77.99</td>
+                                        <td> May 15, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 2</td>
+                                        <td> Messsy Adam</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                     style="width: 75%" aria-valuenow="75" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $245.30</td>
+                                        <td> July 1, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 3</td>
+                                        <td> John Richards</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                     style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $138.00</td>
+                                        <td> Apr 12, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 4</td>
+                                        <td> Peter Meggik</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar"
+                                                     style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $ 77.99</td>
+                                        <td> May 15, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 5</td>
+                                        <td> Edward</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-danger" role="progressbar"
+                                                     style="width: 35%" aria-valuenow="35" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $ 160.25</td>
+                                        <td> May 03, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 6</td>
+                                        <td> John Doe</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 65%"
+                                                     aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $ 123.21</td>
+                                        <td> April 05, 2015</td>
+                                    </tr>
+                                    <tr>
+                                        <td> 7</td>
+                                        <td> Henry Tom</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                     style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td> $ 150.00</td>
+                                        <td> June 16, 2015</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- content-wrapper ends -->

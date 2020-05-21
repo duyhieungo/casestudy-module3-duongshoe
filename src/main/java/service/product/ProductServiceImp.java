@@ -37,6 +37,17 @@ public class ProductServiceImp implements IProductService {
         return products;
     }
 
+    public List<Product> getProductList(Catalog catalog) throws SQLException {
+        List<Product> products = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_CATALOG_ID);
+        statement.setInt(1, catalog.getCatalogID());
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            products.add(parseResultSet(resultSet));
+        }
+        return products;
+    }
+
     public List<String> getImageLinks(Product product) throws SQLException {
         List<String> imageLinks = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_ALL_IMAGE_FROM_PRODUCT);
@@ -48,8 +59,8 @@ public class ProductServiceImp implements IProductService {
         return imageLinks;
     }
 
-    public Product getProductByID(int id) throws SQLException {
-        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_ID);
+    public Product getProductByDetailID(int id) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_DETAIL_ID);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         resultSet.first();
@@ -67,8 +78,7 @@ public class ProductServiceImp implements IProductService {
 
     public List<Integer> getSizeList() throws SQLException {
         List<Integer> sizeList = new LinkedList<>();
-        String query = "SELECT * FROM size";
-        statement = connection.prepareStatement(query);
+        statement = connection.prepareStatement(Query.SELECT_FROM_SIZE);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             sizeList.add(resultSet.getInt("size"));
@@ -202,6 +212,14 @@ public class ProductServiceImp implements IProductService {
             }
         }
         return true;
+    }
+
+    @Override
+    public boolean deleteProduct(int id) throws SQLException {
+        String query = "UPDATE product_detail SET status = -1 WHERE id = ?";
+        statement = connection.prepareStatement(query);
+        statement.setInt(1, id);
+        return statement.executeUpdate() != -1;
     }
 
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
