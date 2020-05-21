@@ -127,6 +127,17 @@ public class ProductServiceImp implements IProductService {
         return false;
     }
 
+    @Override
+    public List<Product> getProductForHomePage() throws SQLException {
+        List<Product> products = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_FOR_HOMEPAGE);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            products.add(parseSimpleResultSet(resultSet));
+        }
+        return products;
+    }
+
     public boolean updateProductDB(Product product) throws SQLException {
         statement = connection.prepareStatement(Query.UPDATE_PRODUCT);
         statement.setInt(1, product.getCatalogID());
@@ -181,6 +192,22 @@ public class ProductServiceImp implements IProductService {
         product.setDescription(resultSet.getString("product.description"));
         product.setStatus(resultSet.getInt("product_detail.status"));
         product.setSize(resultSet.getInt("size"));
+        catalog.setCatalogID(resultSet.getInt("catalog.id"));
+        catalog.setCatalogName(resultSet.getString("name"));
+        catalog.setDescription(resultSet.getString("catalog.description"));
+        catalog.setStatus(resultSet.getInt("catalog.status"));
+        product.setCatalog(catalog);
+        product.setImages(getImageLinks(product));
+        return product;
+    }
+
+    private Product parseSimpleResultSet(ResultSet resultSet) throws SQLException {
+        Product product = new Product();
+        Catalog catalog = new Catalog();
+        product.setProductID(resultSet.getInt("product_id"));
+        product.setCatalogID(resultSet.getInt("catalog.id"));
+        product.setProductName(resultSet.getString("product_name"));
+        product.setDescription(resultSet.getString("product.description"));
         catalog.setCatalogID(resultSet.getInt("catalog.id"));
         catalog.setCatalogName(resultSet.getString("name"));
         catalog.setDescription(resultSet.getString("catalog.description"));

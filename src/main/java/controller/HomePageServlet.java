@@ -41,7 +41,7 @@ public class HomePageServlet extends HttpServlet {
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<Product> productList = productService.getProductList();
+        List<Product> productList = productService.getProductForHomePage();
         request.setAttribute("productList", productList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

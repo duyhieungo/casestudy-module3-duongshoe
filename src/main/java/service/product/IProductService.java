@@ -22,4 +22,6 @@ public interface IProductService {
     boolean addNewProduct(Product product) throws SQLException;
 
     boolean updateProduct(Product product) throws SQLException;
+
+    List<Product> getProductForHomePage() throws SQLException;
 }

@@ -382,7 +382,7 @@
                     <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                         <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									NIKE New Collection 2020
+									NIKE NEW COLLECTION 2020
 								</span>
                         </div>
 
@@ -557,27 +557,27 @@
                     Tất cả sản phẩm
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".ADIDAS">
                     Adidas
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".NIKE">
                     Nike
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".GUCCI">
                     Gucci
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".PUMA">
                     Puma
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".BITIS">
                     Biti's
                 </button>
 
-                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".VANS">
                     Vans
                 </button>
             </div>
@@ -704,11 +704,11 @@
 
         <div class="row isotope-grid">
             <c:forEach var="product" items="${productList}">
-                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${product.catalog.catalogName}" >
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="${product.images[0]}" alt="IMG-PRODUCT">
+                            <img src="${product.images[0]}" width="315" height="350" alt="IMG-PRODUCT">
                             <a href="#"
                                class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Xem nhanh

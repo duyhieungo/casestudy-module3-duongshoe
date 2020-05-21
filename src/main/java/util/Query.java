@@ -15,7 +15,8 @@ public class Query {
             "JOIN size on product_detail.size_id = size.id";
 
     public static final String SELECT_PRODUCT_FOR_HOMEPAGE = "SELECT * FROM product\n" +
-            "JOIN attachment ON product.id = attachment.product_id";
+            "JOIN attachment ON product.id = attachment.product_id" +
+            "JOIN catalog ON product.catalog_id = catalog.id" ;
 
 
     public static final String SELECT_ALL_IMAGE_FROM_PRODUCT = "SELECT * FROM attachment\n" +
