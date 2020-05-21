@@ -25,4 +25,6 @@ public interface IProductService {
     boolean addNewProduct(Product product) throws SQLException;
 
     boolean updateProduct(Product product) throws SQLException;
+
+    boolean deleteProduct(int id) throws SQLException;
 }

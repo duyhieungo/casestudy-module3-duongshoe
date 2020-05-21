@@ -184,6 +184,11 @@
                 <div class="page-header" style="margin-bottom: 5px">
                     <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>
                 </div>
+                <c:if test="${status == 1}">
+                    <label class="badge badge-warning" style="font-size: 13px; margin-bottom: 18px; margin-top: 8px ">
+                        Xoá thành công
+                    </label>
+                </c:if>
                 <a href="${pageContext.request.contextPath}/product?action=create"
                    class="nav-link" style="float: right; margin-bottom: 10px"><i class="icon-plus"></i> Thêm mới</a>
                 <div class="row" style="clear: both">
@@ -199,14 +204,17 @@
                                         <th style="font-weight: bold">Hãng</th>
                                         <th style="font-weight: bold">Size</th>
                                         <th style="font-weight: bold">Tình trạng</th>
-                                        <th colspan="3" style="font-weight: bold">Thao tác</th>
+                                        <th colspan="2" style="font-weight: bold">Thao tác</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${products}" var="product">
                                         <tr style="text-align: center">
-                                            <td>${product.getProductID()}</td>
-                                            <td style="text-align: left">${product.getProductName()}</td>
+                                            <td>${product.getDetailID()}</td>
+                                            <td style="text-align: left">
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
+                                                   class="nav-link">${product.getProductName()}</a>
+                                            </td>
                                             <td>${product.getCatalogName()}</td>
                                             <td>${product.getSize()}</td>
                                             <td>
@@ -220,16 +228,15 @@
                                                 </c:choose>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
-                                                   class="nav-link"><i class="icon-options"></i></a>
-                                            </td>
-                                            <td style="width: 10px">
                                                 <a href="${pageContext.request.contextPath}/product?action=update&id=${product.getDetailID()}"
                                                    class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}"
-                                                   class="nav-link"><i class="icon-trash"></i></a>
+                                                <a class="nav-link" href="#" onclick="
+                                                        if (confirm('Bạn có chắc chắn muốn xoá ?')) {
+                                                        document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
+                                                        }
+                                                        "><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>

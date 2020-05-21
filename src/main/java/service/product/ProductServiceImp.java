@@ -181,6 +181,14 @@ public class ProductServiceImp implements IProductService {
         return true;
     }
 
+    @Override
+    public boolean deleteProduct(int id) throws SQLException {
+        String query = "UPDATE product_detail SET status = -1 WHERE id = ?";
+        statement = connection.prepareStatement(query);
+        statement.setInt(1, id);
+        return statement.executeUpdate() != -1;
+    }
+
     private Product parseResultSet(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         Catalog catalog = new Catalog();

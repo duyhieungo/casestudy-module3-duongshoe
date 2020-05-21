@@ -84,19 +84,6 @@ public class ProductServlet extends HttpServlet {
         showForm(request, response);
     }
 
-    private Product parseRequestData(HttpServletRequest request) {
-        Product product = new Product();
-        product.setProductName(request.getParameter("product-name"));
-        product.setCatalogID(Integer.parseInt(request.getParameter("catalog-id")));
-        product.setSize(Integer.parseInt(request.getParameter("product-size")));
-        product.setDescription(request.getParameter("product-description"));
-        product.addImages(request.getParameter("image-link-1"));
-        product.addImages(request.getParameter("image-link-2"));
-        product.addImages(request.getParameter("image-link-3"));
-        product.addImages(request.getParameter("image-link-4"));
-        return product;
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -113,9 +100,26 @@ public class ProductServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             case "delete":
-
+                deleteProduct(request, response);
+                break;
             default:
-                displayProductList(request, response);
+                showProductList(request, response);
+        }
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            if (request.getParameter("confirm") == null) {
+                showProductList(request, response);
+            } else if (request.getParameter("confirm").equals("ok")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                if (productService.deleteProduct(id)) {
+                    request.setAttribute("status", 1);
+                    showProductList(request, response);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -172,7 +176,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
-    private void displayProductList(HttpServletRequest request, HttpServletResponse response) {
+    private void showProductList(HttpServletRequest request, HttpServletResponse response) {
         try {
             List<Product> products = productService.getProductList();
             request.setAttribute("products", products);
@@ -180,5 +184,19 @@ public class ProductServlet extends HttpServlet {
         } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private Product parseRequestData(HttpServletRequest request) {
+        Product product = new Product();
+        product.setDetailID(Integer.parseInt(request.getParameter("id")));
+        product.setProductName(request.getParameter("product-name"));
+        product.setCatalogID(Integer.parseInt(request.getParameter("catalog-id")));
+        product.setSize(Integer.parseInt(request.getParameter("product-size")));
+        product.setDescription(request.getParameter("product-description"));
+        product.addImages(request.getParameter("image-link-1"));
+        product.addImages(request.getParameter("image-link-2"));
+        product.addImages(request.getParameter("image-link-3"));
+        product.addImages(request.getParameter("image-link-4"));
+        return product;
     }
 }
