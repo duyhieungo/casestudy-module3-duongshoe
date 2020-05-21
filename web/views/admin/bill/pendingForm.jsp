@@ -61,7 +61,7 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/bills">
+                    <a class="nav-link" href="/bills?action=list">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
@@ -70,12 +70,12 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
-                        <span class="menu-title">Bill Menu</span>
+                        <span class="menu-title">Danh mục hóa đơn</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/bills">List Bill</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">List Bill</a></li>
                             <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
@@ -89,7 +89,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Edit</h3>
+                    <h3 class="page-title"> DuongShoe</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
@@ -99,66 +99,65 @@
                                 <p class="card-description"> Thông tin chi tiết hóa đơn</p>
                                 <form class="forms-sample" method="post">
                                     <table border="1" cellpadding="5">
-                                        <
                                         <caption>
                                             <h2>
                                                 Trang thái chờ
                                             </h2>
                                         </caption>
                                         <c:if test="${bill != null}">
-                                            <input type="hidden" name="id" value="<c:out value='${bill.id}' />"/>
+                                            <input type="hidden"  value="<c:out value='${bill.id}' />"/>
                                         </c:if>
                                         <tr>
                                             <th>Mã số khách hàng:</th>
-                                            <td size="45" name="user_id">
+                                            <td size="45" >
                                                 <c:out value="${bill.user_id}"/>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Số lượng:</th>
-                                            <td size="45" name="amount">
+                                            <th>Giá đơn hàng:</th>
+                                            <td size="45" >
                                                 <c:out value="${bill.amount}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Thông tin:</th>
-                                            <td size="45" name="message">
+                                            <td size="45" >
                                                 <c:out value="${bill.message}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Chiết khấu:</th>
-                                            <td size="45" name="discount">
+                                            <td size="45" >
                                                 <c:out value="${bill.discount}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Phí vận chuyển:</th>
-                                            <td size="45" name="shipping_fee">
+                                            <td size="45" >
                                                 <c:out value="${bill.shipping_fee}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Số thanh toán:</th>
-                                            <td size="45" name="payment">
+                                            <td size="45" >
                                                 <c:out value="${bill.payment}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Ngày thanh toán</th>
-                                            <td size="45" name="date_of_payment">
+                                            <td size="45" >
                                                 <c:out value="${bill.date_of_payment}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Ngày tạo hóa đơn:</th>
-                                            <td size="45" name="create_date">
+                                            <td size="45" >
                                                 <c:out value="${bill.create_date}"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Ngày cập nhật hóa đơn</th>
-                                            <td size="45" name="update_date">
+                                            <td size="45" >
                                                 <c:out value="${bill.update_date}"/>
                                             </td>
                                         </tr>

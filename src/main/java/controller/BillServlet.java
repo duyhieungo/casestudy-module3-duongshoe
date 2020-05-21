@@ -62,6 +62,7 @@ public class BillServlet extends HttpServlet {
                     break;
                 case "pending":
                     showPendingForm(request,response);
+                    break;
                 default:
                     listBill(request, response);
                     break;
@@ -88,14 +89,7 @@ public class BillServlet extends HttpServlet {
         request.setAttribute("bill", existingUser);
         dispatcher.forward(request, response);
     }
-    private void showPendingForm(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Bill existingUser = billServiceImpl.selectBill(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/pendingForm.jsp");
-        request.setAttribute("bill", existingUser);
-        dispatcher.forward(request, response);
-    }
+
     private void showDenyForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -120,6 +114,15 @@ public class BillServlet extends HttpServlet {
         Bill anotherBill = new Bill(id, status);
         billServiceImpl.updateBill(anotherBill);
         response.sendRedirect("/bills");
+    }
+
+    private void showPendingForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Bill existingUser = billServiceImpl.selectBill(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/pendingForm.jsp");
+        request.setAttribute("bill", existingUser);
+        dispatcher.forward(request, response);
     }
     private void pendingBill(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {

@@ -61,7 +61,7 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/bills">
+                    <a class="nav-link" href="/bills?action=list">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
@@ -70,12 +70,12 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                        aria-controls="ui-basic">
-                        <span class="menu-title">Bill Menu</span>
+                        <span class="menu-title">Danh mục hóa đơn</span>
                         <i class="icon-layers menu-icon"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/bills">List Bill</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">List Bill</a></li>
                             <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
                             </li>
                         </ul>
@@ -89,7 +89,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title"> Edit</h3>
+                    <h3 class="page-title"> DuongShoe</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
@@ -99,7 +99,6 @@
                                 <p class="card-description"> Thông tin chi tiết hóa đơn</p>
                                 <form class="forms-sample" method="post">
                                     <table border="1" cellpadding="5">
-                                        <
                                         <caption>
                                             <h2>
                                                 Xác nhận hóa đơn
@@ -115,7 +114,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Số lượng:</th>
+                                            <th>Giá đơn hàng:</th>
                                             <td size="45" name="amount">
                                                 <c:out value="${bill.amount}"/>
                                             </td>
