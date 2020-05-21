@@ -91,7 +91,7 @@ public class BillServiceImpl implements BillService {
     public boolean updateBill(Bill bill) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_BILLS_SQL);) {
-            statement.setInt(2,bill.getId());
+            statement.setInt(2, bill.getId());
             statement.setDouble(1, bill.getStatus());
             rowUpdated = statement.executeUpdate() > 0;
         }
@@ -112,15 +112,5 @@ public class BillServiceImpl implements BillService {
                 }
             }
         }
-    }
-
-    public ArrayList<Bill> getListByPage(int start,int total){
-        ArrayList<Bill> list = new ArrayList<>();
-       try {
-           Connection con =getConnection();
-           PreparedStatement ps=con.prepareStatement
-                   ("select * from bill limit" + (start-1)+","+total);
-           ResultSet rs =
-       }
     }
 }
