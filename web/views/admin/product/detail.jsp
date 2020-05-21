@@ -207,6 +207,7 @@
                                         <h4 class="card-description"> Size:
                                             <code style="font-size: 20px">${product.getSize()}</code></h4>
                                     </c:otherwise>
+
                                 </c:choose>
                             </div>
                         </div>
