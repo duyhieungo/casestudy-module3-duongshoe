@@ -181,17 +181,16 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="page-header">
-                    <h3 class="page-title" style="float: left">Bảng sản phẩm</h3>
+                <div class="page-header" style="margin-bottom: 5px">
+                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>
                 </div>
-                <a href="${pageContext.request.contextPath}/product?action=create}"
-                    class="nav-link"><i class="icon-plus"></i> Thêm sản phẩm</a>
-                <div class="row">
+                <a href="${pageContext.request.contextPath}/product?action=create"
+                   class="nav-link" style="float: right; margin-bottom: 10px"><i class="icon-plus"></i> Thêm mới</a>
+                <div class="row" style="clear: both">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Những sản phẩm hiện có</h4>
-                                <br>
+                                <p class="card-title" style="margin-bottom: 20px">Các sản phẩm hiện có</p>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr style="text-align: center">
@@ -221,15 +220,16 @@
                                                 </c:choose>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getProductID()}"
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
                                                    class="nav-link"><i class="icon-options"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="${pageContext.request.contextPath}/product?action=update&id=${product.getProductID()}"
+                                                <a href="${pageContext.request.contextPath}/product?action=update&id=${product.getDetailID()}"
                                                    class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a href="#" class="nav-link"><i class="icon-trash"></i></a>
+                                                <a href="${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}"
+                                                   class="nav-link"><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>

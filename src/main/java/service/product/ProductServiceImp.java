@@ -59,8 +59,8 @@ public class ProductServiceImp implements IProductService {
         return imageLinks;
     }
 
-    public Product getProductByID(int id) throws SQLException {
-        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_ID);
+    public Product getProductByDetailID(int id) throws SQLException {
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_DETAIL_ID);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         resultSet.first();

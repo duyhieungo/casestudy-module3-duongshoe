@@ -185,6 +185,16 @@
                     <h3 class="page-title">Chi tiết sản phẩm</h3>
                 </div>
                 <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title" style="float: left">${product.getProductName()}</h4>
+                                <h4 class="card-title" style="float: right">Nhãn hàng: ${product.getCatalogName()}</h4>
+                                <p class="card-description" style="clear: both"> Size: <code>${product.getSize()}</code></p>
+                                <p> ${product.getDescription()} </p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">

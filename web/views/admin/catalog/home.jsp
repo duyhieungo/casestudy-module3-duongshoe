@@ -181,14 +181,11 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="page-header">
+                <div class="page-header" style="margin-bottom: 5px">
                     <h3 class="page-title" style="float: left">Bảng sản phẩm</h3>
                 </div>
-                <div style="width: 100%;">
-                    <a href="${pageContext.request.contextPath}/product?action=create}"
-                       class="nav-link" style="float: right"><i class="icon-plus"></i> Thêm nhãn hàng</a>
-                </div>
-
+                <a href="${pageContext.request.contextPath}/catalog?action=create}"
+                   class="nav-link" style="float: right; margin-bottom: 10px"><i class="icon-plus"></i> Thêm mới</a>
                 <div class="row" style="clear: both">
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">

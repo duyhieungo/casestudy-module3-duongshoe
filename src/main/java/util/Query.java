@@ -6,19 +6,21 @@ public class Query {
     public static final String SELECT_USER_WITH_ID = "select * from user where id = ?;";
     public static final String CREATE_USER_WITH_PARAMETERS = "insert into user (role_id, first_name, last_name, gender, date_of_birth, phone, address, email, username, password, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     public static final String UPDATE_USER_WITH_ID = "update user set role_id = ?, first_name = ?, last_name = ?, gender = ?, date_of_birth = ?, phone = ?, address = ?, email = ?, username = ?, password = ?, status = ? where id = ?;";
-//    public static final String DELETE_USER_WITH_ID = "delete from user where id = ?;";
+    //    public static final String DELETE_USER_WITH_ID = "delete from user where id = ?;";
     public static final String DELETE_USER_WITH_ID = "update user set status = -1 where id = ?;";
 
-    public static final String SELECT_ALL_PRODUCT = "SELECT * FROM product_detail\n" +
-            "JOIN product on product_detail.product_id = product.id\n" +
-            "JOIN catalog on product.catalog_id = catalog.id\n" +
-            "JOIN size on product_detail.size_id = size.id";
+    public static final String SELECT_ALL_PRODUCT = "SELECT *\n" +
+            "FROM product_detail\n" +
+            "         JOIN product on product_detail.product_id = product.id\n" +
+            "         JOIN catalog on product.catalog_id = catalog.id\n" +
+            "         JOIN size on product_detail.size_id = size.id\n" +
+            "WHERE product_detail.status != -1;";
 
 
     public static final String SELECT_ALL_IMAGE_FROM_PRODUCT = "SELECT * FROM attachment\n" +
             "WHERE product_id = ?;";
 
-    public static final String SELECT_PRODUCT_BY_ID = "SELECT *\n" +
+    public static final String SELECT_PRODUCT_BY_DETAIL_ID = "SELECT *\n" +
             "FROM product_detail\n" +
             "         JOIN product on product_detail.product_id = product.id\n" +
             "         JOIN catalog on product.catalog_id = catalog.id\n" +

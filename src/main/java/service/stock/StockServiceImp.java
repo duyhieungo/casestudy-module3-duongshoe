@@ -59,7 +59,7 @@ public class StockServiceImp implements IStockService {
         importRecord.setPrice(resultSet.getInt("bid"));
         importRecord.setImportDateTime(resultSet.getTimestamp("import_date").toLocalDateTime());
         importRecord.setStatus(resultSet.getInt("import.status"));
-        importRecord.setProduct(productService.getProductByID(resultSet.getInt("product_detail_id")));
+        importRecord.setProduct(productService.getProductByDetailID(resultSet.getInt("product_detail_id")));
         return importRecord;
     }
 }

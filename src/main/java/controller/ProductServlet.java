@@ -32,7 +32,7 @@ public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductServiceImp();
     private ICatalogService catalogService = new CatalogServiceImp();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
@@ -48,11 +48,17 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getParameter("product-name").equals("")) {
+            request.setAttribute("status", 1);
+            request.setAttribute("message", "Tên sản phẩm trống");
+            showForm(request, response);
+            return;
+        }
         Product product = parseRequestData(request);
         product.setProductID(Integer.parseInt(request.getParameter("id")));
         try {
             if (productService.updateProduct(product)) {
-                request.setAttribute("message", "Cập nhật thành công");
+                request.setAttribute("status", 0);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,6 +67,12 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getParameter("product-name").equals("")) {
+            request.setAttribute("status", 1);
+            request.setAttribute("message", "Tên sản phẩm trống");
+            showForm(request, response);
+            return;
+        }
         Product product = parseRequestData(request);
         try {
             if (productService.addNewProduct(product)) {
@@ -92,7 +104,7 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "detail":
-                displayDetail(request, response);
+                showDetail(request, response);
                 break;
             case "create":
                 showForm(request, response);
@@ -100,6 +112,8 @@ public class ProductServlet extends HttpServlet {
             case "update":
                 showEditForm(request, response);
                 break;
+            case "delete":
+
             default:
                 displayProductList(request, response);
         }
@@ -109,7 +123,7 @@ public class ProductServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("action", request.getParameter("action"));
         try {
-            Product product = productService.getProductByID(id);
+            Product product = productService.getProductByDetailID(id);
             request.setAttribute("product", product);
             setCatalogAndSizeList(request);
             request.getRequestDispatcher("views/admin/product/form.jsp").forward(request, response);
@@ -135,12 +149,14 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("sizeList", sizeList);
     }
 
-    private void displayDetail(HttpServletRequest request, HttpServletResponse response) {
+    private void showDetail(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         IStockService stockService = new StockServiceImp();
         String requestDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         try {
             List<ImportRecord> importRecords = stockService.getImportRecordByProductID(id);
+            Product product = productService.getProductByDetailID(id);
+            System.out.println(product.getProductName());
             importRecords.sort(new Comparator<ImportRecord>() {
                 @Override
                 public int compare(ImportRecord o1, ImportRecord o2) {
@@ -148,6 +164,7 @@ public class ProductServlet extends HttpServlet {
                 }
             });
             request.setAttribute("importRecords", importRecords);
+            request.setAttribute("product", product);
             request.setAttribute("requestDate", requestDate);
             request.getRequestDispatcher("views/admin/product/detail.jsp").forward(request, response);
         } catch (ServletException | IOException | SQLException e) {

@@ -18,6 +18,7 @@
       <w>ngày</w>
       <w>người</w>
       <w>ngừng</w>
+      <w>nhánh</w>
       <w>nhãn</w>
       <w>nhập</w>
       <w>nhật</w>
@@ -28,11 +29,15 @@
       <w>thao</w>
       <w>thành</w>
       <w>thêm</w>
+      <w>thông</w>
+      <w>tiết</w>
       <w>tiền</w>
       <w>trong</w>
       <w>trạng</w>
+      <w>trống</w>
       <w>tình</w>
       <w>đang</w>
+      <w>được</w>
     </words>
   </dictionary>
 </component>
