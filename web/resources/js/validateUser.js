@@ -22,7 +22,7 @@ let namePattern = "^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèé
     "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
 // let datePattern = "^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$";
 let phoneNumberPattern = "^0[0-9]{9}$";
-let usernamePattern = "^[a-z0-9_-]{6,16}$";
+let usernamePattern = "^[a-z0-9_-]{4,16}$";
 // let addressPattern = "^[a-zA-Z0-9\\s,.'-]{3,}$";
 let addressPattern = "^[a-zA-Z0-9_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
     "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
@@ -103,7 +103,7 @@ function validate() {
         return false;
     } else if (!username.value.match(usernamePattern)) {
         username.style.border = "1px solid red";
-        usernameError.textContent = "Tên đăng nhập có độ dài từ 6 - 16 ký tự";
+        usernameError.textContent = "Tên đăng nhập có độ dài từ 4 - 16 ký tự";
         username.focus();
         return false;
     }
