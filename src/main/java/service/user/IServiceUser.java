@@ -8,7 +8,7 @@ import java.util.List;
 public interface IServiceUser {
     public User selectAdmin() throws SQLException;
 
-    public void insertUser(User user) throws SQLException;
+    public void createUser(User user) throws SQLException;
 
     public User selectUser(int id);
 
