@@ -7,7 +7,9 @@ import main.java.util.Query;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceUserImp implements IServiceUser {
 
@@ -42,6 +44,7 @@ public class ServiceUserImp implements IServiceUser {
             connection = DBHandle.getConnection();
             preparedStatement = connection.prepareStatement(Query.CREATE_USER_WITH_PARAMETERS);
             preparedStatement.setInt(1, user.getRoleId());
+            System.out.println(user.getRoleId());
             preparedStatement.setString(2, user.getFirstName());
             preparedStatement.setString(3, user.getLastName());
             preparedStatement.setBoolean(4, user.getGender());
@@ -94,6 +97,30 @@ public class ServiceUserImp implements IServiceUser {
             System.err.println(Error.ERROR_015);
         }
         return user;
+    }
+
+    @Override
+    public Map<String, String> selectClient() {
+        Map<String, String> listClient = null;
+        Connection connection;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        String username;
+        String password;
+        try {
+            listClient = new HashMap<>();
+            connection = DBHandle.getConnection();
+            preparedStatement = connection.prepareStatement(Query.SELECT_CLIENT_WITH_ROLE);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                username = resultSet.getString("username");
+                password = resultSet.getString("password");
+                listClient.put(username, password);
+            }
+        } catch (SQLException ex) {
+            System.err.println(Error.ERROR_003);
+        }
+        return listClient;
     }
 
     @Override
