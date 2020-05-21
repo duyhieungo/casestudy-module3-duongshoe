@@ -28,4 +28,35 @@ public class Query {
     public static final String SELECT_IMPORT_BY_PRODUCT_ID = "SELECT * FROM import\n" +
             "JOIN product_detail on import.product_detail_id = product_detail.id\n" +
             "WHERE product_detail_id = ?;";
+
+    public static final String INSERT_NEW_PRODUCT = "INSERT INTO product" +
+            "    (catalog_id, product_name, description, status)" +
+            "VALUES (?, ?, ?, ?);";
+
+    public static final String SELECT_NEW_PRODUCT = "SELECT product.id FROM product ORDER BY id DESC LIMIT 1;";
+
+    public static final String INSERT_PRODUCT_SIZE = "INSERT INTO product_detail" +
+            "    (product_id, size_id)" +
+            "VALUES (?, " +
+            "(SELECT size.id FROM size WHERE size = ?));";
+
+    public static final String INSERT_PRODUCT_IMAGE = "INSERT INTO attachment (product_id, image_link, status) VALUES (?,?,?)";
+
+    public static final String UPDATE_PRODUCT = "UPDATE product\n" +
+            "SET catalog_id = ?,\n" +
+            "    product_name = ?,\n" +
+            "    description = ?,\n" +
+            "    status = ?\n" +
+            "WHERE id = ?;";
+
+    public static final String UPDATE_PRODUCT_SIZE = "UPDATE product_detail\n" +
+            "SET size_id = (SELECT id FROM size WHERE size.size = ?)\n" +
+            "WHERE id = ?;";
+
+    public static final String SELECT_ATTACHMENT_ID_BY_PRODUCT_ID = "SELECT id FROM attachment\n" +
+            "WHERE product_id = ?;";
+
+    public static final String UPDATE_PRODUCT_IMAGE = "UPDATE attachment\n" +
+            "SET image_link = ? \n" +
+            "WHERE id = ?;";
 }
