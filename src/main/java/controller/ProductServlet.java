@@ -1,6 +1,5 @@
 package main.java.controller;
 
-import main.java.model.Bill;
 import main.java.model.Catalog;
 import main.java.model.ImportRecord;
 import main.java.model.Product;
@@ -32,10 +31,6 @@ import java.util.List;
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductServiceImp();
     private ICatalogService catalogService = new CatalogServiceImp();
-    private IStockService stockService = new StockServiceImp();
-    private List<ImportRecord> importRecords;
-    private List<Bill> billRecords;
-    private Product product;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
@@ -44,32 +39,12 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
-                createProduct(request, response);
+                addProduct(request, response);
                 break;
             case "update":
                 updateProduct(request, response);
                 break;
-            default:
-                showProductList(request, response);
         }
-    }
-
-    private void createProduct(HttpServletRequest request, HttpServletResponse response) {
-        if (request.getParameter("product-name").equals("")) {
-            request.setAttribute("status", 1);
-            request.setAttribute("message", "Tên sản phẩm trống");
-            showForm(request, response);
-            return;
-        }
-        product = parseRequestData(request);
-        try {
-            if (productService.addNewProduct(product)) {
-                request.setAttribute("message", "Thêm Thành công");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        showForm(request, response);
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -79,7 +54,7 @@ public class ProductServlet extends HttpServlet {
             showForm(request, response);
             return;
         }
-        product = parseRequestData(request);
+        Product product = parseRequestData(request);
         product.setProductID(Integer.parseInt(request.getParameter("id")));
         try {
             if (productService.updateProduct(product)) {
@@ -91,110 +66,44 @@ public class ProductServlet extends HttpServlet {
         showForm(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String action = request.getParameter("action");
-        String type = request.getParameter("type");
-        int id = 0;
-
-        if (request.getParameter("id") != null) {
-            id = Integer.parseInt(request.getParameter("id"));
+    private void addProduct(HttpServletRequest request, HttpServletResponse response) {
+        if (request.getParameter("product-name").equals("")) {
+            request.setAttribute("status", 1);
+            request.setAttribute("message", "Tên sản phẩm trống");
+            showForm(request, response);
+            return;
         }
+        Product product = parseRequestData(request);
+        try {
+            if (productService.addNewProduct(product)) {
+                request.setAttribute("message", "Thêm Thành công");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        showForm(request, response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
-        if (type == null) {
-            type = "";
-        }
-
         switch (action) {
+            case "detail":
+                showDetail(request, response);
+                break;
             case "create":
                 showForm(request, response);
                 break;
             case "update":
-                try {
-                    product = productService.getProductByDetailID(id);
-                    request.setAttribute("product", product);
-                    showForm(request, response);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                showEditForm(request, response);
                 break;
             case "delete":
                 deleteProduct(request, response);
                 break;
-            case "detail":
-                switch (type) {
-                    case "product":
-                        try {
-                            product = productService.getProductByDetailID(id);
-                            importRecords = stockService.getImportRecordByProduct(product);
-                            showDetail(request, response, type);
-                        } catch (SQLException | IOException | ServletException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case "catalog":
-                        try {
-                            Catalog catalog = productService.getProductByDetailID(id).getCatalog();
-                            importRecords = stockService.getImportRecordByCatalog(catalog);
-                            showDetail(request, response, type);
-                        } catch (SQLException | IOException | ServletException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case "size":
-                        try {
-                            int size = productService.getProductByDetailID(id).getSize();
-                            importRecords = stockService.getImportRecordBySize(size);
-                            showDetail(request, response, type);
-                        } catch (SQLException | ServletException | IOException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    default:
-                        showProductList(request, response);
-                }
-                break;
             default:
                 showProductList(request, response);
-        }
-    }
-
-    private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            List<Product> productList = productService.getProductList();
-            request.setAttribute("products", productList);
-            request.getRequestDispatcher("views/admin/product/home.jsp").forward(request, response);
-        } catch (ServletException | IOException | SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showDetail(HttpServletRequest request, HttpServletResponse response, String type) throws ServletException, IOException {
-        String requestDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        if (importRecords != null) {
-            importRecords.sort(new Comparator<ImportRecord>() {
-                @Override
-                public int compare(ImportRecord o1, ImportRecord o2) {
-                    return o2.getImportDateTime().compareTo(o1.getImportDateTime());
-                }
-            });
-        }
-        request.setAttribute("type", type);
-        request.setAttribute("requestDate", requestDate);
-        request.setAttribute("product", product);
-        request.setAttribute("importRecords", importRecords);
-        request.setAttribute("billRecords", billRecords);
-        request.getRequestDispatcher("views/admin/product/detail.jsp").forward(request, response);
-    }
-
-    private void showForm(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            request.setAttribute("action", request.getParameter("action"));
-            setCatalogAndSizeList(request);
-            request.getRequestDispatcher("views/admin/product/form.jsp").forward(request, response);
-        } catch (ServletException | IOException | SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -214,6 +123,69 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("action", request.getParameter("action"));
+        try {
+            Product product = productService.getProductByDetailID(id);
+            request.setAttribute("product", product);
+            setCatalogAndSizeList(request);
+            request.getRequestDispatcher("views/admin/product/form.jsp").forward(request, response);
+        } catch (SQLException | IOException | ServletException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showForm(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setAttribute("action", request.getParameter("action"));
+            setCatalogAndSizeList(request);
+            request.getRequestDispatcher("views/admin/product/form.jsp").forward(request, response);
+        } catch (ServletException | IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setCatalogAndSizeList(HttpServletRequest request) throws SQLException {
+        List<Catalog> catalogList = catalogService.getCatalogList();
+        List<Integer> sizeList = productService.getSizeList();
+        request.setAttribute("catalogList", catalogList);
+        request.setAttribute("sizeList", sizeList);
+    }
+
+    private void showDetail(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        IStockService stockService = new StockServiceImp();
+        String requestDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        try {
+            List<ImportRecord> importRecords = stockService.getImportRecordByProductID(id);
+            Product product = productService.getProductByDetailID(id);
+            System.out.println(product.getProductName());
+            importRecords.sort(new Comparator<ImportRecord>() {
+                @Override
+                public int compare(ImportRecord o1, ImportRecord o2) {
+                    return o1.getImportDateTime().compareTo(o2.getImportDateTime());
+                }
+            });
+            request.setAttribute("importRecords", importRecords);
+            request.setAttribute("product", product);
+            request.setAttribute("requestDate", requestDate);
+            request.getRequestDispatcher("views/admin/product/detail.jsp").forward(request, response);
+        } catch (ServletException | IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showProductList(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            List<Product> products = productService.getProductList();
+            request.setAttribute("products", products);
+            request.getRequestDispatcher("views/admin/product/home.jsp").forward(request, response);
+        } catch (ServletException | IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Product parseRequestData(HttpServletRequest request) {
         Product product = new Product();
         product.setDetailID(Integer.parseInt(request.getParameter("id")));
@@ -226,12 +198,5 @@ public class ProductServlet extends HttpServlet {
         product.addImages(request.getParameter("image-link-3"));
         product.addImages(request.getParameter("image-link-4"));
         return product;
-    }
-
-    private void setCatalogAndSizeList(HttpServletRequest request) throws SQLException {
-        List<Catalog> catalogList = catalogService.getCatalogList();
-        List<Integer> sizeList = productService.getSizeList();
-        request.setAttribute("catalogList", catalogList);
-        request.setAttribute("sizeList", sizeList);
     }
 }

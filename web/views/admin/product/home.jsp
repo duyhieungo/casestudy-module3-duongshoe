@@ -212,32 +212,18 @@
                                         <tr style="text-align: center">
                                             <td>${product.getDetailID()}</td>
                                             <td style="text-align: left">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=product&id=${product.getDetailID()}"
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
                                                    class="nav-link">${product.getProductName()}</a>
                                             </td>
-                                            <td>
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=catalog&id=${product.getDetailID()}"
-                                                   class="nav-link">${product.getCatalogName()}</a>
-                                            </td>
-                                            <td>
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=size&id=${product.getDetailID()}"
-                                                   class="nav-link">${product.getSize()}</a>
-                                            </td>
+                                            <td>${product.getCatalogName()}</td>
+                                            <td>${product.getSize()}</td>
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${product.getStatus() == 1}">
-                                                        <a href="${pageContext.request.contextPath}/catalog?action=detail&id=${product.getDetailID()}"
-                                                           class="nav-link"
-                                                           id="status-${product.getDetailID()}"><label
-                                                                class="badge badge-success" style="cursor: pointer">
-                                                            Đang kinh doanh</label></a>
+                                                        <label class="badge badge-success">Đang kinh doanh</label>
                                                     </c:when>
                                                     <c:when test="${product.getStatus() == 0}">
-                                                        <a href="${pageContext.request.contextPath}/catalog?action=detail&id=${product.getDetailID()}"
-                                                           class="nav-link"
-                                                           id="status-${product.getDetailID()}"><label
-                                                                class="badge badge-danger" style="cursor: pointer">
-                                                            Ngừng kinh doanh</label></a>
+                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
                                                     </c:when>
                                                 </c:choose>
                                             </td>
@@ -246,8 +232,11 @@
                                                    class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a class="nav-link" href="#" onclick=confirmDelete()><i
-                                                        class="icon-trash"></i></a>
+                                                <a class="nav-link" href="#" onclick="
+                                                        if (confirm('Bạn có chắc chắn muốn xoá ?')) {
+                                                        document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
+                                                        }
+                                                        "><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -283,13 +272,6 @@
 <!-- inject:js -->
 <script src="${pageContext.request.contextPath}/resources/js/off-canvas.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/misc.js"></script>
-<script>
-    function confirmDelete() {
-        if (confirm("Bạn có chắc chắn muốn xoá ?")) {
-            document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
-        }
-    }
-</script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <!-- End custom js for this page -->
