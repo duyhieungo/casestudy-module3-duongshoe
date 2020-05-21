@@ -44,10 +44,10 @@ public class ProductServiceImp implements IProductService {
                 "         JOIN product on product_detail.product_id = product.id\n" +
                 "         JOIN catalog on product.catalog_id = catalog.id\n" +
                 "         JOIN size on product_detail.size_id = size.id\n" +
-                "WHERE catalog_id = ?";
+                "WHERE catalog_id = ?;";
         statement = connection.prepareStatement(query);
         statement.setInt(1, catalog.getCatalogID());
-        ResultSet resultSet = statement.executeQuery(query);
+        ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             products.add(parseResultSet(resultSet));
         }
