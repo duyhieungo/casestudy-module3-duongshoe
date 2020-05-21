@@ -1,7 +1,9 @@
 package main.java.service.catalog;
 
 import main.java.model.Catalog;
+import main.java.model.Product;
 import main.java.util.DBHandle;
+import main.java.util.Query;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,8 +27,7 @@ public class CatalogService implements ICatalogService {
 
     public List<Catalog> getCatalogList() throws SQLException {
         List<Catalog> catalogList = new LinkedList<>();
-        String query = "SELECT * FROM catalog";
-        statement = connection.prepareStatement(query);
+        statement = connection.prepareStatement(Query.SELECT_FROM_CATALOG);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             Catalog catalog = new Catalog();
@@ -38,6 +39,4 @@ public class CatalogService implements ICatalogService {
         }
         return catalogList;
     }
-
-
 }

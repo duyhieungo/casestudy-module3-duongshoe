@@ -59,4 +59,8 @@ public class Query {
     public static final String UPDATE_PRODUCT_IMAGE = "UPDATE attachment\n" +
             "SET image_link = ? \n" +
             "WHERE id = ?;";
+
+    public static final String SELECT_FROM_SIZE = "SELECT * FROM size";
+
+    public static final String SELECT_FROM_CATALOG = "SELECT * FROM catalog";
 }

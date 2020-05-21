@@ -37,6 +37,23 @@ public class ProductServiceImp implements IProductService {
         return products;
     }
 
+    public List<Product> getProductList(Catalog catalog) throws SQLException {
+        List<Product> products = new LinkedList<>();
+        String query = "SELECT * " +
+                "FROM product_detail\n" +
+                "         JOIN product on product_detail.product_id = product.id\n" +
+                "         JOIN catalog on product.catalog_id = catalog.id\n" +
+                "         JOIN size on product_detail.size_id = size.id\n" +
+                "WHERE catalog_id = ?";
+        statement = connection.prepareStatement(query);
+        statement.setInt(1, catalog.getCatalogID());
+        ResultSet resultSet = statement.executeQuery(query);
+        while (resultSet.next()) {
+            products.add(parseResultSet(resultSet));
+        }
+        return products;
+    }
+
     public List<String> getImageLinks(Product product) throws SQLException {
         List<String> imageLinks = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_ALL_IMAGE_FROM_PRODUCT);
@@ -58,8 +75,7 @@ public class ProductServiceImp implements IProductService {
 
     public List<Integer> getSizeList() throws SQLException {
         List<Integer> sizeList = new LinkedList<>();
-        String query = "SELECT * FROM size";
-        statement = connection.prepareStatement(query);
+        statement = connection.prepareStatement(Query.SELECT_FROM_SIZE);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             sizeList.add(resultSet.getInt("size"));
