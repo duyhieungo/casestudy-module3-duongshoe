@@ -462,9 +462,9 @@
                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                     </div>
                                 </div>
-
+                                <c:url value="/addtoCart?id=${product.getProductID()}" var="addtoCart"/>
                                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Thêm vào giỏ hàng
+                                    <a href="${addtoCart}">Thêm vào giỏ hàng</a>
                                 </button>
                             </div>
                         </div>
