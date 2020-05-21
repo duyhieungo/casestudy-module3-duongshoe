@@ -103,6 +103,12 @@
                                         <h2>Add New Bill</h2>
                                     </caption>
                                         <tr>
+                                            <th>User_id</th>
+                                            <td>
+                                                <input type="text" name="user_id" id="user_id" size="45"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th>Amount</th>
                                             <td>
                                                 <input type="text" name="amount" id="amount" size="45"/>

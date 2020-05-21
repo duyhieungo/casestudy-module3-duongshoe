@@ -99,34 +99,34 @@
                                     <thead>
                                     <caption><h2>Bill List</h2></caption>
                                     <tr>
-                                        <th>ID</th>
+<%--                                        <th>ID</th>--%>
                                         <th>User_Id</th>
                                         <th>Amount</th>
                                         <th>Message</th>
-                                        <th>Discount</th>
+<%--                                        <th>Discount</th>--%>
                                         <th>Shipping_fee</th>
                                         <th>Payment/th>
                                         <th>Date_of_payment</th>
                                         <th>Status</th>
-                                        <th>Create_date</th>
-                                        <th>Update_date</th>
+<%--                                        <th>Create_date</th>--%>
+<%--                                        <th>Update_date</th>--%>
                                         <th>Others</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach var="bill" items="${listBill}">
                                         <tr>
-                                            <td><c:out value="${bill.id}"/></td>
+<%--                                            <td><c:out value="${bill.id}"/></td>--%>
                                             <td><c:out value="${bill.user_id}"/></td>
                                             <td><c:out value="${bill.amount}"/></td>
                                             <td><c:out value="${bill.message}"/></td>
-                                            <td><c:out value="${bill.discount}"/></td>
+<%--                                            <td><c:out value="${bill.discount}"/></td>--%>
                                             <td><c:out value="${bill.shipping_fee}"/></td>
                                             <td><c:out value="${bill.payment}"/></td>
                                             <td><c:out value="${bill.date_of_payment}"/></td>
                                             <td><c:out value="${bill.status}"/></td>
-                                            <td><c:out value="${bill.create_date}"/></td>
-                                            <td><c:out value="${bill.update_date}"/></td>
+<%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
+<%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
                                             <td>
                                                 <a href="/bills?action=edit&id=${bill.id}">Edit</a>
                                                 <a href="/bills?action=delete&id=${bill.id}">Delete</a>

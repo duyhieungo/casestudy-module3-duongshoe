@@ -17,7 +17,9 @@ public class Bill {
 
     public Bill() {
     }
-    public Bill(double amount,
+
+    public Bill(int user_id,
+                double amount,
                 String message,
                 double discount,
                 double shipping_fee,
@@ -25,16 +27,17 @@ public class Bill {
                 Date date_of_payment,
                 int status,
                 Date create_date,
-                Date update_date){
-        this.amount=amount;
-        this.message=message;
-        this.discount=discount;
-        this.shipping_fee=shipping_fee;
-        this.payment=payment;
-        this.date_of_payment=date_of_payment;
-        this.status=status;
-        this.create_date=create_date;
-        this.update_date=update_date;
+                Date update_date) {
+        this.user_id = user_id;
+        this.amount = amount;
+        this.message = message;
+        this.discount = discount;
+        this.shipping_fee = shipping_fee;
+        this.payment = payment;
+        this.date_of_payment = date_of_payment;
+        this.status = status;
+        this.create_date = create_date;
+        this.update_date = update_date;
     }
 
 
@@ -48,18 +51,29 @@ public class Bill {
                 Date date_of_payment,
                 int status,
                 Date create_date,
-                Date update_date){
-        this.id=id;
-        this.user_id=user_id;
-        this.amount=amount;
-        this.message=message;
-        this.discount=discount;
-        this.shipping_fee=shipping_fee;
-        this.payment=payment;
-        this.date_of_payment=date_of_payment;
-        this.status=status;
-        this.create_date=create_date;
-        this.update_date=update_date;
+                Date update_date) {
+        this.id = id;
+        this.user_id = user_id;
+        this.amount = amount;
+        this.message = message;
+        this.discount = discount;
+        this.shipping_fee = shipping_fee;
+        this.payment = payment;
+        this.date_of_payment = date_of_payment;
+        this.status = status;
+        this.create_date = create_date;
+        this.update_date = update_date;
+    }
+
+    public Bill(int id, int user_id, double amount, String message, double discount, double shipping_fee, String payment, int status) {
+        this.id = id;
+        this.user_id = user_id;
+        this.amount = amount;
+        this.message = message;
+        this.discount = discount;
+        this.shipping_fee = shipping_fee;
+        this.payment = payment;
+        this.status = status;
     }
 
     public int getId() {

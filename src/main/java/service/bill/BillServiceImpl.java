@@ -13,8 +13,13 @@ public class BillServiceImpl implements BillService {
 
     private static final String INSERT_BILLS_SQL =
             "INSERT INTO bill" +
-                    "  (amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date) VALUES " +
-                    " (?, ?, ?,?, ?, ?,?, ?, ?);";
+                    "  (user_id,amount,message," +
+                    "discount,shipping_fee,payment," +
+                    "date_of_payment,status,create_date," +
+                    "update_date) VALUES " +
+                    " (?, ?, ?," +
+                    "?, ?, ?," +
+                    "?, ?, ?,?);";
     private static final String SELECT_BILL_BY_ID =
             "select id,user_id,amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date " +
                     "from bill where id =?";
@@ -43,7 +48,6 @@ public class BillServiceImpl implements BillService {
 
     public void insertBill(Bill bill) throws SQLException {
         System.out.println(INSERT_BILLS_SQL);
-        // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_BILLS_SQL)) {
             preparedStatement.setDouble(1, bill.getAmount());
             preparedStatement.setString(2, bill.getMessage());

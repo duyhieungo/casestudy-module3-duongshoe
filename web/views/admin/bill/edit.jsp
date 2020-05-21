@@ -155,14 +155,14 @@
                                                 />
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>Date_of_payment</th>
-                                            <td>
-                                                <input type="date" name="amount" size="45"
-                                                       value="<c:out value='${bill.date_of_payment}' />"
-                                                />
-                                            </td>
-                                        </tr>
+<%--                                        <tr>--%>
+<%--                                            <th>Date_of_payment</th>--%>
+<%--                                            <td>--%>
+<%--                                                <input type="date" name="amount" size="45"--%>
+<%--                                                       value="<c:out value='${bill.date_of_payment}' />"--%>
+<%--                                                />--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
                                         <tr>
                                             <th>Status:</th>
                                             <td>
@@ -171,22 +171,22 @@
                                                 />
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>Create_date:</th>
-                                            <td>
-                                                <input type="date" name="create_date" size="45"
-                                                       value="<c:out value='${bill.create_date}' />"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Update_date:</th>
-                                            <td>
-                                                <input type="text" name="update_date" size="45"
-                                                       value="<c:out value='${bill.update_date}' />"
-                                                />
-                                            </td>
-                                        </tr>
+<%--                                        <tr>--%>
+<%--                                            <th>Create_date:</th>--%>
+<%--                                            <td>--%>
+<%--                                                <input type="date" name="create_date" size="45"--%>
+<%--                                                       value="<c:out value='${bill.create_date}' />"--%>
+<%--                                                />--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
+<%--                                        <tr>--%>
+<%--                                            <th>Update_date:</th>--%>
+<%--                                            <td>--%>
+<%--                                                <input type="text" name="update_date" size="45"--%>
+<%--                                                       value="<c:out value='${bill.update_date}' />"--%>
+<%--                                                />--%>
+<%--                                            </td>--%>
+<%--                                        </tr>--%>
                                         <tr>
                                             <td colspan="2" align="center">
                                                 <input type="submit" value="Save"/>
