@@ -34,4 +34,10 @@ class ProductServiceImpTest {
         catalog.setCatalogID(2);
         System.out.println(serviceImp.getProductList(catalog));
     }
+
+    @Test
+    void getProductListPagination() throws SQLException {
+        ProductServiceImp serviceImp = new ProductServiceImp();
+        System.out.println(serviceImp.getProductListPagination(10));
+    }
 }

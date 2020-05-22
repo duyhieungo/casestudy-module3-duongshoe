@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -161,8 +162,49 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
+        Enumeration<String> paramName = request.getParameterNames();
+        int size;
+        int page = 1;
+        String param = paramName.nextElement();
+        int currentPage = 1;
+
         try {
-            List<Product> productList = productService.getProductList();
+            size = productService.getProductSize();
+            page = size / 5;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        switch (param) {
+            case "next":
+                if (request.getParameter("current") != null) {
+                    currentPage = Integer.parseInt(request.getParameter("current"));
+                }
+                if (++currentPage > page) {
+                    currentPage = page;
+                }
+                break;
+            case "previous":
+                if (request.getParameter("current") != null) {
+                    currentPage = Integer.parseInt(request.getParameter("current"));
+                }
+                if (--currentPage < page) {
+                    currentPage = 1;
+                }
+                break;
+            case "page":
+                if (request.getParameter("page") != null) {
+                    currentPage = Integer.parseInt(request.getParameter("page"));
+                }
+                break;
+            default:
+                currentPage = 1;
+        }
+
+        try {
+            List<Product> productList = productService.getProductListPagination((currentPage - 1) * 5);
+            request.setAttribute("pages", page);
+            request.setAttribute("current", currentPage);
             request.setAttribute("products", productList);
             request.getRequestDispatcher("views/admin/product/home.jsp").forward(request, response);
         } catch (ServletException | IOException | SQLException e) {

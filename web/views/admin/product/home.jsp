@@ -181,9 +181,9 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="page-header" style="margin-bottom: 5px">
-                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>
-                </div>
+                <%--                <div class="page-header" style="margin-bottom: 5px">--%>
+                <%--                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>--%>
+                <%--                </div>--%>
                 <c:if test="${status == 1}">
                     <label class="badge badge-warning" style="font-size: 13px; margin-bottom: 18px; margin-top: 8px ">
                         Xoá thành công
@@ -253,6 +253,34 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
+                                <div class="d-flex mt-4 flex-wrap">
+                                    <p class="text-muted">Hiển thị ${current} trong số ${pages} trang</p>
+                                    <nav class="ml-auto">
+                                        <ul class="pagination separated pagination-info">
+                                            <li class="page-item"><a
+                                            <%--                                                ${pageContext.request.contextPath}/product?previous=${current}--%>
+                                                    href="<c:choose>
+                                                    <c:when test="${current == 1}">
+
+</c:when>
+</c:choose>"
+                                                    class="page-link"><i
+                                                    class="icon-arrow-left"></i></a></li>
+                                            <c:forEach begin="1" end="${pages}" var="page">
+                                                <li class="page-item
+                                                        <c:if test="${current == page}">
+                                                             active
+                                                        </c:if>"><a
+                                                        href="${pageContext.request.contextPath}/product?page=${current}"
+                                                        class="page-link">${page}</a></li>
+                                            </c:forEach>
+                                            <li class="page-item"><a
+                                                    href="${pageContext.request.contextPath}/product?next=${current}"
+                                                    class="page-link"><i
+                                                    class="icon-arrow-right"></i></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
