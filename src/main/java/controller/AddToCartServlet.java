@@ -49,7 +49,10 @@ public class AddToCartServlet extends HttpServlet {
                     item.setProduct(product);
                     item.setPrice(10000);
                     itemList.add(item);
-
+                    session.setAttribute("billDetail", billDetail);
+                } else {
+                    BillDetail billDetail = (BillDetail) session.getAttribute("billDetail");
+                    List<Item> itemList = billDetail.getItems();
 
                 }
             }
