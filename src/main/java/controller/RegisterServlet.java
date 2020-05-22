@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Properties;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = "/register_user")
 public class RegisterServlet extends HttpServlet {
@@ -92,5 +93,4 @@ public class RegisterServlet extends HttpServlet {
 
         return user;
     }
-
 }
