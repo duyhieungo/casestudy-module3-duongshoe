@@ -74,10 +74,21 @@ public class BillServlet extends HttpServlet {
 
     private void listBill(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Bill> listBill = billServiceImpl.selectAllBills();
+        int page = 1;
+        int recordsPerPage = 3;
+        if(request.getParameter("page") != null)
+            page = Integer.parseInt(request.getParameter("page"));
+        BillServiceImpl dao = new BillServiceImpl();
+        List<Bill> listBill = dao.selectAllBills((page-1)*recordsPerPage,
+                recordsPerPage);
+        int noOfRecords = dao.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
         request.setAttribute("listBill", listBill);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/bill/list.jsp");
         dispatcher.forward(request, response);
+
     }
 
 

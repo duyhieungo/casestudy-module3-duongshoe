@@ -64,7 +64,8 @@
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
                             Activity</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a href="/admin" class="dropdown-item"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                        <a href="/admin" class="dropdown-item"><i
+                                class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
                     </div>
                 </li>
             </ul>
@@ -113,8 +114,10 @@
                     </a>
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/admin?action=create_product">Thêm sản
+                                phẩm</a></li>
                         </ul>
                     </div>
                 </li>
@@ -127,8 +130,10 @@
 
                     <div class="collapse" id="brand">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/admin?action=create_catalog">Thêm danh
+                                mục</a></li>
                         </ul>
                     </div>
                 </li>
@@ -140,7 +145,7 @@
                     </a>
                     <div class="collapse" id="bill">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/bills">Xem hóa đơn</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/bills">Xem hóa đơn</a></li>
                         </ul>
                     </div>
                 </li>
@@ -152,8 +157,10 @@
                     </a>
                     <div class="collapse" id="user">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/user?action=view_user">Xem người dùng</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/user?action=create_user">Thêm người dùng</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/user?action=view_user">Xem người dùng</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/user?action=create_user">Thêm người dùng</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -175,17 +182,11 @@
                                     <thead>
                                     <caption><h2>Danh sách hóa đơn</h2></caption>
                                     <tr>
-                                        <%--                                        <th>ID</th>--%>
                                         <th>MSKH</th>
-                                        <%--                                        <th>Amount</th>--%>
                                         <th>Thông tin hóa đơn</th>
-                                        <%--                                        <th>Discount</th>--%>
-                                        <%--                                        <th>Phí vận chuyển</th>--%>
                                         <th>Số tiền thanh toán</th>
                                         <th>Ngày thanh toán</th>
                                         <th>Status</th>
-                                        <%--                                        <th>Create_date</th>--%>
-                                        <%--                                        <th>Update_date</th>--%>
                                         <th style="text-align: center">Công cụ
                                         </th>
                                     </tr>
@@ -195,16 +196,11 @@
 
                                     <c:forEach var="bill" items="${listBill}">
                                         <tr>
-                                                <%--                                                                                            <td><c:out value="${bill.id}"/></td>--%>
                                             <td><c:out value="${bill.user_id}"/></td>
                                             <td><c:out value="${bill.message}"/></td>
-                                                <%--                                            <td><c:out value="${bill.discount}"/></td>--%>
-                                                <%--                                            <td><c:out value="${bill.shipping_fee}"/></td>--%>
                                             <td><c:out value="${bill.payment}"/></td>
                                             <td><c:out value="${bill.date_of_payment}"/></td>
                                             <td><c:out value="${bill.status}"/></td>
-                                                <%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
-                                                <%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
                                             <td>
                                                 <button onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
                                                     Xác nhận
@@ -221,9 +217,26 @@
 
                                         </tr>
                                     </c:forEach>
-                                    <%--                                    <a href="ViewServlet?page=1">1</a>--%>
-                                    <%--                                    <a href="ViewServlet?page=1">2</a>--%>
-                                    <%--                                    <a href="ViewServlet?page=1">3</a>--%>
+                                    <c:if test="${currentPage !=1}">
+                                        <td><a href="bills?page=${currentPage -1}">Previous</a></td>
+                                    </c:if>
+                                    <table border="1" cellspacing="5" cellspacing="5">
+                                        <tr>
+                                            <c:forEach begin="1" end="${noOfPages}" var="i">
+                                                <c:choose>
+                                                    <c:when test="${currentPage eq i}">
+                                                        <td>${i}</td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td><a href="bills?page=${i}">${i}</a></td>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </tr>
+                                    </table>
+                                    <c:if test="${currentPage lt noOfpages}">
+                                        <td><a href="bills?page=${currentPage +1}">Next</a></td>
+                                    </c:if>
 
                                     </tbody>
                                 </table>
