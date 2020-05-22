@@ -39,6 +39,11 @@ public class Query {
             "         JOIN size on product_detail.size_id = size.id " +
             "WHERE product.id = ?;";
 
+    public static final String SELECT_PRICE_BY_PRODUCT_ID = "SELECT * FROM product\n" +
+            "JOIN sale ON product.id = sale.product_id\n" +
+            "WHERE product.id = ?\n" +
+            "ORDER BY created_date DESC LIMIT 1;";
+
     public static final String SELECT_SIZE_BY_PRODUCT_ID = "SELECT size FROM product_detail\n" +
             "JOIN size ON product_detail.size_id = size.id\n" +
             "WHERE product_id = ?";
