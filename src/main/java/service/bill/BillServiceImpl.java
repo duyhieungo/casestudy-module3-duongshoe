@@ -11,7 +11,7 @@ public class BillServiceImpl implements BillService {
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
     private static final String SELECT_BILL_BY_ID =
-            "select id,user_id,amount,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date " +
+            "select id,user_id,message,discount,shipping_fee,payment,date_of_payment,status,create_date,update_date " +
                     "from bill where id =?";
     private static final String SELECT_ALL_BILLS = "select * from bill";
     private static final String UPDATE_BILLS_SQL =
@@ -45,7 +45,7 @@ public class BillServiceImpl implements BillService {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int user_id = rs.getInt("user_id");
-                double amount = rs.getDouble("amount");
+//                double amount = rs.getDouble("amount");
                 String message = rs.getString("message");
                 double discount = rs.getDouble("discount");
                 double shipping_fee = rs.getDouble("shipping_fee");
@@ -54,7 +54,7 @@ public class BillServiceImpl implements BillService {
                 int status = rs.getInt("status");
                 Date create_date = rs.getDate("create_date");
                 Date update_date = rs.getDate("update_date");
-                bill = new Bill(id, user_id, amount, message, discount, shipping_fee, payment, date_of_payment, status, create_date, update_date);
+                bill = new Bill(id, user_id, message, discount, shipping_fee, payment, date_of_payment, status, create_date, update_date);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -71,7 +71,7 @@ public class BillServiceImpl implements BillService {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
-                double amount = rs.getDouble("amount");
+//                double amount = rs.getDouble("amount");
                 String message = rs.getString("message");
                 double discount = rs.getDouble("discount");
                 double shipping_fee = rs.getDouble("shipping_fee");
@@ -80,7 +80,7 @@ public class BillServiceImpl implements BillService {
                 int status = rs.getInt("status");
                 Date create_date = rs.getDate("create_date");
                 Date update_date = rs.getDate("update_date");
-                bills.add(new Bill(id, user_id, amount, message, discount, shipping_fee, payment, date_of_payment, status, create_date, update_date));
+                bills.add(new Bill(id, user_id, message, discount, shipping_fee, payment, date_of_payment, status, create_date, update_date));
             }
         } catch (SQLException e) {
             printSQLException(e);

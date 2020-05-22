@@ -1,6 +1,6 @@
 package main.java.controller;
 
-import com.sun.glass.ui.Size;
+//import com.sun.glass.ui.Size;
 import main.java.model.Product;
 import main.java.service.product.IProductService;
 import main.java.service.product.ProductServiceImp;

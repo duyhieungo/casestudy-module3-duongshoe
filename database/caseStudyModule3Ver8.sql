@@ -10,7 +10,6 @@ create table if not exists catalog
     update_date  datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP
 )
     charset = utf8;
-
 create table if not exists product
 (
     id           int auto_increment
