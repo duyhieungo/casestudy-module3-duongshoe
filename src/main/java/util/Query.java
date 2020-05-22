@@ -17,6 +17,13 @@ public class Query {
             "         JOIN size on product_detail.size_id = size.id\n" +
             "WHERE product_detail.status != -1;";
 
+    public static final String SELECT_PRODUCT_OFFSET = "SELECT *\n" +
+            "FROM product_detail\n" +
+            "         JOIN product on product_detail.product_id = product.id\n" +
+            "         JOIN catalog on product.catalog_id = catalog.id\n" +
+            "         JOIN size on product_detail.size_id = size.id\n" +
+            "WHERE product_detail.status != -1 LIMIT 10 OFFSET ?;";
+
     public static final String SELECT_PRODUCT_FOR_HOMEPAGE = "SELECT * FROM product\n" +
             "JOIN attachment ON product.id = attachment.product_id\n" +
             "JOIN catalog ON product.catalog_id = catalog.id";

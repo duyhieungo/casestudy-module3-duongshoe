@@ -33,4 +33,8 @@ public interface IProductService {
     List<Product> getProductForHomePage() throws SQLException;
 
     List<Integer> getSizeListByProductID(int id) throws SQLException;
+
+    List<Product> getProductListPagination(int offset) throws SQLException;
+
+    int getProductSize() throws SQLException;
 }
