@@ -353,6 +353,6 @@
     <script src="resources/js/misc.js"></script>
     <script src="resources/js/typeahead.js"></script>
     <script src="resources/js/select2.js"></script>
-    <script src="resources/js/validateUser.js"></script>
+    <script src="resources/js/validateUserFromAdmin.js"></script>
 </body>
 </html>
