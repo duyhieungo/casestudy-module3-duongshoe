@@ -1,6 +1,7 @@
 package main.java.service.product;
 
 import main.java.model.Catalog;
+import main.java.model.Item;
 import main.java.model.Product;
 import main.java.util.DBHandle;
 import main.java.util.Query;
@@ -105,6 +106,16 @@ public class ProductServiceImp implements IProductService {
         return sizeList;
     }
 
+    public int price(int id) throws SQLException {
+        int price;
+        statement = connection.prepareStatement(Query.SELECT_PRICE_BY_PRODUCT_ID);
+        statement.setInt(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.first();
+        price = resultSet.getInt("price");
+        return price;
+    }
+
 
     public boolean addNewProduct(Product product) throws SQLException {
         if (addProduct(product)) {
@@ -167,14 +178,19 @@ public class ProductServiceImp implements IProductService {
     }
 
     @Override
-    public List<Product> getProductForHomePage() throws SQLException {
-        List<Product> products = new LinkedList<>();
+    public List<Item> getProductForHomePage() throws SQLException {
+        List<Item> itemList = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_PRODUCT_FOR_HOMEPAGE);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
-            products.add(parseSimpleResultSet(resultSet));
+            Product product = parseSimpleResultSet(resultSet);
+            int price = price(product.getProductID());
+            Item item = new Item();
+            item.setPrice(price);
+            item.setProduct(product);
+            itemList.add(item);
         }
-        return products;
+        return itemList;
     }
 
     @Override
