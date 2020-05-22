@@ -27,7 +27,6 @@ class ProductServiceImpTest {
 //        }
 //    }
 
-
     @Test
     void getProductList() throws SQLException {
         ProductServiceImp serviceImp = new ProductServiceImp();
