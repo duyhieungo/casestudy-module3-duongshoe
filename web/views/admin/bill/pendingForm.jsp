@@ -113,12 +113,7 @@
                                                 <c:out value="${bill.user_id}"/>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>Giá đơn hàng:</th>
-                                            <td size="45" >
-                                                <c:out value="${bill.amount}"/>
-                                            </td>
-                                        </tr>
+
                                         <tr>
                                             <th>Thông tin:</th>
                                             <td size="45" >
