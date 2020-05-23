@@ -32,62 +32,29 @@
 <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex align-items-center">
-            <a class="navbar-brand brand-logo" href="/dashboard">
-                <img src="${pageContext.request.contextPath}/resources/images/logo.svg" alt="logo" class="logo-dark"/>
+            <a class="navbar-brand brand-logo" href="/views/admin/bill/list.jsp">
+                <img src="images/logo.svg" alt="logo" class="logo-dark"/>
             </a>
-            <a class="navbar-brand brand-logo-mini" href="/dashboard"><img
-                    src="${pageContext.request.contextPath}/resources/images/logo-mini.svg"
-                    alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="/views/admin/bill/list.jsp"><img src="images/logo-mini.svg"
+                                                                                           alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
-            <ul class="navbar-nav navbar-nav-right ml-auto">
-                <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
-                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-                       aria-expanded="false">
-                        <img class="img-xs rounded-circle ml-2"
-                             src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
-                             alt="Profile image">
-                        <span class="font-weight-normal"> Admin </span></a>
-                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                        <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle"
-                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
-                                 alt="Profile image">
-                            <p class="mb-1 mt-3">Admin</p>
-                            <p class="font-weight-light text-muted mb-0">admin@gmail.com</p>
-                        </div>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile
-                            <span class="badge badge-pill badge-danger">1</span></a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i>
-                            Messages</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i>
-                            Activity</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a>
-                        <a href="/admin" class="dropdown-item"><i
-                                class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
-                    </div>
-                </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
-                <span class="icon-menu"></span>
-            </button>
+            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome dashboard!</h5>
         </div>
     </nav>
+
     <div class="container-fluid page-body-wrapper">
+
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item nav-profile">
                     <a href="#" class="nav-link">
                         <div class="profile-image">
-                            <img class="img-xs rounded-circle"
-                                 src="${pageContext.request.contextPath}/resources/images/faces/face8.jpg"
-                                 alt="profile image">
+                            <img class="img-xs rounded-circle" src="images/faces/face8.jpg" alt="profile image">
                             <div class="dot-indicator bg-success"></div>
                         </div>
                         <div class="text-wrapper">
-                            <p class="profile-name">Allen Moreno</p>
+                            <p class="profile-name">Admin</p>
                             <p class="designation">Administrator</p>
                         </div>
                         <div class="icon-container">
@@ -100,69 +67,27 @@
                     <span class="nav-link">Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">
+                    <a class="nav-link" href="/bills?action=list">
                         <span class="menu-title">Dashboard</span>
                         <i class="icon-screen-desktop menu-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item nav-category"><span class="nav-link">Cửa hàng</span></li>
+                <li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
-                       aria-controls="product">
-                        <span class="menu-title">Quản lý sản phẩm</span>
-                        <i class="icon-basket-loaded menu-icon"></i>
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                       aria-controls="ui-basic">
+                        <span class="menu-title">Danh mục hóa đơn</span>
+                        <i class="icon-layers menu-icon"></i>
                     </a>
-                    <div class="collapse" id="product">
+                    <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a>
+                            <li class="nav-item"><a class="nav-link" href="/bills?action=list">Danh sách hóa đơn</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/admin?action=create_product">Thêm sản
-                                phẩm</a></li>
+                            <%--                            <li class="nav-item"><a class="nav-link" href="/bills?action=create">Create Bill</a>--%>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
-                       aria-controls="brand">
-                        <span class="menu-title">Quản lý Nhà cung cấp</span>
-                        <i class="icon-grid menu-icon"></i>
-                    </a>
-
-                    <div class="collapse" id="brand">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="/admin?action=create_catalog">Thêm danh
-                                mục</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#bill" aria-expanded="false"
-                       aria-controls="bill">
-                        <span class="menu-title">Quản lý hóa đơn</span>
-                        <i class="icon-note menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="bill">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/bills">Xem hóa đơn</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false"
-                       aria-controls="user">
-                        <span class="menu-title">Quản lý người dùng</span>
-                        <i class="icon-user menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="user">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="/user?action=view_user">Xem người dùng</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="/user?action=create_user">Thêm người dùng</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </nav>
@@ -182,11 +107,17 @@
                                     <thead>
                                     <caption><h2>Danh sách hóa đơn</h2></caption>
                                     <tr>
+                                        <%--                                        <th>ID</th>--%>
                                         <th>MSKH</th>
+                                        <%--                                        <th>Amount</th>--%>
                                         <th>Thông tin hóa đơn</th>
+                                        <%--                                        <th>Discount</th>--%>
+                                        <%--                                        <th>Phí vận chuyển</th>--%>
                                         <th>Số tiền thanh toán</th>
                                         <th>Ngày thanh toán</th>
                                         <th>Status</th>
+                                        <%--                                        <th>Create_date</th>--%>
+                                        <%--                                        <th>Update_date</th>--%>
                                         <th style="text-align: center">Công cụ
                                         </th>
                                     </tr>
@@ -194,14 +125,23 @@
                                     <tbody>
 
 
+
+
                                     <c:forEach var="bill" items="${listBill}">
+
                                         <tr>
-                                            <td><c:out value="${bill.user_id}"/></td>
-                                            <td><c:out value="${bill.message}"/></td>
-                                            <td><c:out value="${bill.payment}"/></td>
-                                            <td><c:out value="${bill.date_of_payment}"/></td>
-                                            <td><c:out value="${bill.status}"/></td>
-                                            <td>
+                                                <%--                                            <td><c:out value="${bill.id}"/></td>--%>
+                                            <td ><c:out value="${bill.user_id}"/></td>
+                                                <%--                                            <td><c:out value="${bill.amount}"/></td>--%>
+                                            <td ><c:out value="${bill.message}"/></td>
+                                                <%--                                            <td><c:out value="${bill.discount}"/></td>--%>
+                                                <%--                                            <td><c:out value="${bill.shipping_fee}"/></td>--%>
+                                            <td ><c:out value="${bill.payment}"/></td>
+                                            <td ><c:out value="${bill.date_of_payment}"/></td>
+                                            <td ><c:out value="${bill.status}"/></td>
+                                                <%--                                            <td><c:out value="${bill.create_date}"/></td>--%>
+                                                <%--                                            <td><c:out value="${bill.update_date}"/></td>--%>
+                                            <td >
                                                 <button onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
                                                     Xác nhận
                                                 </button>
@@ -217,26 +157,9 @@
 
                                         </tr>
                                     </c:forEach>
-                                    <c:if test="${currentPage !=1}">
-                                        <td><a href="bills?page=${currentPage -1}">Previous</a></td>
-                                    </c:if>
-                                    <table border="1" cellspacing="5" cellspacing="5">
-                                        <tr>
-                                            <c:forEach begin="1" end="${noOfPages}" var="i">
-                                                <c:choose>
-                                                    <c:when test="${currentPage eq i}">
-                                                        <td>${i}</td>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <td><a href="bills?page=${i}">${i}</a></td>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                        </tr>
-                                    </table>
-                                    <c:if test="${currentPage lt noOfpages}">
-                                        <td><a href="bills?page=${currentPage +1}">Next</a></td>
-                                    </c:if>
+<%--                                    <a href="ViewServlet?page=1">1</a>--%>
+<%--                                    <a href="ViewServlet?page=1">2</a>--%>
+<%--                                    <a href="ViewServlet?page=1">3</a>--%>
 
                                     </tbody>
                                 </table>

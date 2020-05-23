@@ -182,16 +182,33 @@
         <div class="main-panel">
             <div class="content-wrapper">
                 <div class="page-header">
-                    <h3 class="page-title">Chi tiết sản phẩm</h3>
+                    <h3 class="page-title">Thông tin chi tiết</h3>
                 </div>
                 <div class="row">
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title" style="float: left">${product.getProductName()}</h4>
-                                <h4 class="card-title" style="float: right">Nhãn hàng: ${product.getCatalogName()}</h4>
-                                <p class="card-description" style="clear: both"> Size: <code>${product.getSize()}</code></p>
-                                <p> ${product.getDescription()} </p>
+                                <c:choose>
+                                    <c:when test="${type == 'product'}">
+                                        <h4 class="card-title" style="float: left">${product.getProductName()}</h4>
+                                        <h4 class="card-title" style="float: right">Nhãn
+                                            hàng: ${product.getCatalogName()}</h4>
+                                        <p class="card-description" style="clear: both"> Size:
+                                            <code>${product.getSize()}</code></p>
+                                        <p> ${product.getDescription()} </p>
+                                    </c:when>
+                                    <c:when test="${type == 'catalog'}">
+                                        <h4 class="card-title">Nhãn
+                                            hàng: ${product.getCatalogName()}</h4>
+                                        <br>
+                                        <p> ${product.getCatalog().getDescription()} </p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <h4 class="card-description"> Size:
+                                            <code style="font-size: 20px">${product.getSize()}</code></h4>
+                                    </c:otherwise>
+
+                                </c:choose>
                             </div>
                         </div>
                     </div>

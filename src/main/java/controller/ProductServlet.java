@@ -30,15 +30,12 @@ import java.util.List;
 
 @WebServlet(name = "ServletProduct", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
-    public static final int RECORD_PER_PAGE_DISPLAY = 5;
-    public static final int START_PAGE_DISPLAY = 1;
     private IProductService productService = new ProductServiceImp();
     private ICatalogService catalogService = new CatalogServiceImp();
     private IStockService stockService = new StockServiceImp();
     private List<ImportRecord> importRecords;
     private List<Bill> billRecords;
     private Product product;
-    private int currentPage = 1;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
@@ -164,52 +161,9 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        String button = request.getParameter("button");
-        if (button == null) {
-            button = "";
-        }
-        int size;
-        int pages = START_PAGE_DISPLAY;
-
         try {
-            size = productService.getProductSize();
-            pages = size / RECORD_PER_PAGE_DISPLAY;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        switch (button) {
-            case "next":
-                if (++currentPage > pages) {
-                    currentPage = pages;
-                }
-                break;
-            case "previous":
-                if (--currentPage < 1) {
-                    currentPage = 1;
-                }
-                break;
-            case "page":
-                if (request.getParameter("page") != null) {
-                    currentPage = Integer.parseInt(request.getParameter("page"));
-                }
-                break;
-            default:
-                currentPage = 1;
-        }
-
-        int[] pageIndex = new int[10];
-        int pageIndexStart = (currentPage - 1) * 10;
-        for (int times = 1; times <= 10; times++) {
-            pageIndex[times - 1] = pageIndexStart + times;
-        }
-
-        try {
-            List<Product> productList = productService.getProductListPagination((currentPage - 1) * 5);
-            request.setAttribute("pages", pages);
-            request.setAttribute("current", currentPage);
+            List<Product> productList = productService.getProductList();
             request.setAttribute("products", productList);
-            request.setAttribute("pageIndex", pageIndex);
             request.getRequestDispatcher("views/admin/product/home.jsp").forward(request, response);
         } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();

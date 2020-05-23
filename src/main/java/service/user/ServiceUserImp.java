@@ -44,7 +44,6 @@ public class ServiceUserImp implements IServiceUser {
             connection = DBHandle.getConnection();
             preparedStatement = connection.prepareStatement(Query.CREATE_USER_WITH_PARAMETERS);
             preparedStatement.setInt(1, user.getRoleId());
-            System.out.println(user.getRoleId());
             preparedStatement.setString(2, user.getFirstName());
             preparedStatement.setString(3, user.getLastName());
             preparedStatement.setBoolean(4, user.getGender());
