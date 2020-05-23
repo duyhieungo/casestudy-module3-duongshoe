@@ -1,7 +1,6 @@
 package main.java.service.product;
 
 import main.java.model.Catalog;
-import main.java.model.Item;
 import main.java.model.Product;
 import main.java.util.DBHandle;
 import main.java.util.Query;
@@ -36,25 +35,6 @@ public class ProductServiceImp implements IProductService {
             products.add(parseResultSet(resultSet));
         }
         return products;
-    }
-
-    public List<Product> getProductListPagination(int offset) throws SQLException {
-        List<Product> productList = new LinkedList<>();
-        statement = connection.prepareStatement(Query.SELECT_PRODUCT_OFFSET);
-        statement.setInt(1, offset);
-        ResultSet resultSet = statement.executeQuery();
-        while (resultSet.next()) {
-            productList.add(parseResultSet(resultSet));
-        }
-        return productList;
-    }
-
-    public int getProductSize() throws SQLException {
-        String query = "SELECT COUNT(*) AS COUNT FROM product_detail";
-        statement = connection.prepareStatement(query);
-        ResultSet resultSet = statement.executeQuery();
-        resultSet.first();
-        return resultSet.getInt("count");
     }
 
     public List<Product> getProductList(Catalog catalog) throws SQLException {
@@ -104,16 +84,6 @@ public class ProductServiceImp implements IProductService {
             sizeList.add(resultSet.getInt("size"));
         }
         return sizeList;
-    }
-
-    public int price(int id) throws SQLException {
-        int price;
-        statement = connection.prepareStatement(Query.SELECT_PRICE_BY_PRODUCT_ID);
-        statement.setInt(1, id);
-        ResultSet resultSet = statement.executeQuery();
-        resultSet.first();
-        price = resultSet.getInt("price");
-        return price;
     }
 
 
@@ -178,19 +148,14 @@ public class ProductServiceImp implements IProductService {
     }
 
     @Override
-    public List<Item> getProductForHomePage() throws SQLException {
-        List<Item> itemList = new LinkedList<>();
+    public List<Product> getProductForHomePage() throws SQLException {
+        List<Product> products = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_PRODUCT_FOR_HOMEPAGE);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
-            Product product = parseSimpleResultSet(resultSet);
-            int price = price(product.getProductID());
-            Item item = new Item();
-            item.setPrice(price);
-            item.setProduct(product);
-            itemList.add(item);
+            products.add(parseSimpleResultSet(resultSet));
         }
-        return itemList;
+        return products;
     }
 
     @Override

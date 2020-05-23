@@ -23,6 +23,7 @@
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
                 <div class="brand-wrapper">
+                    <%--<img src="/resources/assets/images/logo.svg" alt="logo" class="logo">--%>
                 </div>
                 <div class="login-wrapper my-auto">
                     <h1 class="login-title">Đăng nhập</h1>

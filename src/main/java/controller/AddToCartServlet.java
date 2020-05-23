@@ -49,30 +49,11 @@ public class AddToCartServlet extends HttpServlet {
                     item.setProduct(product);
                     item.setPrice(10000);
                     itemList.add(item);
-                    session.setAttribute("billDetail", billDetail);
-                } else {
-                    BillDetail billDetail = (BillDetail) session.getAttribute("billDetail");
-                    List<Item> itemList = billDetail.getItems();
-                    boolean check = false;
-                    for (Item item : itemList){
-                        if(item.getProduct().getProductID() == product.getProductID()) {
-                            item.setQuantity(item.getQuantity() + quantity);
-                            check = true;
-                        }
-                    }
-                    if (check == false){
-                        Item item = new Item();
-                        item.setQuantity(quantity);
-                        item.setProduct(product);
-                        item.setPrice(10000);
-                        itemList.add(item);
-                    }
-                    session.setAttribute("billDetail", billDetail);
+
+
                 }
             }
-            response.sendRedirect(request.getContextPath()+"/home");
-        } else {
-            response.sendRedirect(request.getContextPath()+"/home");
+
         }
     }
 }

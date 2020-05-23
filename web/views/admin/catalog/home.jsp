@@ -184,7 +184,7 @@
                 <div class="page-header" style="margin-bottom: 5px">
                     <h3 class="page-title" style="float: left">Bảng sản phẩm</h3>
                 </div>
-                <a href="${pageContext.request.contextPath}/catalog?action=create"
+                <a href="${pageContext.request.contextPath}/catalog?action=create}"
                    class="nav-link" style="float: right; margin-bottom: 10px"><i class="icon-plus"></i> Thêm mới</a>
                 <div class="row" style="clear: both">
                     <div class="col-lg-12 grid-margin stretch-card">

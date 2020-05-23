@@ -1,16 +1,16 @@
 package main.java.service.stock;
 
-import com.sun.xml.internal.ws.wsdl.writer.document.Import;
-import main.java.model.Catalog;
 import main.java.model.ImportRecord;
 import main.java.model.Product;
 import main.java.service.product.IProductService;
 import main.java.service.product.ProductServiceImp;
 import main.java.util.DBHandle;
-import main.java.util.Link;
 import main.java.util.Query;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,31 +35,13 @@ public class StockServiceImp implements IStockService {
     }
 
     public List<ImportRecord> getImportRecordByProduct(Product product) throws SQLException {
-        return getImportRecordByProduct(product.getDetailID());
+        return getImportRecordByProductID(product.getDetailID());
     }
 
-    public List<ImportRecord> getImportRecordByProduct(int detailID) throws SQLException {
-        statement = connection.prepareStatement(Query.SELECT_IMPORT_BY_PRODUCT_ID);
-        return getRecordOneParam(statement, detailID);
-    }
-
-    public List<ImportRecord> getImportRecordByCatalog(Catalog catalog) throws SQLException {
-        return getImportRecordByCatalog(catalog.getCatalogID());
-    }
-
-    public List<ImportRecord> getImportRecordByCatalog(int id) throws SQLException {
-        statement = connection.prepareStatement(Query.SELECT_IMPORT_BY_CATALOG_ID);
-        return getRecordOneParam(statement, id);
-    }
-
-    public List<ImportRecord> getImportRecordBySize(int size) throws SQLException {
-        statement = connection.prepareStatement(Query.SELECT_IMPORT_BY_SIZE);
-        return getRecordOneParam(statement, size);
-    }
-
-    private List<ImportRecord> getRecordOneParam(PreparedStatement statement, int param) throws SQLException {
+    public List<ImportRecord> getImportRecordByProductID(int id) throws SQLException {
         List<ImportRecord> importRecords = new LinkedList<>();
-        statement.setInt(1, param);
+        statement = connection.prepareStatement(Query.SELECT_IMPORT_BY_PRODUCT_ID);
+        statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             importRecords.add(parseResultSet(resultSet));

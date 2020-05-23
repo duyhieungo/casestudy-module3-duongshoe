@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -44,10 +43,8 @@ public class AdminServlet extends HttpServlet {
             userName = request.getParameter("username");
             password = request.getParameter("password");
             if (userName.equals(admin.getUsername()) && password.equals(admin.getPassword())) {
-                request.getSession().setAttribute("admin", admin);
-                response.sendRedirect("/dashboard");
-//                rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_REDIRECT_DASHBOARD);
-//                rd.forward(request, response);
+                rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_REDIRECT_DASHBOARD);
+                rd.forward(request, response);
             } else {
                 request.setAttribute(Error.ERROR, Error.ERROR_004);
                 rd = request.getRequestDispatcher(Link.LOGIN_ADMIN_TO_LOGIN_ADMIN);
