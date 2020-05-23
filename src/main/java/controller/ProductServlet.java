@@ -21,7 +21,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
-import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -33,13 +32,13 @@ import java.util.List;
 public class ProductServlet extends HttpServlet {
     public static final int RECORD_PER_PAGE_DISPLAY = 5;
     public static final int START_PAGE_DISPLAY = 1;
-    private int currentPage = 1;
     private IProductService productService = new ProductServiceImp();
     private ICatalogService catalogService = new CatalogServiceImp();
     private IStockService stockService = new StockServiceImp();
     private List<ImportRecord> importRecords;
     private List<Bill> billRecords;
     private Product product;
+    private int currentPage = 1;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
