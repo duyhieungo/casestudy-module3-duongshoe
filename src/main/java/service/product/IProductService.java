@@ -35,5 +35,9 @@ public interface IProductService {
 
     List<Integer> getSizeListByProductID(int id) throws SQLException;
 
+    List<Product> getProductListPagination(int offset, int amount) throws SQLException;
+
+    int getProductSize() throws SQLException;
+
     int price(int id) throws SQLException;
 }

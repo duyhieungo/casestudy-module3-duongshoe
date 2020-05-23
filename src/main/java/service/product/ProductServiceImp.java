@@ -38,6 +38,26 @@ public class ProductServiceImp implements IProductService {
         return products;
     }
 
+    public List<Product> getProductListPagination(int offset, int amount) throws SQLException {
+        List<Product> productList = new LinkedList<>();
+        statement = connection.prepareStatement(Query.SELECT_PRODUCT_OFFSET);
+        statement.setInt(1, amount);
+        statement.setInt(2, offset);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            productList.add(parseResultSet(resultSet));
+        }
+        return productList;
+    }
+
+    public int getProductSize() throws SQLException {
+        String query = "SELECT COUNT(*) AS COUNT FROM product_detail";
+        statement = connection.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.first();
+        return resultSet.getInt("count");
+    }
+
     public List<Product> getProductList(Catalog catalog) throws SQLException {
         List<Product> products = new LinkedList<>();
         statement = connection.prepareStatement(Query.SELECT_PRODUCT_BY_CATALOG_ID);
