@@ -181,9 +181,9 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="page-header" style="margin-bottom: 5px">
-                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>
-                </div>
+                <%--                <div class="page-header" style="margin-bottom: 5px">--%>
+                <%--                    <h4 class="page-title" style="float: left">Chi nhánh Hà Nội</h4>--%>
+                <%--                </div>--%>
                 <c:if test="${status == 1}">
                     <label class="badge badge-warning" style="font-size: 13px; margin-bottom: 18px; margin-top: 8px ">
                         Xoá thành công
@@ -199,7 +199,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr style="text-align: center">
-                                        <th style="font-weight: bold">ID</th>
+                                        <th style="font-weight: bold">STT</th>
                                         <th style="font-weight: bold">Sản phẩm</th>
                                         <th style="font-weight: bold">Hãng</th>
                                         <th style="font-weight: bold">Size</th>
@@ -208,22 +208,36 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${products}" var="product">
+                                    <c:forEach items="${products}" var="product" varStatus="count">
                                         <tr style="text-align: center">
-                                            <td>${product.getDetailID()}</td>
+                                            <td>${pageIndex[count.index]}</td>
                                             <td style="text-align: left">
-                                                <a href="${pageContext.request.contextPath}/product?action=detail&id=${product.getDetailID()}"
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=product&id=${product.getDetailID()}"
                                                    class="nav-link">${product.getProductName()}</a>
                                             </td>
-                                            <td>${product.getCatalogName()}</td>
-                                            <td>${product.getSize()}</td>
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=catalog&id=${product.getDetailID()}"
+                                                   class="nav-link">${product.getCatalogName()}</a>
+                                            </td>
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/product?action=detail&type=size&id=${product.getDetailID()}"
+                                                   class="nav-link">${product.getSize()}</a>
+                                            </td>
                                             <td>
                                                 <c:choose>
                                                     <c:when test="${product.getStatus() == 1}">
-                                                        <label class="badge badge-success">Đang kinh doanh</label>
+                                                        <a href="${pageContext.request.contextPath}/catalog?action=detail&id=${product.getDetailID()}"
+                                                           class="nav-link"
+                                                           id="status-${product.getDetailID()}"><label
+                                                                class="badge badge-success" style="cursor: pointer">
+                                                            Đang kinh doanh</label></a>
                                                     </c:when>
                                                     <c:when test="${product.getStatus() == 0}">
-                                                        <label class="badge badge-danger">Ngừng kinh doanh</label>
+                                                        <a href="${pageContext.request.contextPath}/catalog?action=detail&id=${product.getDetailID()}"
+                                                           class="nav-link"
+                                                           id="status-${product.getDetailID()}"><label
+                                                                class="badge badge-danger" style="cursor: pointer">
+                                                            Ngừng kinh doanh</label></a>
                                                     </c:when>
                                                 </c:choose>
                                             </td>
@@ -232,16 +246,36 @@
                                                    class="nav-link"><i class="icon-pencil"></i></a>
                                             </td>
                                             <td style="width: 10px">
-                                                <a class="nav-link" href="#" onclick="
-                                                        if (confirm('Bạn có chắc chắn muốn xoá ?')) {
-                                                        document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
-                                                        }
-                                                        "><i class="icon-trash"></i></a>
+                                                <a class="nav-link" href="#" onclick=confirmDelete()><i
+                                                        class="icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
+                                <div class="d-flex mt-4 flex-wrap">
+                                    <p class="text-muted">Hiển thị ${current} trong số ${pages} trang</p>
+                                    <nav class="ml-auto">
+                                        <ul class="pagination separated pagination-info">
+                                            <li class="page-item"><a
+                                                    href="${pageContext.request.contextPath}/product?button=previous"
+                                                    class="page-link"><i
+                                                    class="icon-arrow-left"></i></a></li>
+                                            <c:forEach begin="1" end="${pages}" var="page">
+                                                <li class="page-item
+                                                        <c:if test="${current == page}">
+                                                             active
+                                                        </c:if>"><a
+                                                        href="${pageContext.request.contextPath}/product?button=page&page=${page}"
+                                                        class="page-link">${page}</a></li>
+                                            </c:forEach>
+                                            <li class="page-item"><a
+                                                    href="${pageContext.request.contextPath}/product?button=next"
+                                                    class="page-link"><i
+                                                    class="icon-arrow-right"></i></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -272,6 +306,13 @@
 <!-- inject:js -->
 <script src="${pageContext.request.contextPath}/resources/js/off-canvas.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/misc.js"></script>
+<script>
+    function confirmDelete() {
+        if (confirm("Bạn có chắc chắn muốn xoá ?")) {
+            document.location.href = '${pageContext.request.contextPath}/product?action=delete&id=${product.getDetailID()}&confirm=ok'
+        }
+    }
+</script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <!-- End custom js for this page -->
