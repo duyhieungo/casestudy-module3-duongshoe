@@ -54,9 +54,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/util.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
     <!--===============================================================================================-->
-    <style type="text/css">
-        .vnd:after { content:'VNĐ'; }
-    </style>
 </head>
 <body class="animsition">
 
@@ -423,8 +420,8 @@
                         ${product.getProductName()}
                     </h4>
 
-                    <span class="mtext-106 cl2 vnd" style="font-weight: bold">
-                        ${price}
+                    <span class="mtext-106 cl2">
+							$58.79
 						</span>
 
                     <p class="stext-102 cl3 p-t-23">
@@ -467,7 +464,7 @@
                                 </div>
                                 <c:url value="/addtoCart?id=${product.getProductID()}" var="addtoCart"/>
                                 <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    <a href="${addtoCart}" style="text-decoration: none; color: white">Thêm vào giỏ hàng</a>
+                                    <a href="${addtoCart}">Thêm vào giỏ hàng</a>
                                 </button>
                             </div>
                         </div>
