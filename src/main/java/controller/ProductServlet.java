@@ -31,6 +31,9 @@ import java.util.List;
 
 @WebServlet(name = "ServletProduct", urlPatterns = "/product")
 public class ProductServlet extends HttpServlet {
+    public static final int RECORD_PER_PAGE_DISPLAY = 5;
+    public static final int START_PAGE_DISPLAY = 1;
+    private int currentPage = 1;
     private IProductService productService = new ProductServiceImp();
     private ICatalogService catalogService = new CatalogServiceImp();
     private IStockService stockService = new StockServiceImp();
@@ -162,33 +165,28 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void showProductList(HttpServletRequest request, HttpServletResponse response) {
-        Enumeration<String> paramName = request.getParameterNames();
+        String button = request.getParameter("button");
+        if (button == null) {
+            button = "";
+        }
         int size;
-        int page = 1;
-        String param = paramName.nextElement();
-        int currentPage = 1;
+        int pages = START_PAGE_DISPLAY;
 
         try {
             size = productService.getProductSize();
-            page = size / 5;
+            pages = size / RECORD_PER_PAGE_DISPLAY;
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        switch (param) {
+        switch (button) {
             case "next":
-                if (request.getParameter("current") != null) {
-                    currentPage = Integer.parseInt(request.getParameter("current"));
-                }
-                if (++currentPage > page) {
-                    currentPage = page;
+                if (++currentPage > pages) {
+                    currentPage = pages;
                 }
                 break;
             case "previous":
-                if (request.getParameter("current") != null) {
-                    currentPage = Integer.parseInt(request.getParameter("current"));
-                }
-                if (--currentPage < page) {
+                if (--currentPage < 1) {
                     currentPage = 1;
                 }
                 break;
@@ -201,11 +199,18 @@ public class ProductServlet extends HttpServlet {
                 currentPage = 1;
         }
 
+        int[] pageIndex = new int[10];
+        int pageIndexStart = (currentPage - 1) * 10;
+        for (int times = 1; times <= 10; times++) {
+            pageIndex[times - 1] = pageIndexStart + times;
+        }
+
         try {
             List<Product> productList = productService.getProductListPagination((currentPage - 1) * 5);
-            request.setAttribute("pages", page);
+            request.setAttribute("pages", pages);
             request.setAttribute("current", currentPage);
             request.setAttribute("products", productList);
+            request.setAttribute("pageIndex", pageIndex);
             request.getRequestDispatcher("views/admin/product/home.jsp").forward(request, response);
         } catch (ServletException | IOException | SQLException e) {
             e.printStackTrace();

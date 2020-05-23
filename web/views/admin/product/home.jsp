@@ -199,7 +199,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                     <tr style="text-align: center">
-                                        <th style="font-weight: bold">ID</th>
+                                        <th style="font-weight: bold">STT</th>
                                         <th style="font-weight: bold">Sản phẩm</th>
                                         <th style="font-weight: bold">Hãng</th>
                                         <th style="font-weight: bold">Size</th>
@@ -208,9 +208,9 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${products}" var="product">
+                                    <c:forEach items="${products}" var="product" varStatus="count">
                                         <tr style="text-align: center">
-                                            <td>${product.getDetailID()}</td>
+                                            <td>${pageIndex[count.index]}</td>
                                             <td style="text-align: left">
                                                 <a href="${pageContext.request.contextPath}/product?action=detail&type=product&id=${product.getDetailID()}"
                                                    class="nav-link">${product.getProductName()}</a>
@@ -258,12 +258,7 @@
                                     <nav class="ml-auto">
                                         <ul class="pagination separated pagination-info">
                                             <li class="page-item"><a
-                                            <%--                                                ${pageContext.request.contextPath}/product?previous=${current}--%>
-                                                    href="<c:choose>
-                                                    <c:when test="${current == 1}">
-
-</c:when>
-</c:choose>"
+                                                    href="${pageContext.request.contextPath}/product?button=previous"
                                                     class="page-link"><i
                                                     class="icon-arrow-left"></i></a></li>
                                             <c:forEach begin="1" end="${pages}" var="page">
@@ -271,11 +266,11 @@
                                                         <c:if test="${current == page}">
                                                              active
                                                         </c:if>"><a
-                                                        href="${pageContext.request.contextPath}/product?page=${current}"
+                                                        href="${pageContext.request.contextPath}/product?button=page&page=${page}"
                                                         class="page-link">${page}</a></li>
                                             </c:forEach>
                                             <li class="page-item"><a
-                                                    href="${pageContext.request.contextPath}/product?next=${current}"
+                                                    href="${pageContext.request.contextPath}/product?button=next"
                                                     class="page-link"><i
                                                     class="icon-arrow-right"></i></a></li>
                                         </ul>
