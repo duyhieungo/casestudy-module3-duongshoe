@@ -9,7 +9,7 @@ import java.util.List;
 public interface BillService {
     Bill selectBill(int id);
 
-    List<Bill> selectAllBills();
+    List<Bill> selectAllBills(int offset, int noOfRecords);
 
     boolean updateBill(Bill bill) throws SQLException;
 

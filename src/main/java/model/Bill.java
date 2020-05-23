@@ -5,7 +5,7 @@ import java.util.Date;
 public class Bill {
     private int id;
     private int user_id;
-    private double amount;
+//    private double amount;
     private String message;
     private double discount;
     private double shipping_fee;
@@ -23,12 +23,12 @@ public class Bill {
         this.status = status;
     }
 
-    public Bill(int id, int user_id, double amount, String message, double discount,
+    public Bill(int id, int user_id, String message, double discount,
                 double shipping_fee, String payment,Date date_of_payment,
                 int status, Date create_date, Date update_date) {
     this.id=id;
     this.user_id=user_id;
-    this.amount=amount;
+//    this.amount=amount;
     this.message=message;
     this.discount=discount;
     this.shipping_fee=shipping_fee;
@@ -55,13 +55,13 @@ public class Bill {
         this.user_id = user_id;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+//    public double getAmount() {
+//        return amount;
+//    }
+//
+//    public void setAmount(double amount) {
+//        this.amount = amount;
+//    }
 
     public String getMessage() {
         return message;
