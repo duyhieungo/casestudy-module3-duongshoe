@@ -134,7 +134,7 @@
                     </a>
                     <div class="collapse" id="bill">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/bills">Xem hóa đơn</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_bill">Xem hóa đơn</a></li>
                         </ul>
                     </div>
                 </li>

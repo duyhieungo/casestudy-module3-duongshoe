@@ -114,6 +114,12 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <th>Giá đơn hàng:</th>
+                                            <td size="45" name="amount">
+                                                <c:out value="${bill.amount}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th>Thông tin:</th>
                                             <td size="45" name="message">
                                                 <c:out value="${bill.message}"/>
