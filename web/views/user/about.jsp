@@ -1,55 +1,37 @@
 <%--
   Created by IntelliJ IDEA.
   User: Vu Dai Duong
-  Date: 5/21/2020
-  Time: 5:41 PM
+  Date: 5/24/2020
+  Time: 7:29 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Coza Store - Duong Shoe</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/icons/favicon.png"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/slick/slick.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/MagnificPopup/magnific-popup.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/util.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
@@ -58,7 +40,7 @@
 <body class="animsition">
 
 <!-- Header -->
-<header>
+<header class="header-v4">
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
@@ -73,19 +55,18 @@
                         Help & FAQs
                     </a>
 
-                    <a href="/login" class="flex-c-m trans-04 p-lr-25">
+                    <a href="#" class="flex-c-m trans-04 p-lr-25">
                         My Account
                     </a>
 
                     <a href="#" class="flex-c-m trans-04 p-lr-25">
                         VN
                     </a>
-
                 </div>
             </div>
         </div>
 
-        <div class="wrap-menu-desktop">
+        <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
@@ -101,7 +82,7 @@
                         </li>
 
                         <li class="label1" data-label1="hot">
-                            <a href="/home?action=product" >Sản phẩm</a>
+                            <a href="/home?action=product">Sản phẩm</a>
                             <ul class="sub-menu">
                                 <li><a href="index.html">Adidas</a></li>
                                 <li><a href="home-02.html">Nike</a></li>
@@ -113,15 +94,15 @@
                         </li>
 
                         <li>
-                            <a href="#" class="active-menu">Giỏ hàng</a>
+                            <a href="/addtoCart?action=">Giỏ hàng</a>
+                        </li>
+
+                        <li class="active-menu">
+                            <a href="#">Về chúng tôi</a>
                         </li>
 
                         <li>
-                            <a href="/home?action=about" >Về chúng tôi</a>
-                        </li>
-
-                        <li>
-                            <a href="/home?action=contact" >Liên hệ</a>
+                            <a href="/home?action=contact">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -132,13 +113,11 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="0">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                       data-notify="0">
+                    <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
                 </div>
@@ -204,7 +183,7 @@
         </ul>
 
         <ul class="main-menu-m">
-            <li >
+            <li class="active-menu">
                 <a href="/home?action=">Trang chủ</a>
             </li>
             <li >
@@ -222,12 +201,12 @@
 					</span>
             </li>
 
-            <li class="active-menu">
-                <a href="#"  >Giỏ hàng</a>
+            <li>
+                <a href="/addtoCart?action=" >Giỏ hàng</a>
             </li>
 
             <li>
-                <a href="/home?action=about">Về chúng tôi</a>
+                <a href="#">Về chúng tôi</a>
             </li>
 
             <li>
@@ -268,7 +247,7 @@
             </div>
         </div>
 
-
+        <div class="header-cart-content flex-w js-pscroll">
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
                     Tổng cộng:
@@ -276,11 +255,11 @@
 
                 <div class="header-cart-buttons flex-w w-full">
                     <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        View Cart
+                        Xem giỏ hàng
                     </a>
 
                     <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        Check Out
+                        Thanh toán
                     </a>
                 </div>
             </div>
@@ -289,171 +268,85 @@
 </div>
 
 
-<!-- breadcrumb -->
-<div class="container" style="margin-top: 40px">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="/home?action=" class="stext-109 cl8 hov-cl1 trans-04">
-            Trang chủ
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <span class="stext-109 cl4">
-				Giỏ hàng
-			</span>
-    </div>
-</div>
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Về chúng tôi
+    </h2>
+</section>
 
 
-<!-- Shoping Cart -->
-<form class="bg0 p-t-75 p-b-85">
+<!-- Content page -->
+<section class="bg0 p-t-75 p-b-120">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-                <div class="m-l-25 m-r--38 m-lr-0-xl">
-                    <div class="wrap-table-shopping-cart">
-                        <table class="table-shopping-cart">
-                            <tr class="table_head">
-                                <th class="column-1">Product</th>
-                                <th class="column-2"></th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Quantity</th>
-                                <th class="column-5">Total</th>
-                            </tr>
-                            <c:forEach items="${billDetail.items}" var="item">
-                                <tr class="table_row">
-                                    <td class="column-1">
-                                        <div class="how-itemcart1">
-                                            <img src="${item.getProduct().getImages()[0]}" alt="IMG">
-                                        </div>
-                                    </td>
-                                    <td class="column-2">${item.getProduct().getProductName()}</td>
-                                    <td class="column-3"><input type="number" id="productPrice" value="${item.getPrice()}"></td>
-                                    <td class="column-4">
-                                        <div class="wrap-num-product flex-w m-l-auto m-r-0" onclick="showTotal()">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-minus" onclick="showTotal()"></i>
-                                            </div>
+        <div class="row p-b-148">
+            <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Câu chuyện về chúng tôi
+                    </h3>
 
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1" id="quantity">
+                    <p class="stext-113 cl6 p-b-26">
+                        Duong Shoe là tập đoàn đa cấp bán giày da lợn nổi tiếng với thương hiệu Coza Store, được lên ý tưởng và thành lập từ những buổi đá bóng với anh em CodeGym.
+                        Đây là thương hiệu vừa mới thành lập ngày hôm qua ở trung tâm CodeGym, chuyên bán giày Sneakers cao cấp, những đôi giày được làm từ da
+                        những con lợn bạch tạng từ vùng núi Himalayka, đế giày làm từ răng cá mập biển sâu, hàng Authentic chuẩn Rep 1:1.
+                    </p>
 
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-plus" onclick="showTotal()"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="column-5">
-                                        <span id="total">${item.getPrice()}</span>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
+                    <p class="stext-113 cl6 p-b-26">
+                        Một đôi giày của chúng tôi nhập từ Trung Quốc với giá từ 50.000 - 100.000đ, nhưng chúng tôi bán hơn 2.000.000đ đơn giản chỉ vì chúng tôi là thương hiệu nổi tiếng, chúng tôi có quyền.
+                    </p>
+
+                    <p class="stext-113 cl6 p-b-26">
+                        Bạn có câu hỏi dành cho chúng tôi? Hãy gửi nó đến cửa hàng của chúng tôi tại số 15 lô TT04 khu đô
+                        thị Mon City
+                        hoặc gọi chúng tôi qua số điện thoại: (+84)988.888.888
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src="${pageContext.request.contextPath}/resources/images/codegym-bong-da.jpg" alt="IMG">
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                        <div class="flex-w flex-m m-r-20 m-tb-5">
-                            <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã giảm giá">
+        <div class="row">
+            <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+                <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
+                        Phương châm hoạt động
+                    </h3>
 
-                            <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                Sử dụng
-                            </div>
-                        </div>
+                    <p class="stext-113 cl6 p-b-26">
+                        Ra xã hội làm ăn bươn trải, liều thì ăn nhiều, không liều thì ăn ít, muốn thành công thì phải chấp nhận trải qua đắng cay ngọt bùi, làm ăn muốn kiếm ra tiền thì phải chấp nhận mạo hiểm, nguy hiểm một tí nhưng trong tầm kiểm soát.
+                        Chính vì thế chúng tôi liều bán giày fake giá real.
+                    </p>
 
-                        <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                            Cập nhật giỏ hàng
-                        </div>
+                    <div class="bor16 p-l-29 p-b-9 m-t-22">
+                        <p class="stext-114 cl6 p-r-40 p-b-11">
+                            Sau này chỉ có cần cù thì bù siêng năng, chỉ có làm thì mới có ăn, không làm mà đòi ăn thì ăn cơm trắng với giò.
+                        </p>
+
+                        <span class="stext-111 cl8">
+								- Huấn Rose's
+							</span>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                    <h4 class="mtext-109 cl2 p-b-30">
-                        Giá trị giỏ hàng
-                    </h4>
-
-                    <div class="flex-w flex-t bor12 p-b-13">
-                        <div class="size-208">
-								<span class="stext-110 cl2">
-									Tổng cộng:
-								</span>
-                        </div>
-
-                        <div class="size-209">
-								<span class="mtext-110 cl2">
-
-								</span>
-                        </div>
+            <div class="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">
+                <div class="how-bor2">
+                    <div class="hov-img0">
+                        <img src="${pageContext.request.contextPath}/resources/images/codegym-bong-da-2.jpg" alt="IMG">
                     </div>
-
-                    <div class="flex-w flex-t bor12 p-t-15 p-b-30">
-                        <div class="size-208 w-full-ssm">
-								<span class="stext-110 cl2">
-									Giao hàng
-								</span>
-                        </div>
-
-                        <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-                            <p class="stext-111 cl6 p-t-2">
-                                Mời nhập địa chỉ giao hàng
-                            </p>
-
-                            <div class="p-t-15">
-									<span class="stext-112 cl8">
-										Tính phí ship
-									</span>
-
-                                <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-                                    <select class="js-select2" name="time">
-                                        <option>Chọn thành phố</option>
-                                        <option>Hà Nội</option>
-                                        <option>Hồ Chí Minh City</option>
-                                        <option>Hải Phòng</option>
-                                        <option>Đà Nẵng</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-
-                                <div class="bor8 bg0 m-b-12">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="Quận/ Huyện">
-                                </div>
-
-                                <div class="bor8 bg0 m-b-22">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Số nhà">
-                                </div>
-
-                                <div class="flex-w">
-                                    <div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-                                        Cập nhật tổng giá
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex-w flex-t p-t-27 p-b-33">
-                        <div class="size-208">
-								<span class="mtext-101 cl2">
-									Total:
-								</span>
-                        </div>
-
-                        <div class="size-209 p-t-1">
-								<span class="mtext-110 cl2">
-
-								</span>
-                        </div>
-                    </div>
-
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        THANH TOÁN
-                    </button>
                 </div>
             </div>
         </div>
     </div>
-</form>
-
+</section>
 
 
 
@@ -665,6 +558,6 @@
 </script>
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/front-end-views.js"></script>
+
 </body>
 </html>

@@ -1,55 +1,37 @@
 <%--
   Created by IntelliJ IDEA.
   User: Vu Dai Duong
-  Date: 5/21/2020
-  Time: 5:41 PM
+  Date: 5/24/2020
+  Time: 3:10 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Coza Store - Liên hệ</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/icons/favicon.png"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/slick/slick.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/MagnificPopup/magnific-popup.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/util.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
@@ -58,7 +40,7 @@
 <body class="animsition">
 
 <!-- Header -->
-<header>
+<header class="header-v4">
     <!-- Header desktop -->
     <div class="container-menu-desktop">
         <!-- Topbar -->
@@ -73,19 +55,18 @@
                         Help & FAQs
                     </a>
 
-                    <a href="/login" class="flex-c-m trans-04 p-lr-25">
+                    <a href="#" class="flex-c-m trans-04 p-lr-25">
                         My Account
                     </a>
 
                     <a href="#" class="flex-c-m trans-04 p-lr-25">
                         VN
                     </a>
-
                 </div>
             </div>
         </div>
 
-        <div class="wrap-menu-desktop">
+        <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
@@ -113,7 +94,7 @@
                         </li>
 
                         <li>
-                            <a href="#" class="active-menu">Giỏ hàng</a>
+                            <a href="/addtoCart?action=">Giỏ hàng</a>
                         </li>
 
                         <li>
@@ -121,7 +102,7 @@
                         </li>
 
                         <li>
-                            <a href="/home?action=contact" >Liên hệ</a>
+                            <a href="#" class="active-menu">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -132,13 +113,11 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="0">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="0">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                       data-notify="0">
+                    <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
                 </div>
@@ -204,7 +183,7 @@
         </ul>
 
         <ul class="main-menu-m">
-            <li >
+            <li class="active-menu">
                 <a href="/home?action=">Trang chủ</a>
             </li>
             <li >
@@ -222,8 +201,8 @@
 					</span>
             </li>
 
-            <li class="active-menu">
-                <a href="#"  >Giỏ hàng</a>
+            <li>
+                <a href="/addtoCart?action=" >Giỏ hàng</a>
             </li>
 
             <li>
@@ -231,7 +210,7 @@
             </li>
 
             <li>
-                <a href="/home?action=contact">Liên hệ</a>
+                <a href="#">Liên hệ</a>
             </li>
         </ul>
     </div>
@@ -268,7 +247,7 @@
             </div>
         </div>
 
-
+        <div class="header-cart-content flex-w js-pscroll">
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
                     Tổng cộng:
@@ -276,11 +255,11 @@
 
                 <div class="header-cart-buttons flex-w w-full">
                     <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        View Cart
+                        Xem giỏ hàng
                     </a>
 
                     <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        Check Out
+                        Thanh toán
                     </a>
                 </div>
             </div>
@@ -289,171 +268,98 @@
 </div>
 
 
-<!-- breadcrumb -->
-<div class="container" style="margin-top: 40px">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="/home?action=" class="stext-109 cl8 hov-cl1 trans-04">
-            Trang chủ
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <span class="stext-109 cl4">
-				Giỏ hàng
-			</span>
-    </div>
-</div>
+<!-- Title page -->
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('${pageContext.request.contextPath}/resources/images/bg-01.jpg');">
+    <h2 class="ltext-105 cl0 txt-center">
+        Liên hệ
+    </h2>
+</section>
 
 
-<!-- Shoping Cart -->
-<form class="bg0 p-t-75 p-b-85">
+<!-- Content page -->
+<section class="bg0 p-t-104 p-b-116">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-                <div class="m-l-25 m-r--38 m-lr-0-xl">
-                    <div class="wrap-table-shopping-cart">
-                        <table class="table-shopping-cart">
-                            <tr class="table_head">
-                                <th class="column-1">Product</th>
-                                <th class="column-2"></th>
-                                <th class="column-3">Price</th>
-                                <th class="column-4">Quantity</th>
-                                <th class="column-5">Total</th>
-                            </tr>
-                            <c:forEach items="${billDetail.items}" var="item">
-                                <tr class="table_row">
-                                    <td class="column-1">
-                                        <div class="how-itemcart1">
-                                            <img src="${item.getProduct().getImages()[0]}" alt="IMG">
-                                        </div>
-                                    </td>
-                                    <td class="column-2">${item.getProduct().getProductName()}</td>
-                                    <td class="column-3"><input type="number" id="productPrice" value="${item.getPrice()}"></td>
-                                    <td class="column-4">
-                                        <div class="wrap-num-product flex-w m-l-auto m-r-0" onclick="showTotal()">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-minus" onclick="showTotal()"></i>
-                                            </div>
-
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1" id="quantity">
-
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-plus" onclick="showTotal()"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="column-5">
-                                        <span id="total">${item.getPrice()}</span>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </table>
-                    </div>
-
-                    <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                        <div class="flex-w flex-m m-r-20 m-tb-5">
-                            <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã giảm giá">
-
-                            <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                Sử dụng
-                            </div>
-                        </div>
-
-                        <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                            Cập nhật giỏ hàng
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                    <h4 class="mtext-109 cl2 p-b-30">
-                        Giá trị giỏ hàng
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
+                <form>
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Gửi tin nhắn cho chúng tôi
                     </h4>
 
-                    <div class="flex-w flex-t bor12 p-b-13">
-                        <div class="size-208">
-								<span class="stext-110 cl2">
-									Tổng cộng:
-								</span>
-                        </div>
-
-                        <div class="size-209">
-								<span class="mtext-110 cl2">
-
-								</span>
-                        </div>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email của bạn">
+                        <img class="how-pos4 pointer-none" src="${pageContext.request.contextPath}/resources/images/icons/icon-email.png" alt="ICON">
                     </div>
 
-                    <div class="flex-w flex-t bor12 p-t-15 p-b-30">
-                        <div class="size-208 w-full-ssm">
-								<span class="stext-110 cl2">
-									Giao hàng
-								</span>
-                        </div>
-
-                        <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-                            <p class="stext-111 cl6 p-t-2">
-                                Mời nhập địa chỉ giao hàng
-                            </p>
-
-                            <div class="p-t-15">
-									<span class="stext-112 cl8">
-										Tính phí ship
-									</span>
-
-                                <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-                                    <select class="js-select2" name="time">
-                                        <option>Chọn thành phố</option>
-                                        <option>Hà Nội</option>
-                                        <option>Hồ Chí Minh City</option>
-                                        <option>Hải Phòng</option>
-                                        <option>Đà Nẵng</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-
-                                <div class="bor8 bg0 m-b-12">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="Quận/ Huyện">
-                                </div>
-
-                                <div class="bor8 bg0 m-b-22">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Số nhà">
-                                </div>
-
-                                <div class="flex-w">
-                                    <div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
-                                        Cập nhật tổng giá
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                    <div class="bor8 m-b-30">
+                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Chúng tôi có thể giúp gì được bạn?"></textarea>
                     </div>
 
-                    <div class="flex-w flex-t p-t-27 p-b-33">
-                        <div class="size-208">
-								<span class="mtext-101 cl2">
-									Total:
-								</span>
-                        </div>
-
-                        <div class="size-209 p-t-1">
-								<span class="mtext-110 cl2">
-
-								</span>
-                        </div>
-                    </div>
-
-                    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        THANH TOÁN
+                    <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                        Gửi thư
                     </button>
+                </form>
+            </div>
+
+            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-map-marker"></span>
+						</span>
+
+                    <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Address
+							</span>
+
+                        <p class="stext-115 cl6 size-213 p-t-18">
+                            DuongShoe Store số 15 lô TT04, khu đô thị Mon City
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-w w-full p-b-42">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-phone-handset"></span>
+						</span>
+
+                    <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Lets Talk
+							</span>
+
+                        <p class="stext-115 cl1 size-213 p-t-18">
+                            (+84)988.888.888
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-w w-full">
+						<span class="fs-18 cl5 txt-center size-211">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+
+                    <div class="size-212 p-t-2">
+							<span class="mtext-110 cl2">
+								Sale Support
+							</span>
+
+                        <p class="stext-115 cl1 size-213 p-t-18">
+                            duongshoe@codegym.com
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</form>
+</section>
 
+
+<!-- Map -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465.4898311362632!2d105.76806650441657!3d21.035940813516138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1svi!2s!4v1590054885085!5m2!1svi!2s"
+            width="800" height="500" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
 
 
 
@@ -664,7 +570,10 @@
     });
 </script>
 <!--===============================================================================================-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+<script src="${pageContext.request.contextPath}/resources/js/map-custom.js"></script>
+<!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/front-end-views.js"></script>
+
 </body>
 </html>

@@ -1,61 +1,44 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Duc
-  Date: 5/13/2020
-  Time: 10:53 PM
+  User: Vu Dai Duong
+  Date: 5/24/2020
+  Time: 10:12 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Coza Store - Duong Shoe</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Product</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <style type="text/css">
-        .vnd:after {
-            content: 'VNĐ';
-        }
-    </style>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/icons/favicon.png"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/fonts/linearicons-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/animsition/css/animsition.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/daterangepicker/daterangepicker.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/slick/slick.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/MagnificPopup/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/MagnificPopup/magnific-popup.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/util.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/main.css">
@@ -95,19 +78,19 @@
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
-                <a href="#" class="logo">
+                <a href="/home?action=" class="logo">
                     <img src="${pageContext.request.contextPath}/resources/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu">
-                            <a href="#">Trang chủ</a>
+                        <li>
+                            <a href="/home?action=">Trang chủ</a>
                         </li>
 
-                        <li class="label1" data-label1="hot">
-                            <a href="/home?action=product">Sản phẩm</a>
+                        <li class="label1 active-menu" data-label1="hot" >
+                            <a href="#">Sản phẩm</a>
                             <ul class="sub-menu">
                                 <li><a href="index.html">Adidas</a></li>
                                 <li><a href="home-02.html">Nike</a></li>
@@ -119,15 +102,15 @@
                         </li>
 
                         <li >
-                            <a href="views/user/cart-detail.jsp">Giỏ hàng</a>
+                            <a href="/addtoCart?action=">Giỏ hàng</a>
                         </li>
 
                         <li>
-                            <a href="views/user/about.jsp">Về chúng tôi</a>
+                            <a href="/home?action=about">Về chúng tôi</a>
                         </li>
 
                         <li>
-                            <a href="views/user/contact.jsp">Liên hệ</a>
+                            <a href="/home?action=contact">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -156,8 +139,8 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="#"><img src="${pageContext.request.contextPath}/resources/images/icons/logo-01.png"
-                                     alt="IMG-LOGO"></a>
+            <a href="/home?action="><img src="${pageContext.request.contextPath}/resources/images/icons/logo-01.png"
+                             alt="IMG-LOGO"></a>
         </div>
 
         <!-- Icon header -->
@@ -215,11 +198,11 @@
 
         <ul class="main-menu-m">
             <li>
-                <a href="#">Trang chủ</a>
+                <a href="/home?action=">Trang chủ</a>
             </li>
 
-            <li >
-                <a href="/home?action=product" class="label1 rs1" data-label1="hot">Sản phẩm</a>
+            <li class="active-menu">
+                <a href="#" class="label1 rs1" data-label1="hot">Sản phẩm</a>
                 <ul class="sub-menu-m">
                     <li><a href="index.html">Adidas</a></li>
                     <li><a href="home-02.html">Nike</a></li>
@@ -238,11 +221,11 @@
             </li>
 
             <li>
-                <a href="views/user/about.jsp">Về chúng tôi</a>
+                <a href="/home?action=about">Về chúng tôi</a>
             </li>
 
             <li>
-                <a href="views/user/contact.jsp">Liên hệ</a>
+                <a href="/home?action=contact">Liên hệ</a>
             </li>
         </ul>
     </div>
@@ -303,211 +286,9 @@
 </div>
 
 
-<!-- Slider -->
-<section class="section-slide">
-    <div class="wrap-slick1">
-        <div class="slick1">
-            <div class="item-slick1"
-                 style="background-image: url(${pageContext.request.contextPath}/resources/images/slide-adidas-01.jpg);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									BỘ SƯU TẬP ADIDAS
-								</span>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                NEW SEASON
-                            </h2>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-                            <a href="product.html"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Xem ngay
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-slick1"
-                 style="background-image: url(${pageContext.request.contextPath}/resources/images/slide-nike-02.jpg);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									NIKE NEW COLLECTION 2020
-								</span>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                NIKE & LIFE
-                            </h2>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-                            <a href="product.html"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Xem ngay
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-slick1"
-                 style="background-image: url(${pageContext.request.contextPath}/resources/images/slide-03.jpg);">
-                <div class="container h-full">
-                    <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									BỘ SƯU TẬP HOT
-								</span>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-                            <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                BEST SELLER
-                            </h2>
-                        </div>
-
-                        <div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-                            <a href="product.html"
-                               class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Xem ngay
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Banner -->
-<div class="sec-banner bg0 p-t-80 p-b-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="${pageContext.request.contextPath}/resources/images/banner-adidas-01.jpg"
-                         alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									SẢN PHẨM HOT
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									Trending
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Xem ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="${pageContext.request.contextPath}/resources/images/banner-adidas-02.jpg"
-                         alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									ADIDAS
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									Summer 2020
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Xem ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="${pageContext.request.contextPath}/resources/images/banner-nike-01.jpg" alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									NIKE
-								</span>
-
-                            <span class="block1-info stext-102 trans-04">
-									Summer 2020
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Xem ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-xl-3 p-b-30 m-lr-auto">
-                <!-- Block1 -->
-                <div class="block1 wrap-pic-w">
-                    <img src="${pageContext.request.contextPath}/resources/images/banner-gucci-01.jpg" alt="IMG-BANNER">
-
-                    <a href="product.html"
-                       class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-                        <div class="block1-txt-child1 flex-col-l">
-								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Thương hiệu khác
-								</span>
-                        </div>
-
-                        <div class="block1-txt-child2 p-b-4 trans-05">
-                            <div class="block1-link stext-101 cl0 trans-09">
-                                Xem ngay
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- Product -->
-<section class="bg0 p-t-23 p-b-140">
+<div class="bg0 m-t-23 p-b-140" style="margin-top: 80px">
     <div class="container">
-        <div class="p-b-10">
-            <h3 class="ltext-103 cl5">
-                SẢN PHẨM
-            </h3>
-        </div>
-
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                 <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
@@ -543,13 +324,13 @@
                 <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                     <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                     <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                    Lọc sản phẩm
+                    Filter
                 </div>
 
                 <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
                     <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
                     <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                    Tìm kiếm
+                    Search
                 </div>
             </div>
 
@@ -560,8 +341,7 @@
                         <i class="zmdi zmdi-search"></i>
                     </button>
 
-                    <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-                           placeholder="Search">
+                    <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
                 </div>
             </div>
 
@@ -570,7 +350,7 @@
                 <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                     <div class="filter-col1 p-r-15 p-b-27">
                         <div class="mtext-102 cl2 p-b-15">
-                            Lọc theo
+                            Sort By
                         </div>
 
                         <ul>
@@ -661,47 +441,49 @@
 
         <div class="row isotope-grid">
             <c:forEach var="item" items="${itemList}">
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${item.getProduct().getCatalogID()}">
-                <!-- Block2 -->
-                <div class="block2">
-                    <div class="block2-pic hov-img0">
-                        <img src="${item.getProduct().getImages()[0]}" width="315" height="350" alt="IMG-PRODUCT">
-                        <a href="/home?action=view-detail&id=${item.getProduct().getProductID()}"
-                           class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
-                            Xem nhanh
-                        </a>
-                    </div>
-
-                    <div class="block2-txt flex-w flex-t p-t-14">
-                        <div class="block2-txt-child1 flex-col-l ">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ${item.getProduct().getCatalogID()}">
+                    <!-- Block2 -->
+                    <div class="block2">
+                        <div class="block2-pic hov-img0">
+                            <img src="${item.getProduct().getImages()[0]}" width="315" height="350" alt="IMG-PRODUCT">
                             <a href="/home?action=view-detail&id=${item.getProduct().getProductID()}"
-                               class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                <c:out value="${item.getProduct().getProductName()}"/>
+                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Xem nhanh
                             </a>
+                        </div>
 
-                            <span class="stext-105 cl3 vnd">
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/home?action=view-detail&id=${item.getProduct().getProductID()}"
+                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <c:out value="${item.getProduct().getProductName()}"/>
+                                </a>
+
+                                <span class="stext-105 cl3 vnd">
 
                                     <c:set var="price" value="${item.getPrice()}"/>
                                     <fmt:formatNumber type="number" maxFractionDigits="3" value="${price}"/>
 
                                 </span>
-                        </div>
+                            </div>
 
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04"
-                                     src="${pageContext.request.contextPath}/resources/images/icons/icon-heart-01.png"
-                                     alt="ICON" onclick="like()">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                     src="${pageContext.request.contextPath}/resources/images/icons/icon-heart-02.png"
-                                     alt="ICON">
-                            </a>
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04"
+                                         src="${pageContext.request.contextPath}/resources/images/icons/icon-heart-01.png"
+                                         alt="ICON" onclick="like()">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                         src="${pageContext.request.contextPath}/resources/images/icons/icon-heart-02.png"
+                                         alt="ICON">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </c:forEach>
-</section>
+        </div>
+    </div>
+</div>
 
 
 <!-- Footer -->
@@ -874,7 +656,6 @@
 		</span>
 </div>
 
-
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/vendors/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -885,7 +666,7 @@
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/vendors/select2/select2.min.js"></script>
 <script>
-    $(".js-select2").each(function () {
+    $(".js-select2").each(function(){
         $(this).select2({
             minimumResultsForSearch: 20,
             dropdownParent: $(this).next('.dropDownSelect2')
@@ -906,12 +687,12 @@
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/vendors/MagnificPopup/jquery.magnific-popup.min.js"></script>
 <script>
-    $('.gallery-lb').each(function () { // the containers for all your galleries
+    $('.gallery-lb').each(function() { // the containers for all your galleries
         $(this).magnificPopup({
             delegate: 'a', // the selector for gallery item
             type: 'image',
             gallery: {
-                enabled: true
+                enabled:true
             },
             mainClass: 'mfp-fade'
         });
@@ -922,25 +703,25 @@
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/vendors/sweetalert/sweetalert.min.js"></script>
 <script>
-    $('.js-addwish-b2').on('click', function (e) {
+    $('.js-addwish-b2, .js-addwish-detail').on('click', function(e){
         e.preventDefault();
     });
 
-    $('.js-addwish-b2').each(function () {
+    $('.js-addwish-b2').each(function(){
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to wishlist !", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
         });
     });
 
-    $('.js-addwish-detail').each(function () {
+    $('.js-addwish-detail').each(function(){
         var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-        $(this).on('click', function () {
-            swal(nameProduct, "đã thêm vào Danh sách yêu thích !", "success");
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to wishlist !", "success");
 
             $(this).addClass('js-addedwish-detail');
             $(this).off('click');
@@ -949,10 +730,10 @@
 
     /*---------------------------------------------*/
 
-    $('.js-addcart-detail').each(function () {
+    $('.js-addcart-detail').each(function(){
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-        $(this).on('click', function () {
-            swal(nameProduct, "đã thêm vào Giỏ hàng !", "success");
+        $(this).on('click', function(){
+            swal(nameProduct, "is added to cart !", "success");
         });
     });
 
@@ -960,23 +741,22 @@
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
-    $('.js-pscroll').each(function () {
-        $(this).css('position', 'relative');
-        $(this).css('overflow', 'hidden');
+    $('.js-pscroll').each(function(){
+        $(this).css('position','relative');
+        $(this).css('overflow','hidden');
         var ps = new PerfectScrollbar(this, {
             wheelSpeed: 1,
             scrollingThreshold: 1000,
             wheelPropagation: false,
         });
 
-        $(window).on('resize', function () {
+        $(window).on('resize', function(){
             ps.update();
         })
     });
 </script>
 <!--===============================================================================================-->
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/front-end-views.js"></script>
 
 </body>
 </html>
