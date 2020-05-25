@@ -25,14 +25,6 @@
 <form action="/dashboard" id="dashboard">
 <div class="container-scroller">
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="navbar-brand-wrapper d-flex align-items-center">
-            <a class="navbar-brand brand-logo" href="/dashboard">
-                <img src="${pageContext.request.contextPath}/resources/images/logo.svg" alt="logo" class="logo-dark"/>
-            </a>
-            <a class="navbar-brand brand-logo-mini" href="/dashboard"><img
-                    src="${pageContext.request.contextPath}/resources/images/logo-mini.svg"
-                    alt="logo"/></a>
-        </div>
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
             <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong shoe's dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
@@ -107,22 +99,7 @@
                     </a>
                     <div class="collapse" id="product">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_product">Xem sản phẩm</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_product">Thêm sản phẩm</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false"
-                       aria-controls="brand">
-                        <span class="menu-title">Quản lý Nhà cung cấp</span>
-                        <i class="icon-grid menu-icon"></i>
-                    </a>
-
-                    <div class="collapse" id="brand">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=view_catalog">Xem danh mục</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="/admin?action=create_catalog">Thêm danh mục</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/product?action=">Danh sách sản phẩm</a></li>
                         </ul>
                     </div>
                 </li>
