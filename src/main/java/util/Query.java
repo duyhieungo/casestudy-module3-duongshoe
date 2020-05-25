@@ -29,6 +29,12 @@ public class Query {
             "JOIN catalog ON product.catalog_id = catalog.id\n" +
             "GROUP BY product_name";
 
+    public static final String SELECT_PRODUCT_FOR_DETAIL = "SELECT * FROM product\n" +
+    "JOIN attachment ON product.id = attachment.product_id\n" +
+    "JOIN catalog ON product.catalog_id = catalog.id\n" +
+    "WHERE catalog_id = ?\n" +
+    "group by product_name";
+
 
     public static final String SELECT_ALL_IMAGE_FROM_PRODUCT = "SELECT * FROM attachment\n" +
             "WHERE product_id = ?;";
