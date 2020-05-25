@@ -34,7 +34,7 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
+            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong's Shoe dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
                     <i class="icon-magnifier"></i>
@@ -194,7 +194,7 @@
                                                placeholder="Tên sản phẩm không được để trống"
                                         </c:when>
                                         <c:otherwise>
-                                               placeholder="${product.getProductName()}"
+                                               value="${product.getProductName()}"
                                         </c:otherwise>
                                         </c:choose>
                                                name="product-name">
@@ -231,7 +231,7 @@
                                                placeholder="Không có ảnh"
                                         </c:when>
                                         <c:otherwise>
-                                               placeholder="${product.getImages()[0]}"
+                                               value="${product.getImages()[0]}"
                                         </c:otherwise>
                                         </c:choose>
                                                name="image-link-1">
@@ -244,7 +244,7 @@
                                                placeholder="Không có ảnh"
                                         </c:when>
                                         <c:otherwise>
-                                               placeholder="${product.getImages()[1]}"
+                                               value="${product.getImages()[1]}"
                                         </c:otherwise>
                                         </c:choose>
                                                name="image-link-2">
@@ -257,7 +257,7 @@
                                                placeholder="Không có ảnh"
                                         </c:when>
                                         <c:otherwise>
-                                               placeholder="${product.getImages()[2]}"
+                                               value="${product.getImages()[2]}"
                                         </c:otherwise>
                                         </c:choose>
                                                name="image-link-3">
@@ -270,7 +270,7 @@
                                                placeholder="Không có ảnh"
                                         </c:when>
                                         <c:otherwise>
-                                               placeholder="${product.getImages()[3]}"
+                                               value="${product.getImages()[3]}"
                                         </c:otherwise>
                                         </c:choose>
                                                name="image-link-4">
@@ -278,8 +278,8 @@
                                     <div class="form-group">
                                         <label for="description">Mô tả</label>
                                         <textarea class="form-control" id="description" rows="4"
-                                                  placeholder="${product.getDescription()}"
-                                                  name="product-description"></textarea>
+                                                  value="${product.getDescription()}"
+                                                  name="product-description">${product.getDescription()}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="status">Tình trạng</label>

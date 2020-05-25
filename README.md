@@ -10,7 +10,7 @@ USECASE VIEW:
 ERD:
 <br>
 <br>
-<img style="margin: 0 auto" alt="erd" src="https://iili.io/JGM53Q.png">
+<img style="margin: 0 auto" alt="erd" src="https://iili.io/JXPXEu.png">
 <br>
 <br>
 

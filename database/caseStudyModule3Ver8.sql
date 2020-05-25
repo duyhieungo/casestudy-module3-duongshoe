@@ -1,3 +1,6 @@
+CREATE DATABASE duongshoe;
+USE duongshoe;
+
 create table if not exists catalog
 (
     id           int auto_increment

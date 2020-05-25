@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -68,8 +69,11 @@ public class ProductServlet extends HttpServlet {
         try {
             if (productService.addNewProduct(product)) {
                 request.setAttribute("message", "Thêm Thành công");
+                request.setCharacterEncoding("UTF-8");
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("text/html; charset=UTF-8");
             }
-        } catch (SQLException e) {
+        } catch (SQLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         showForm(request, response);
@@ -87,8 +91,11 @@ public class ProductServlet extends HttpServlet {
         try {
             if (productService.updateProduct(product)) {
                 request.setAttribute("status", 0);
+                request.setCharacterEncoding("UTF-8");
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("text/html; charset=UTF-8");
             }
-        } catch (SQLException e) {
+        } catch (SQLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         showForm(request, response);

@@ -34,7 +34,7 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
+            <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome Duong's Shoe dashboard!</h5>
             <ul class="navbar-nav navbar-nav-right ml-auto">
                 <form class="search-form d-none d-md-block" action="#">
                     <i class="icon-magnifier"></i>
