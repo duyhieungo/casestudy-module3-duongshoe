@@ -23,7 +23,14 @@
     <link rel="stylesheet" href="resources/vendors/chartist/chartist.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="shortcut icon" href="resources/images/favicon.png"/>
-
+<style>
+    @keyframes random{
+        0%   {color: red;}
+        25%  {color: black;}
+        50%  {color: orange;}
+        100% {color: green;}
+    }
+</style>
 
 </head>
 <body>
@@ -175,7 +182,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div style="text-align: center" class="card-body">
-                                <h4 class="card-title">Danh sách hóa đơn</h4>
+                                <h4 class="card-title" style="color: black;animation:random 5s infinite;">Danh sách hóa đơn</h4>
                                 </p>
                                 <table class="table">
 
@@ -187,57 +194,100 @@
                                         <th>Số tiền thanh toán</th>
                                         <th>Ngày thanh toán</th>
                                         <th>Status</th>
-                                        <th style="text-align: center">Công cụ
-                                        </th>
+                                        <th style="text-align: center">Công cụ</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
-
                                     <c:forEach var="bill" items="${listBill}">
                                         <tr>
-                                            <td><c:out value="${bill.user_id}"/></td>
-                                            <td><c:out value="${bill.message}"/></td>
-                                            <td><c:out value="${bill.payment}"/></td>
-                                            <td><c:out value="${bill.date_of_payment}"/></td>
-                                            <td><c:out value="${bill.status}"/></td>
-                                            <td>
-                                                <button onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
-                                                    Xác nhận
+                                            <td><c:out
+                                                    value="${bill.user_id}"/></td>
+                                            <td><c:out
+                                                    value="${bill.message}"/></td>
+                                            <td><c:out
+                                                    value="${bill.payment}"/></td>
+                                            <td><c:out
+                                                    value="${bill.date_of_payment}"/></td>
+                                            <td><c:choose>
+                                                <c:when test="${bill.status == 1}">
+                                                    <label class="badge badge-success">
+                                                        Đã xác nhận</label>
+                                                </c:when>
+                                                <c:when test="${bill.status == 0}">
+                                                    <label class="badge badge-warning">
+                                                        Đang chờ</label>
+                                                </c:when>
+                                                <c:when test="${bill.status == -1}">
+                                                    <label class="badge badge-info">Từ chối</label>
+                                                </c:when>
+                                            </c:choose>
+                                            </td>
+                                            <td style="word-wrap: break-word;alignment: center">
+                                                <button class="btn-success"
+                                                        onclick="window.location.href = '/bills?action=confirm&id=${bill.id}';">
+                                                    <a class="icon-like">Xác nhận</a>
                                                 </button>
-
-                                                <button onclick="window.location.href = '/bills?action=pending&id=${bill.id}';">
-                                                    Chờ
+                                                <button class="btn-warning"
+                                                        onclick="window.location.href = '/bills?action=pending&id=${bill.id}';">
+                                                    <a class="icon-bubble" style="color: black">Chờ </a>
                                                 </button>
-                                                <button onclick="window.location.href = '/bills?action=deny&id=${bill.id}';">
-                                                    Từ chối
+                                                <button class="btn-info"
+                                                        onclick="window.location.href = '/bills?action=deny&id=${bill.id}';">
+                                                    <a class="icon-dislike">Từ chối</a>
                                                 </button>
                                             </td>
-
-
                                         </tr>
                                     </c:forEach>
-                                    <c:if test="${currentPage !=1}">
-                                        <td><a href="bills?page=${currentPage -1}">Previous</a></td>
-                                    </c:if>
-                                    <table border="1" cellspacing="5" cellspacing="5">
-                                        <tr>
-                                            <c:forEach begin="1" end="${noOfPages}" var="i">
-                                                <c:choose>
-                                                    <c:when test="${currentPage eq i}">
-                                                        <td>${i}</td>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <td><a href="bills?page=${i}">${i}</a></td>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                        </tr>
-                                    </table>
-                                    <c:if test="${currentPage lt noOfpages}">
-                                        <td><a href="bills?page=${currentPage +1}">Next</a></td>
-                                    </c:if>
+                                    <div class="d-flex mt-4 flex-wrap">
+                                        <nav class="ml-auto">
+                                            <tr>
+                                                <td><p class="text-muted">Hiển thị ${currentPage} trong số ${noOfPages}
+                                                    trang</p>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <ul class="pagination separated pagination-info">
+                                                        <c:if test="${currentPage !=1}">
+                                                            <li class="page-item" style="display: inline">
 
+                                                                <a href="bills?page=${currentPage -1}"
+                                                                   class="page-link">
+                                                                    <i class="icon-arrow-left"></i>
+                                                                </a>
+
+                                                            </li>
+                                                        </c:if>
+                                                        <c:forEach begin="1" end="${noOfPages}" var="i">
+                                                            <li class="page-item" style="display: inline">
+                                                                <c:choose>
+                                                                    <c:when test="${currentPage eq i}">
+                                                                        <a class="page-link">${i}
+                                                                        </a>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <a href="bills?page=${i}" class="page-link">${i}
+                                                                        </a>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+
+                                                            </li>
+                                                        </c:forEach>
+                                                        <c:if test="${currentPage} <= ${noOfpages}">
+                                                            <li class="page-item" style="display: inline">
+                                                                <a href="bills?page=${currentPage +1}"
+                                                                   class="page-link">
+                                                                    <i class="icon-arrow-right"></i>
+                                                                </a>
+                                                            </li>
+                                                        </c:if>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </nav>
+                                    </div>
                                     </tbody>
                                 </table>
                             </div>
