@@ -356,8 +356,8 @@
 
 
 <!-- Map -->
-<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465.4898311362632!2d105.76806650441657!3d21.035940813516138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1svi!2s!4v1590054885085!5m2!1svi!2s"
+<div class="map" style="width: 800px; height: auto; margin: 0 auto">
+    <iframe style="margin: 0px auto" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465.4898311362632!2d105.76806650441657!3d21.035940813516138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1svi!2s!4v1590054885085!5m2!1svi!2s"
             width="800" height="500" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </div>
 
